@@ -26,24 +26,44 @@ import { bobs } from "../data";
 const VIEW_HALF = 48; // ly — fits HIP 84051 (~42 ly) with margin for labels
 const RING_LY = [10, 20, 30, 40];
 
-/** Small label offsets (SVG ly units) to reduce overlap; documented nudges only. */
-const LABEL_NUDGES: Record<string, { dx: number; dy: number }> = {
-  // omicron² Eridani and HIP 14101 sit ~1 ly apart in this projection
-  "omicron2-eridani": { dx: -1.2, dy: -1.6 },
-  "hip-14101": { dx: 1.4, dy: 1.8 },
-  // Beta Hydri / Zeta Tucanae / GL 54 cluster
-  "beta-hydri": { dx: 0.8, dy: -1.5 },
-  "zeta-tucanae": { dx: 1.6, dy: 0.4 },
-  "gliese-54": { dx: -1.8, dy: 0.6 },
+type LabelNudge = { dx: number; dy: number; anchor?: "start" | "middle" | "end" };
+
+/**
+ * Label offsets (SVG ly units) with leader lines. Spread clusters so every
+ * name is readable at the default fit-to-stars zoom. Josh allowed design nudges.
+ * Prefer start/end anchors so long names grow away from neighbors.
+ */
+const LABEL_NUDGES: Record<string, LabelNudge> = {
+  // omicron² Eri / HIP 14101 (~1 ly apart) — opposite corners
+  "omicron2-eridani": { dx: -1.8, dy: -5.8, anchor: "end" },
+  "hip-14101": { dx: 2.0, dy: 5.2, anchor: "start" },
+  // Beta Hydri / Zeta Tucanae / Gliese 54 / Gliese 877
+  "beta-hydri": { dx: 0.4, dy: -5.8, anchor: "middle" },
+  "zeta-tucanae": { dx: 3.2, dy: 0.6, anchor: "start" },
+  "gliese-54": { dx: -3.2, dy: 2.0, anchor: "end" },
+  "gliese-877": { dx: 3.0, dy: 5.0, anchor: "start" },
+  // Pi³ Orionis / Delta Eri — Delta up-left, Pi further left
+  "pi3-orionis": { dx: -2.6, dy: 3.8, anchor: "end" },
+  "delta-eridani": { dx: -2.4, dy: -5.8, anchor: "end" },
   // Sol / Alpha Centauri / Epsilon Indi
-  "alpha-centauri": { dx: 1.2, dy: 1.4 },
-  "epsilon-indi": { dx: 1.5, dy: -1.2 },
-  sol: { dx: 0, dy: -1.8 },
+  "alpha-centauri": { dx: 2.0, dy: 4.4, anchor: "start" },
+  "epsilon-indi": { dx: 2.6, dy: -4.0, anchor: "start" },
+  sol: { dx: -1.8, dy: -5.0, anchor: "end" },
+  // Other busy neighbors
+  "epsilon-eridani": { dx: -2.0, dy: 4.2, anchor: "end" },
+  "82-eridani": { dx: 2.4, dy: -4.6, anchor: "start" },
+  "kappa-ceti": { dx: -2.0, dy: -3.6, anchor: "end" },
+  "gamma-leporis": { dx: 2.4, dy: -4.6, anchor: "start" },
+  "eta-cassiopeiae": { dx: -2.4, dy: -3.8, anchor: "end" },
+  "delta-pavonis": { dx: 2.2, dy: 3.8, anchor: "start" },
+  "gamma-pavonis": { dx: 2.4, dy: -3.6, anchor: "start" },
+  "hip-84051": { dx: 0, dy: -4.4, anchor: "middle" },
 };
 
 interface ProjectedSystem {
   id: string;
   name: string;
+  mapLabel: string;
   description: string;
   distanceLy: number | null;
   firstBook: 1 | 2;
@@ -51,14 +71,29 @@ interface ProjectedSystem {
   y: number;
   labelDx: number;
   labelDy: number;
+  labelAnchor: "start" | "middle" | "end";
 }
+
+/** Shorter on-map labels for the longest names; detail panel keeps the full name. */
+const MAP_LABEL_SHORT: Record<string, string> = {
+  "omicron2-eridani": "Omicron² Eri",
+  "delta-eridani": "Delta Eri",
+  "epsilon-eridani": "Epsilon Eri",
+  "alpha-centauri": "α Centauri",
+  "eta-cassiopeiae": "Eta Cas",
+  "gamma-leporis": "γ Leporis",
+  "gamma-pavonis": "γ Pavonis",
+  "delta-pavonis": "δ Pavonis",
+  "pi3-orionis": "π³ Orionis",
+};
 
 const projected: ProjectedSystem[] = plottableSystems.map((system) => {
   const { x, y } = system.galacticXYZly!;
-  const nudge = LABEL_NUDGES[system.id] ?? { dx: 0, dy: -1.4 };
+  const nudge = LABEL_NUDGES[system.id] ?? { dx: 0, dy: -3.2, anchor: "middle" as const };
   return {
     id: system.id,
     name: system.name,
+    mapLabel: MAP_LABEL_SHORT[system.id] ?? system.name,
     description: system.description,
     distanceLy: system.distanceLy,
     firstBook: system.firstBook,
@@ -66,6 +101,7 @@ const projected: ProjectedSystem[] = plottableSystems.map((system) => {
     y: -y,
     labelDx: nudge.dx,
     labelDy: nudge.dy,
+    labelAnchor: nudge.anchor ?? "middle",
   };
 });
 
@@ -117,7 +153,10 @@ const defaultYear = 2165;
   >
     <div class="flex flex-col gap-0 lg:flex-row">
       <!-- Map stage -->
-      <div class="relative min-h-[420px] flex-1 touch-none sm:min-h-[520px]" data-map-stage>
+      <div
+        class="relative aspect-square min-h-[360px] w-full touch-none sm:aspect-auto sm:min-h-[560px] lg:min-h-[620px] lg:flex-1"
+        data-map-stage
+      >
         <svg
           class="h-full w-full cursor-grab active:cursor-grabbing"
           viewBox={`${-VIEW_HALF} ${-VIEW_HALF} ${VIEW_HALF * 2} ${VIEW_HALF * 2}`}
@@ -152,7 +191,7 @@ const defaultYear = 2165;
                     x={ly * 0.72}
                     y={-ly * 0.72}
                     class="fill-ink-faint"
-                    font-size="1.1"
+                    font-size="1.45"
                     font-family="Inter, sans-serif"
                   >
                     {ly} ly
@@ -209,32 +248,45 @@ const defaultYear = 2165;
                 <g
                   transform={`translate(${system.x} ${system.y})`}
                   data-system={system.id}
+                  data-map-x={system.x}
+                  data-map-y={system.y}
                   data-first-book={system.firstBook}
                   data-name={system.name}
                   data-distance={system.distanceLy ?? ""}
                   data-description={system.description}
                   class="system-group cursor-pointer"
                 >
-                  <circle r="1.6" fill="url(#star-glow)" opacity="0.55" class="pointer-events-none"></circle>
+                  <circle r="2.1" fill="url(#star-glow)" opacity="0.55" class="pointer-events-none"></circle>
                   <circle
-                    r={system.id === "sol" ? 0.55 : 0.38}
+                    r={system.id === "sol" ? 0.7 : 0.48}
                     fill={system.id === "sol" ? "#ffe9a8" : "#cfe0ff"}
                     stroke="#6ea8ff"
-                    stroke-width="0.08"
+                    stroke-width="0.1"
                     data-star-hit
                   ></circle>
+                  {/* Leader line from near the star to the label anchor point */}
+                  <line
+                    x1={system.labelDx * 0.12}
+                    y1={system.labelDy * 0.12}
+                    x2={system.labelDx}
+                    y2={system.labelDy - 0.4}
+                    stroke="currentColor"
+                    class="text-ink-faint pointer-events-none"
+                    stroke-width="0.09"
+                    opacity="0.6"
+                  ></line>
                   <text
                     x={system.labelDx}
                     y={system.labelDy}
-                    text-anchor="middle"
+                    text-anchor={system.labelAnchor}
                     class="fill-ink pointer-events-none select-none"
-                    font-size="1.15"
+                    font-size="2.2"
                     font-family="Outfit, Inter, sans-serif"
-                    font-weight="500"
+                    font-weight="600"
                   >
-                    {system.name}
+                    {system.mapLabel}
                   </text>
-                  <!-- Bob marker slot: markers are positioned by the client when visible -->
+                  {/* Bob marker slot: markers are positioned by the client when visible */}
                   <g data-bob-slot></g>
                 </g>
               ))
@@ -257,10 +309,10 @@ const defaultYear = 2165;
                   data-jump={segment.locationJump ? "1" : "0"}
                 >
                   <circle
-                    r="0.32"
+                    r="0.62"
                     fill={bobColorMap[segment.bobId]}
                     stroke="#05070d"
-                    stroke-width="0.08"
+                    stroke-width="0.14"
                   ></circle>
                   <title>{segment.bobName}</title>
                 </g>
@@ -293,11 +345,11 @@ const defaultYear = 2165;
                     class="hidden"
                   >
                     <circle
-                      r="0.36"
+                      r="0.66"
                       fill={bobColorMap[segment.bobId]}
                       stroke="#e8eef9"
-                      stroke-width="0.1"
-                      stroke-dasharray="0.15 0.12"
+                      stroke-width="0.14"
+                      stroke-dasharray="0.22 0.16"
                     ></circle>
                     <title>{`${segment.bobName} (in transit)`}</title>
                   </g>
@@ -388,13 +440,15 @@ const defaultYear = 2165;
     Positions use heliocentric galactic x/y from the companion dataset (real catalog
     astrometry). Bob locations are inferred at build time from dated events — see the
     PR notes for gaps (SCUT-only mentions are ignored; some travel has no dated arrival).
-    Behavior inspired by
+    Behavior inspired by{" "}
     <a
       class="text-ink-muted underline decoration-line underline-offset-2 hover:text-accent"
       href="https://github.com/thunfischtoast/bobiverse-map"
       rel="noopener noreferrer"
-      target="_blank">thunfischtoast/bobiverse-map</a
+      target="_blank"
     >
+      thunfischtoast/bobiverse-map
+    </a>{" "}
     (CC BY-SA 4.0) — inspiration only; no code copied.
   </p>
 </Layout>
@@ -412,7 +466,7 @@ const defaultYear = 2165;
   [data-map-svg] text {
     paint-order: stroke;
     stroke: #05070d;
-    stroke-width: 0.35px;
+    stroke-width: 0.55px;
     stroke-linejoin: round;
   }
   .system-group[data-selected="true"] circle[data-star-hit] {
@@ -458,12 +512,59 @@ const defaultYear = 2165;
     let playing = false;
     let playTimer: number | null = null;
 
-    // --- Pan / zoom via viewBox ---
-    const baseHalf = 48;
-    let view = { x: -baseHalf, y: -baseHalf, w: baseHalf * 2, h: baseHalf * 2 };
+    // --- Pan / zoom via viewBox (initial view fits visible stars) ---
+    const FALLBACK_HALF = 48;
+    let fittedSize = FALLBACK_HALF * 2;
+    let view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
 
     function applyViewBox() {
       svg.setAttribute("viewBox", `${view.x} ${view.y} ${view.w} ${view.h}`);
+    }
+
+    /** Fit the viewBox to the bounding box of currently visible systems. */
+    function fitViewToVisibleStars() {
+      // Only star system groups — Bob markers also carry data-system for slotting.
+      const visibles = [...root.querySelectorAll<SVGGElement>(".system-group")].filter(
+        (el) => !el.classList.contains("hidden"),
+      );
+      if (visibles.length === 0) {
+        view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
+        fittedSize = FALLBACK_HALF * 2;
+        applyViewBox();
+        return;
+      }
+
+      let minX = Infinity;
+      let maxX = -Infinity;
+      let minY = Infinity;
+      let maxY = -Infinity;
+      for (const el of visibles) {
+        const x = Number(el.dataset.mapX);
+        const y = Number(el.dataset.mapY);
+        if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+        // Include label reach so names aren't clipped at the edges.
+        const labelPad = 6.5;
+        minX = Math.min(minX, x - labelPad);
+        maxX = Math.max(maxX, x + labelPad);
+        minY = Math.min(minY, y - labelPad);
+        maxY = Math.max(maxY, y + labelPad);
+      }
+      if (!Number.isFinite(minX)) {
+        view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
+        fittedSize = FALLBACK_HALF * 2;
+        applyViewBox();
+        return;
+      }
+
+      const width = Math.max(12, maxX - minX);
+      const height = Math.max(12, maxY - minY);
+      const pad = 0.12; // relative padding around the cluster
+      const side = Math.max(width, height) * (1 + pad * 2);
+      const cx = (minX + maxX) / 2;
+      const cy = (minY + maxY) / 2;
+      view = { x: cx - side / 2, y: cy - side / 2, w: side, h: side };
+      fittedSize = side;
+      applyViewBox();
     }
 
     function clientToSvg(clientX: number, clientY: number) {
@@ -506,7 +607,7 @@ const defaultYear = 2165;
       (event) => {
         event.preventDefault();
         const factor = event.deltaY > 0 ? 1.12 : 1 / 1.12;
-        const nextW = Math.min(baseHalf * 4, Math.max(baseHalf * 0.35, view.w * factor));
+        const nextW = Math.min(fittedSize * 3.5, Math.max(fittedSize * 0.3, view.w * factor));
         const nextH = nextW;
         const anchor = clientToSvg(event.clientX, event.clientY);
         const rx = (anchor.x - view.x) / view.w;
@@ -535,7 +636,7 @@ const defaultYear = 2165;
     }
 
     function syncBookScoped() {
-      for (const el of root.querySelectorAll<HTMLElement>("[data-system]")) {
+      for (const el of root.querySelectorAll<HTMLElement>(".system-group")) {
         const firstBook = Number(el.dataset.firstBook ?? 1);
         el.classList.toggle("hidden", firstBook > book);
       }
@@ -556,7 +657,9 @@ const defaultYear = 2165;
       for (const marker of root.querySelectorAll<SVGGElement>("[data-bob-marker][data-status='present']")) {
         if (!markerActive(marker)) continue;
         const systemId = marker.dataset.system!;
-        const systemGroup = root.querySelector<SVGGElement>(`[data-system="${systemId}"]`);
+        const systemGroup = root.querySelector<SVGGElement>(
+          `.system-group[data-system="${systemId}"]`,
+        );
         if (!systemGroup || systemGroup.classList.contains("hidden")) continue;
         marker.classList.remove("hidden");
         const list = bySystem.get(systemId) ?? [];
@@ -565,14 +668,21 @@ const defaultYear = 2165;
       }
 
       for (const [systemId, markers] of bySystem) {
-        const slot = root.querySelector<SVGGElement>(`[data-system="${systemId}"] [data-bob-slot]`);
+        const slot = root.querySelector<SVGGElement>(
+          `.system-group[data-system="${systemId}"] [data-bob-slot]`,
+        );
         if (!slot) continue;
         markers.forEach((marker, index) => {
-          // Fan markers in a small arc above the star so stacks stay readable.
-          const angle = (-Math.PI / 2) + (index - (markers.length - 1) / 2) * 0.55;
-          const radius = 0.95 + Math.floor(index / 5) * 0.45;
+          // Fan markers in a ring above/around the star; second ring for big stacks.
+          const perRing = 5;
+          const ring = Math.floor(index / perRing);
+          const indexInRing = index % perRing;
+          const countInRing = Math.min(perRing, markers.length - ring * perRing);
+          const angle =
+            -Math.PI / 2 + (indexInRing - (countInRing - 1) / 2) * (1.05 - ring * 0.06);
+          const radius = 1.95 + ring * 1.05;
           const mx = Math.cos(angle) * radius;
-          const my = Math.sin(angle) * radius - 0.15;
+          const my = Math.sin(angle) * radius;
           marker.setAttribute("transform", `translate(${mx} ${my})`);
           slot.appendChild(marker);
         });
@@ -611,7 +721,7 @@ const defaultYear = 2165;
 
     function refreshDetails() {
       if (!selectedSystemId) return;
-      const group = root.querySelector<SVGGElement>(`[data-system="${selectedSystemId}"]`);
+      const group = root.querySelector<SVGGElement>(`.system-group[data-system="${selectedSystemId}"]`);
       if (!group || group.classList.contains("hidden")) {
         selectedSystemId = null;
         detailName.textContent = "Tap a star";
@@ -687,7 +797,7 @@ const defaultYear = 2165;
 
     function selectSystem(systemId: string) {
       selectedSystemId = systemId;
-      for (const group of root.querySelectorAll<SVGGElement>("[data-system]")) {
+      for (const group of root.querySelectorAll<SVGGElement>(".system-group")) {
         group.dataset.selected = group.dataset.system === systemId ? "true" : "false";
       }
       refreshDetails();
@@ -695,7 +805,7 @@ const defaultYear = 2165;
 
     svg.addEventListener("click", (event) => {
       const target = event.target as Element | null;
-      const group = target?.closest<SVGGElement>("[data-system]");
+      const group = target?.closest<SVGGElement>(".system-group");
       if (!group || group.classList.contains("hidden")) return;
       // Ignore pure pan taps that barely moved — pointerup after drag still clicks;
       // a tiny movement threshold keeps selection usable on mobile.
@@ -737,6 +847,7 @@ const defaultYear = 2165;
 
     window.addEventListener("bobiverse:book-change", () => {
       render();
+      fitViewToVisibleStars();
     });
 
     // Keyboard niceties (same spirit as the reference map)
@@ -759,6 +870,7 @@ const defaultYear = 2165;
     // Initial paint after BookToggle applies localStorage
     book = currentBook();
     render();
+    fitViewToVisibleStars();
     // Prefer Sol selected so the panel isn't empty on first load
     selectSystem("sol");
   }

@@ -63,7 +63,7 @@ const NAMED_DESTINATIONS: Array<[RegExp, string]> = [
 
 /** Verbs that mean this Bob is traveling, kept tight to the name. */
 const LEAVE_VERB =
-  "(?:leaves? for|leaves\\b|leaving for|departs?\\b|departed\\b|heads? out to|heads? to|heading (?:back |out )?to)";
+  "(?:leaves?\\s+for|leaves?\\b|leaving\\s+for|departs?\\b|departed\\b|heads?\\s+out\\s+to|heads?\\s+to|heading\\s+(?:back\\s+|out\\s+)?to)";
 
 function bobIdFromPov(pov: string | null): string | null {
   if (!pov) return null;
@@ -99,44 +99,30 @@ function matchDestinationPhrase(phrase: string): string | null {
 }
 
 /**
- * Detect travelers with a name-local leave verb. Creation titles are ignored.
- * "Bob told to leave" and stay-behind clauses are excluded.
+ * Detect travelers with a name-local leave verb.
+ * The name must sit immediately before the leave verb (or in an "X and Y leave"
+ * pair). Combined titles like "Garfield … created; Riker leaves" only mark the
+ * traveler, not everyone named in the title. "told to leave" is excluded.
  */
 function isBobDeparting(bobId: string, event: TimelineEvent): boolean {
   const bob = bobs.find((b) => b.id === bobId);
   if (!bob || !event.bobsInvolved.includes(bobId)) return false;
-  // Combined titles like "Garfield and Homer created; Riker leaves for Sol"
-  // still need departure detection for the travelers — only skip if THIS Bob
-  // is the one being created in the title.
-  if (bobsCreatedInEvent(event).includes(bobId) && !new RegExp(`\\b${bob.name}\\b.{0,40}${LEAVE_VERB}`, "i").test(event.title)) {
-    return false;
-  }
 
   const text = `${event.title} ${event.description}`;
   if (new RegExp(`\\b${bob.name}\\b.{0,40}told to leave\\b`, "i").test(text)) {
     return false;
   }
 
-  // "Name leaves for X" / "Name heads out to X" within a short span (no other clause).
+  // Name must sit immediately before the leave verb (optional "'s clone" /
+  // "and …" pair). Never match just because the name and a leave verb both
+  // appear somewhere in a combined title like
+  // "Garfield and Homer created; Riker leaves for Sol".
   const local = new RegExp(`\\b${bob.name}\\b(?:'s clone)?\\s+${LEAVE_VERB}`, "i");
-  if (local.test(text)) return true;
-
-  // "Name and Y leave/depart" or "Name and his clone Y leave"
   const pair = new RegExp(
     `\\b${bob.name}\\b(?:\\s+and\\s+(?:his clone\\s+)?[A-Z][a-z]+)?\\s+${LEAVE_VERB}`,
     "i",
   );
-  if (pair.test(text)) return true;
-
-  // Title: "Luke and Bender depart" / "Riker leaves for Sol"
-  if (
-    new RegExp(`\\b${bob.name}\\b`, "i").test(event.title) &&
-    /\b(leaves?|leaving|departs?|departed)\b/i.test(event.title)
-  ) {
-    return true;
-  }
-
-  return false;
+  return local.test(text) || pair.test(text);
 }
 
 function inferDestination(bobId: string, event: TimelineEvent): string | null {
