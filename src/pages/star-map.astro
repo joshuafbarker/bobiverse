@@ -2,6 +2,10 @@
 /**
  * Star map page — canvas engine adapted from thunfischtoast/bobiverse-map
  * (CC BY-SA 4.0). See LICENSE-star-map.md and the engine file header.
+ *
+ * Static chrome (top bar, event log, legend, system panel, About, timeline)
+ * is rendered here at build time. The client script only toggles classes /
+ * text / visibility; canvas drawing lives in star-map-engine.ts.
  */
 import Layout from "../layouts/Layout.astro";
 import BookToggle from "../components/BookToggle.astro";
@@ -10,6 +14,8 @@ import { unplottableNote } from "../data/starMapMeta";
 
 const payload = buildStarMapPayload();
 const payloadJson = JSON.stringify(payload);
+const bobList = Object.values(payload.bobs).sort((a, b) => a.name.localeCompare(b.name));
+const bobNameById = Object.fromEntries(bobList.map((b) => [b.id, b.name]));
 ---
 
 <Layout
@@ -17,16 +23,33 @@ const payloadJson = JSON.stringify(payload);
   description="Interactive Bobiverse star map (books 1–2), adapted from thunfischtoast/bobiverse-map."
   fullscreen
 >
-  <div class="star-map-app" data-star-map-app>
-    <div class="top-bar">
-      <h1>Bobiverse Star Map</h1>
-      <span class="year-display" data-sm-year>{payload.yearMin}</span>
-      <button type="button" class="layout-btn" data-sm-layout>Layout: Spread</button>
-      <div class="top-bar-right">
+  <div
+    class="relative flex h-full flex-col overflow-hidden bg-map-bg font-map text-map-ink"
+    data-star-map-app
+  >
+    <!-- Top bar -->
+    <div
+      class="flex shrink-0 flex-wrap items-center gap-2 border-b border-map-line bg-map-bar px-3 py-2 sm:gap-3 sm:px-4"
+    >
+      <h1 class="m-0 text-sm font-normal text-map-accent">Bobiverse Star Map</h1>
+      <span
+        class="font-bold tabular-nums tracking-wide text-map-year text-[22px]"
+        data-sm-year
+      >
+        {payload.yearMin}
+      </span>
+      <button
+        type="button"
+        class="cursor-pointer rounded-sm border border-[#2a3a60] bg-[#1a2040] px-2.5 py-0.5 text-[10px] text-[#5a7aaa] hover:border-map-accent hover:text-map-accent"
+        data-sm-layout
+      >
+        Layout: Spread
+      </button>
+      <div class="ml-auto flex flex-wrap items-center gap-2 sm:gap-2.5">
         <BookToggle />
         <button
           type="button"
-          class="about-btn"
+          class="cursor-pointer rounded-sm border border-[#2a3a60] bg-[#1a2040] px-2.5 py-0.5 text-[10px] text-[#5a7aaa] hover:border-map-accent hover:text-map-accent"
           data-about-btn
           aria-expanded="false"
           aria-controls="star-map-about"
@@ -36,419 +59,315 @@ const payloadJson = JSON.stringify(payload);
       </div>
     </div>
 
-    <div class="about-panel hidden" id="star-map-about" data-about-panel role="dialog" aria-label="About this star map">
+    <!-- About overlay (attribution) -->
+    <div
+      id="star-map-about"
+      class="absolute right-3 top-14 z-40 hidden w-[min(22rem,calc(100vw-1.5rem))] rounded-md border border-[#2a3a60] bg-map-bar p-3 text-[11px] leading-relaxed text-map-muted shadow-xl"
+      data-about-panel
+      role="dialog"
+      aria-label="About this star map"
+    >
       <p>
         Interactive map of star systems and Bob locations for books 1–2. Positions use
         catalog astrometry from this companion’s dataset. Travel legs, presence years,
         event-log wording, spread layout, and the canvas renderer are
-        <strong>adapted</strong> from
-        <a href="https://github.com/thunfischtoast/bobiverse-map" rel="noopener noreferrer" target="_blank"
-          >thunfischtoast/bobiverse-map</a
+        <strong class="text-map-ink">adapted</strong> from
+        <a
+          class="text-map-accent underline-offset-2 hover:underline"
+          href="https://github.com/thunfischtoast/bobiverse-map"
+          rel="noopener noreferrer"
+          target="_blank">thunfischtoast/bobiverse-map</a
         >
-        by Chris (CC BY-SA 4.0) — see <code>LICENSE-star-map.md</code>.
+        by Chris (CC BY-SA 4.0) — see <code class="text-map-ink">LICENSE-star-map.md</code>.
       </p>
-      <p class="faint">{unplottableNote}</p>
-      <p class="faint">Unofficial fan project. Not affiliated with Dennis E. Taylor.</p>
+      <p class="mt-2 text-map-faint">{unplottableNote}</p>
+      <p class="mt-2 text-map-faint">Unofficial fan project. Not affiliated with Dennis E. Taylor.</p>
     </div>
 
-    <div class="main">
-      <div class="map-container" data-sm-map>
-        <canvas data-sm-canvas></canvas>
-        <div class="tooltip" data-sm-tooltip></div>
-        <div class="legend" data-sm-legend></div>
+    <!-- Main stage: map + desktop side column -->
+    <div class="flex min-h-0 flex-1 flex-col md:flex-row">
+      <div class="relative min-h-0 min-w-0 flex-1" data-sm-map>
+        <canvas class="block h-full w-full cursor-grab active:cursor-grabbing" data-sm-canvas
+        ></canvas>
+        <div
+          class="pointer-events-none absolute z-10 hidden max-w-[260px] rounded border border-[#2a3a60] bg-[#1a2040] px-2.5 py-2 text-[11px] leading-snug"
+          data-sm-tooltip
+        >
+        </div>
+        <div
+          class="pointer-events-none absolute bottom-2 left-2 z-10 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#4a5a7a]"
+          data-sm-legend
+        >
+          {
+            payload.legendBranches.map((branch) => (
+              <div
+                class="inline-flex items-center gap-1"
+                data-legend-item
+                data-bob={branch.id}
+                data-first-book={branch.firstBook}
+              >
+                <span
+                  class="inline-block h-2 w-2 rounded-full"
+                  style={`background:${branch.color}`}
+                />
+                <span>{branch.name}</span>
+              </div>
+            ))
+          }
+        </div>
       </div>
 
-      <aside class="side-column">
-        <div class="event-panel">
-          <h2>Event Log</h2>
-          <div class="event-log" data-sm-event-log></div>
-        </div>
-        <div class="system-panel" data-system-panel data-open="false" aria-hidden="true">
-          <div class="system-panel-header">
-            <div>
-              <p class="eyebrow">Selected system</p>
-              <h2 data-detail-name>—</h2>
-              <p class="distance" data-detail-distance></p>
-            </div>
-            <button type="button" class="close-btn" data-drawer-close aria-label="Close">✕</button>
+      <!-- Desktop side column: event log + system panel -->
+      <aside
+        class="hidden min-h-0 w-[300px] shrink-0 flex-col border-l border-map-line bg-map-panel md:flex"
+        data-desktop-side
+      >
+        <div class="flex min-h-0 flex-1 flex-col">
+          <h2
+            class="m-0 border-b border-[#1a1f35] px-3 py-2.5 text-xs font-normal uppercase tracking-wider text-map-muted"
+          >
+            Event Log
+          </h2>
+          <div class="min-h-0 flex-1 overflow-y-auto py-1.5" data-sm-event-log data-event-log>
+            {
+              payload.events.map((ev) => (
+                <div
+                  class="event-item is-future border-l-2 border-transparent px-3 py-1.5 text-[11px] leading-snug"
+                  data-event-item
+                  data-year={ev.year}
+                  data-first-book={ev.firstBook}
+                  data-bob={ev.bobId ?? ""}
+                  data-destroyed={ev.destroyed ? "1" : "0"}
+                >
+                  <span class="mr-1.5 text-[10px] text-map-accent">{Math.floor(ev.year)}</span>
+                  {ev.destroyed ? (
+                    <span class="text-map-danger">{ev.text}</span>
+                  ) : ev.bobId && bobNameById[ev.bobId] ? (
+                    <>
+                      <span class="text-map-bob">{bobNameById[ev.bobId]}: </span>
+                      <span>{ev.text}</span>
+                    </>
+                  ) : (
+                    <span>{ev.text}</span>
+                  )}
+                </div>
+              ))
+            }
           </div>
-          <p class="description" data-detail-description></p>
-          <p class="eyebrow">Bobs here</p>
-          <ul data-detail-bobs>
-            <li class="faint">—</li>
+        </div>
+
+        <div
+          class="max-h-0 overflow-hidden border-t border-map-line opacity-0 transition-[max-height,opacity] duration-150 data-[open=true]:max-h-60 data-[open=true]:opacity-100 data-[open=true]:overflow-y-auto"
+          data-system-panel
+          data-open="false"
+          aria-hidden="true"
+        >
+          <div class="flex items-start justify-between gap-2 px-3 pt-2.5">
+            <div class="min-w-0">
+              <p class="m-0 text-[10px] uppercase tracking-wider text-map-muted">Selected system</p>
+              <h2 class="m-0 mt-0.5 truncate text-sm font-normal text-[#e8e8e8]" data-detail-name>
+                —
+              </h2>
+              <p class="m-0 mt-0.5 text-[11px] text-map-muted" data-detail-distance></p>
+            </div>
+            <button
+              type="button"
+              class="cursor-pointer border-0 bg-transparent text-sm text-map-muted hover:text-map-ink"
+              data-drawer-close
+              aria-label="Close system details"
+            >
+              ✕
+            </button>
+          </div>
+          <p class="mx-3 my-2 text-[11px] leading-snug text-[#8090b0]" data-detail-description>
+          </p>
+          <p class="mx-3 mb-1 text-[10px] uppercase tracking-wider text-map-muted">Bobs here</p>
+          <ul class="mx-3 mb-3 list-disc space-y-0.5 pl-4 text-[11px]" data-detail-bobs>
+            <li class="list-none text-map-faint" data-bobs-empty>No Bobs here in this year</li>
+            {
+              bobList.map((bob) => (
+                <li
+                  class="hidden"
+                  data-bob-row
+                  data-bob={bob.id}
+                  data-first-book={bob.firstBook}
+                  data-book-visible={bob.firstBook <= 1 ? "1" : "0"}
+                >
+                  <span data-bob-label>{bob.name}</span>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </aside>
     </div>
 
-    <div class="timeline">
-      <label>YEAR</label>
+    <!-- Mobile bottom sheet: tabs for Events / System (avoids overlap) -->
+    <div
+      class="flex shrink-0 flex-col border-t border-map-line bg-map-panel md:hidden"
+      data-mobile-sheet
+    >
+      <div class="flex items-center gap-1 border-b border-map-line px-2 py-1">
+        <button
+          type="button"
+          class="flex-1 rounded px-2 py-1.5 text-[11px] text-map-muted data-[active=true]:bg-[#141a30] data-[active=true]:text-map-year"
+          data-sheet-tab="events"
+          data-active="true"
+        >
+          Events
+        </button>
+        <button
+          type="button"
+          class="flex-1 rounded px-2 py-1.5 text-[11px] text-map-muted data-[active=true]:bg-[#141a30] data-[active=true]:text-map-year"
+          data-sheet-tab="system"
+          data-active="false"
+        >
+          System
+        </button>
+        <button
+          type="button"
+          class="rounded px-2 py-1 text-[10px] text-map-faint hover:text-map-accent"
+          data-sheet-toggle
+          aria-expanded="true"
+        >
+          Hide
+        </button>
+      </div>
+      <div class="max-h-[32vh] min-h-0 overflow-hidden data-[collapsed=true]:max-h-0" data-sheet-body data-collapsed="false">
+        <div class="h-[32vh] overflow-y-auto" data-sheet-pane="events">
+          <div class="py-1" data-event-log-mobile>
+            {
+              payload.events.map((ev) => (
+                <div
+                  class="event-item is-future border-l-2 border-transparent px-3 py-1.5 text-[11px] leading-snug"
+                  data-event-item
+                  data-year={ev.year}
+                  data-first-book={ev.firstBook}
+                  data-bob={ev.bobId ?? ""}
+                  data-destroyed={ev.destroyed ? "1" : "0"}
+                >
+                  <span class="mr-1.5 text-[10px] text-map-accent">{Math.floor(ev.year)}</span>
+                  {ev.destroyed ? (
+                    <span class="text-map-danger">{ev.text}</span>
+                  ) : ev.bobId && bobNameById[ev.bobId] ? (
+                    <>
+                      <span class="text-map-bob">{bobNameById[ev.bobId]}: </span>
+                      <span>{ev.text}</span>
+                    </>
+                  ) : (
+                    <span>{ev.text}</span>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="hidden h-[32vh] overflow-y-auto px-3 py-2" data-sheet-pane="system">
+          <div data-system-panel-mobile data-open="false">
+            <p class="m-0 text-[10px] uppercase tracking-wider text-map-muted">Selected system</p>
+            <h2 class="m-0 mt-0.5 text-sm font-normal text-[#e8e8e8]" data-detail-name-mobile>—</h2>
+            <p class="m-0 mt-0.5 text-[11px] text-map-muted" data-detail-distance-mobile></p>
+            <p
+              class="my-2 text-[11px] leading-snug text-[#8090b0]"
+              data-detail-description-mobile
+            >
+              Tap a star on the map to see details.
+            </p>
+            <p class="mb-1 text-[10px] uppercase tracking-wider text-map-muted">Bobs here</p>
+            <ul class="list-disc space-y-0.5 pl-4 text-[11px]" data-detail-bobs-mobile>
+              <li class="list-none text-map-faint" data-bobs-empty-mobile>No Bobs here in this year</li>
+              {
+                bobList.map((bob) => (
+                  <li
+                    class="hidden"
+                    data-bob-row-mobile
+                    data-bob={bob.id}
+                    data-first-book={bob.firstBook}
+                    data-book-visible={bob.firstBook <= 1 ? "1" : "0"}
+                  >
+                    <span data-bob-label>{bob.name}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div
+      class="flex h-14 shrink-0 items-center gap-2 border-t border-map-line bg-map-panel px-3 sm:gap-3 sm:px-4"
+    >
+      <label class="shrink-0 text-[11px] text-map-muted">YEAR</label>
       <input
         type="range"
+        class="year-slider min-w-0 flex-1 cursor-pointer appearance-none rounded-sm bg-[#1a2040]"
         data-sm-slider
         min={payload.yearMin}
         max={payload.yearMax}
         step="0.1"
         value={payload.yearMin}
       />
-      <button type="button" data-sm-play>Play</button>
-      <span class="speed-display" data-sm-speed>2.0 yr/s</span>
+      <button
+        type="button"
+        class="shrink-0 cursor-pointer rounded-sm border border-[#3a4060] bg-transparent px-3 py-1 text-[11px] text-map-accent hover:border-map-accent"
+        data-sm-play
+      >
+        Play
+      </button>
+      <span class="hidden shrink-0 text-[10px] text-map-muted sm:inline" data-sm-speed>2.0 yr/s</span>
     </div>
   </div>
 </Layout>
 
 <script type="application/json" id="star-map-payload" set:html={payloadJson} />
 
-<template data-bob-list-item-template>
-  <li>
-    <span data-label></span>
-  </li>
-</template>
-
-<style is:global>
-  /*
-   * Visual chrome closely follows thunfischtoast/bobiverse-map (CC BY-SA 4.0),
-   * adapted for our Layout header + BookToggle + system panel.
-   */
-  .star-map-app {
-    --sm-bg: #0a0e1a;
-    --sm-panel: #0d1120;
-    --sm-bar: #12162a;
-    --sm-line: #1e2440;
-    --sm-ink: #c8cad0;
-    --sm-muted: #5a6a8a;
-    --sm-faint: #3a5070;
-    --sm-accent: #7ea8e0;
-    --sm-year: #e0c878;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background: var(--sm-bg);
-    color: var(--sm-ink);
-    font-family: Consolas, Monaco, ui-monospace, monospace;
-    overflow: hidden;
+<style>
+  /* Event log states (toggled by the engine — Tailwind data variants alone are awkward here) */
+  .event-item.is-past {
+    color: #4a5068;
+  }
+  .event-item.is-active {
+    background: #141a30;
+    border-left-color: var(--map-year);
+    color: #e8e8e8;
+  }
+  .event-item.is-future {
+    color: #2a3048;
   }
 
-  .star-map-app .top-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    padding: 8px 16px;
-    background: var(--sm-bar);
-    border-bottom: 1px solid var(--sm-line);
+  /* Range thumb — not fully expressible in Tailwind utilities */
+  .year-slider {
+    height: 6px;
   }
-  .star-map-app .top-bar h1 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: normal;
-    color: var(--sm-accent);
+  .year-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--map-year);
+    border: 2px solid #0a0e1a;
+    cursor: grab;
   }
-  .star-map-app .year-display {
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--sm-year);
-    letter-spacing: 1px;
-  }
-  .star-map-app .layout-btn,
-  .star-map-app .about-btn {
-    background: #1a2040;
-    border: 1px solid #2a3a60;
-    color: #5a7aaa;
-    padding: 3px 10px;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    font-family: inherit;
-  }
-  .star-map-app .layout-btn:hover,
-  .star-map-app .about-btn:hover {
-    border-color: var(--sm-accent);
-    color: var(--sm-accent);
-  }
-  .star-map-app .top-bar-right {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .year-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--map-year);
+    border: 2px solid #0a0e1a;
+    cursor: grab;
   }
 
-  /* Soften BookToggle into the reference chrome */
-  .star-map-app .book-toggle {
+  /* Soften BookToggle into map chrome */
+  [data-star-map-app] .book-toggle {
     border-color: #2a3a60;
     background: #1a2040;
   }
-  .star-map-app .book-toggle__btn {
+  [data-star-map-app] .book-toggle__btn {
     font-size: 11px;
     padding: 3px 8px;
-  }
-
-  .star-map-app .about-panel {
-    position: absolute;
-    top: 3.25rem;
-    right: 1rem;
-    z-index: 40;
-    width: min(22rem, calc(100vw - 2rem));
-    padding: 12px;
-    background: #12162a;
-    border: 1px solid #2a3a60;
-    border-radius: 6px;
-    font-size: 11px;
-    line-height: 1.5;
-    color: var(--sm-muted);
-  }
-  .star-map-app .about-panel a {
-    color: var(--sm-accent);
-  }
-  .star-map-app .about-panel.hidden {
-    display: none;
-  }
-  .star-map-app .faint {
-    color: var(--sm-faint);
-  }
-
-  .star-map-app .main {
-    display: flex;
-    flex: 1;
-    min-height: 0;
-  }
-  .star-map-app .map-container {
-    flex: 1;
-    position: relative;
-    min-width: 0;
-  }
-  .star-map-app canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    cursor: grab;
-  }
-  .star-map-app canvas:active {
-    cursor: grabbing;
-  }
-
-  .star-map-app .tooltip {
-    position: absolute;
-    background: #1a2040;
-    border: 1px solid #2a3a60;
-    padding: 8px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    pointer-events: none;
-    display: none;
-    z-index: 10;
-    max-width: 260px;
-    line-height: 1.5;
-  }
-  .star-map-app .legend {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    font-size: 10px;
-    color: #4a5a7a;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 12px;
-  }
-
-  .star-map-app .side-column {
-    width: 300px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    background: var(--sm-panel);
-    border-left: 1px solid var(--sm-line);
-    min-height: 0;
-  }
-  .star-map-app .event-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-  .star-map-app .event-panel h2,
-  .star-map-app .system-panel .eyebrow {
-    font-size: 12px;
-    color: var(--sm-muted);
-    padding: 10px 12px 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0;
-  }
-  .star-map-app .event-panel h2 {
-    border-bottom: 1px solid #1a1f35;
-  }
-  .star-map-app .event-log {
-    flex: 1;
-    overflow-y: auto;
-    padding: 6px 0;
-  }
-  .star-map-app .event-log::-webkit-scrollbar {
-    width: 4px;
-  }
-  .star-map-app .event-log::-webkit-scrollbar-thumb {
-    background: #2a3050;
-    border-radius: 2px;
-  }
-  .star-map-app .event-item {
-    padding: 5px 12px;
-    font-size: 11px;
-    line-height: 1.4;
-    border-left: 2px solid transparent;
-  }
-  .star-map-app .event-item.active {
-    background: #141a30;
-    border-left-color: var(--sm-year);
-    color: #e8e8e8;
-  }
-  .star-map-app .event-item.past {
-    color: #4a5068;
-  }
-  .star-map-app .event-item.future {
-    color: #2a3048;
-  }
-  .star-map-app .event-year {
-    color: var(--sm-accent);
-    margin-right: 6px;
-    font-size: 10px;
-  }
-  .star-map-app .event-bob {
-    color: #c8a0e0;
-  }
-  .star-map-app .event-destroyed {
-    color: #e07878;
-  }
-
-  .star-map-app .system-panel {
-    border-top: 1px solid var(--sm-line);
-    padding: 10px 12px 12px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition:
-      max-height 180ms ease,
-      opacity 160ms ease,
-      padding 160ms ease;
-  }
-  .star-map-app .system-panel[data-open="true"] {
-    max-height: 240px;
-    opacity: 1;
-    overflow-y: auto;
-  }
-  .star-map-app .system-panel-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .star-map-app .system-panel h2 {
-    margin: 2px 0 0;
-    font-size: 14px;
-    font-weight: normal;
-    color: #e8e8e8;
-  }
-  .star-map-app .system-panel .distance {
-    margin: 2px 0 0;
-    font-size: 11px;
-    color: var(--sm-muted);
-  }
-  .star-map-app .system-panel .description {
-    margin: 8px 0;
-    font-size: 11px;
-    line-height: 1.45;
-    color: #8090b0;
-  }
-  .star-map-app .system-panel ul {
-    margin: 4px 0 0;
-    padding-left: 1.1rem;
-    font-size: 11px;
-    color: #c8cad0;
-  }
-  .star-map-app .close-btn {
-    background: none;
-    border: none;
-    color: var(--sm-muted);
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  .star-map-app .timeline {
-    height: 56px;
-    background: var(--sm-panel);
-    border-top: 1px solid var(--sm-line);
-    padding: 8px 16px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .star-map-app .timeline label {
-    font-size: 11px;
-    color: var(--sm-muted);
-  }
-  .star-map-app .timeline input[type="range"] {
-    flex: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 6px;
-    background: #1a2040;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-  }
-  .star-map-app .timeline input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--sm-year);
-    cursor: grab;
-    border: 2px solid #0a0e1a;
-  }
-  .star-map-app .timeline input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--sm-year);
-    cursor: grab;
-    border: 2px solid #0a0e1a;
-  }
-  .star-map-app .timeline button {
-    background: none;
-    border: 1px solid #3a4060;
-    color: var(--sm-accent);
-    padding: 4px 12px;
-    font-size: 11px;
-    cursor: pointer;
-    border-radius: 3px;
-    font-family: inherit;
-  }
-  .star-map-app .timeline button:hover {
-    border-color: var(--sm-accent);
-  }
-  .star-map-app .speed-display {
-    font-size: 10px;
-    color: var(--sm-muted);
-  }
-
-  @media (max-width: 720px) {
-    .star-map-app .main {
-      flex-direction: column;
-    }
-    .star-map-app .side-column {
-      width: 100%;
-      height: 38%;
-      border-left: none;
-      border-top: 1px solid var(--sm-line);
-    }
-    .star-map-app .top-bar {
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .star-map-app .top-bar-right {
-      margin-left: 0;
-      width: 100%;
-      justify-content: space-between;
-    }
   }
 </style>
 
@@ -468,46 +387,107 @@ const payloadJson = JSON.stringify(payload);
   }
 
   function init() {
-    const root = document.querySelector<HTMLElement>("[data-star-map-app]");
+    const maybeRoot = document.querySelector<HTMLElement>("[data-star-map-app]");
     const raw = document.getElementById("star-map-payload");
-    if (!root || !raw) return;
+    if (!maybeRoot || !raw) return;
+    const root = maybeRoot;
+    // Avoid double-init on astro:page-load if already wired
+    if (root.dataset.engineReady === "1") return;
+    root.dataset.engineReady = "1";
 
     const payload = JSON.parse(raw.textContent || "{}");
+
     const panel = root.querySelector<HTMLElement>("[data-system-panel]")!;
     const detailName = root.querySelector<HTMLElement>("[data-detail-name]")!;
     const detailDistance = root.querySelector<HTMLElement>("[data-detail-distance]")!;
     const detailDescription = root.querySelector<HTMLElement>("[data-detail-description]")!;
-    const detailBobs = root.querySelector<HTMLElement>("[data-detail-bobs]")!;
-    const listTemplate = document.querySelector<HTMLTemplateElement>(
-      "[data-bob-list-item-template]",
+    const bobsEmpty = root.querySelector<HTMLElement>("[data-bobs-empty]")!;
+
+    const mobilePanel = root.querySelector<HTMLElement>("[data-system-panel-mobile]")!;
+    const detailNameMobile = root.querySelector<HTMLElement>("[data-detail-name-mobile]")!;
+    const detailDistanceMobile = root.querySelector<HTMLElement>("[data-detail-distance-mobile]")!;
+    const detailDescriptionMobile = root.querySelector<HTMLElement>(
+      "[data-detail-description-mobile]",
     )!;
+    const bobsEmptyMobile = root.querySelector<HTMLElement>("[data-bobs-empty-mobile]")!;
+
     const aboutBtn = root.querySelector<HTMLButtonElement>("[data-about-btn]")!;
     const aboutPanel = root.querySelector<HTMLElement>("[data-about-panel]")!;
+    const sheetBody = root.querySelector<HTMLElement>("[data-sheet-body]")!;
+    const sheetToggle = root.querySelector<HTMLButtonElement>("[data-sheet-toggle]")!;
 
     function fillPanel(detail: SystemDetail | null) {
+      // Desktop panel
       if (!detail) {
         panel.dataset.open = "false";
         panel.setAttribute("aria-hidden", "true");
+        mobilePanel.dataset.open = "false";
+        detailName.textContent = "—";
+        detailNameMobile.textContent = "—";
+        detailDistance.textContent = "";
+        detailDistanceMobile.textContent = "";
+        detailDescription.textContent = "";
+        detailDescriptionMobile.textContent = "Tap a star on the map to see details.";
+        for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row], [data-bob-row-mobile]")) {
+          row.classList.add("hidden");
+        }
+        bobsEmpty.classList.remove("hidden");
+        bobsEmptyMobile.classList.remove("hidden");
         return;
       }
+
       detailName.textContent = detail.name;
+      detailNameMobile.textContent = detail.name;
       detailDistance.textContent = `${detail.distanceLy.toFixed(2)} light-years from Sol`;
+      detailDistanceMobile.textContent = `${detail.distanceLy.toFixed(2)} light-years from Sol`;
       detailDescription.textContent = detail.description;
-      detailBobs.replaceChildren();
-      if (detail.bobNames.length === 0) {
-        const empty = document.createElement("li");
-        empty.className = "faint";
-        empty.textContent = "No Bobs here in this year";
-        detailBobs.appendChild(empty);
-      } else {
-        for (const name of detail.bobNames) {
-          const node = listTemplate.content.cloneNode(true) as DocumentFragment;
-          node.querySelector<HTMLElement>("[data-label]")!.textContent = name;
-          detailBobs.appendChild(node);
+      detailDescriptionMobile.textContent = detail.description;
+
+      const labelById = new Map(detail.bobIds.map((id, i) => [id, detail.bobLabels[i]]));
+      let any = false;
+      for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row]")) {
+        const id = row.dataset.bob!;
+        const show = row.dataset.bookVisible !== "0" && labelById.has(id);
+        row.classList.toggle("hidden", !show);
+        if (show) {
+          any = true;
+          const label = row.querySelector<HTMLElement>("[data-bob-label]")!;
+          label.textContent = labelById.get(id) ?? label.textContent;
         }
       }
+      for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row-mobile]")) {
+        const id = row.dataset.bob!;
+        const show = row.dataset.bookVisible !== "0" && labelById.has(id);
+        row.classList.toggle("hidden", !show);
+        if (show) {
+          const label = row.querySelector<HTMLElement>("[data-bob-label]")!;
+          label.textContent = labelById.get(id) ?? label.textContent;
+        }
+      }
+      bobsEmpty.classList.toggle("hidden", any);
+      bobsEmptyMobile.classList.toggle("hidden", any);
+
       panel.dataset.open = "true";
       panel.setAttribute("aria-hidden", "false");
+      mobilePanel.dataset.open = "true";
+
+      // On mobile, jump to the System tab when a star is selected
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        activateSheetTab("system");
+        sheetBody.dataset.collapsed = "false";
+        sheetToggle.textContent = "Hide";
+        sheetToggle.setAttribute("aria-expanded", "true");
+      }
+    }
+
+    function activateSheetTab(tab: "events" | "system") {
+      for (const btn of root.querySelectorAll<HTMLElement>("[data-sheet-tab]")) {
+        btn.dataset.active = btn.dataset.sheetTab === tab ? "true" : "false";
+      }
+      for (const pane of root.querySelectorAll<HTMLElement>("[data-sheet-pane]")) {
+        const match = pane.dataset.sheetPane === tab;
+        pane.classList.toggle("hidden", !match);
+      }
     }
 
     const engine = new StarMapEngine({
@@ -538,14 +518,29 @@ const payloadJson = JSON.stringify(payload);
       }
     });
 
+    for (const btn of root.querySelectorAll<HTMLButtonElement>("[data-sheet-tab]")) {
+      btn.addEventListener("click", () => {
+        activateSheetTab(btn.dataset.sheetTab as "events" | "system");
+        sheetBody.dataset.collapsed = "false";
+        sheetToggle.textContent = "Hide";
+        sheetToggle.setAttribute("aria-expanded", "true");
+      });
+    }
+    sheetToggle.addEventListener("click", () => {
+      const collapsed = sheetBody.dataset.collapsed !== "true";
+      sheetBody.dataset.collapsed = collapsed ? "true" : "false";
+      sheetToggle.textContent = collapsed ? "Show" : "Hide";
+      sheetToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      // Remeasure canvas after sheet height change
+      requestAnimationFrame(() => engine.resize());
+    });
+
     window.addEventListener("bobiverse:book-change", ((e: CustomEvent) => {
       const book = e.detail?.book === 2 ? 2 : 1;
       engine.setBook(book);
     }) as EventListener);
 
-    // Sync once BookToggle has applied localStorage
     engine.setBook(readBook());
-
     (window as unknown as { __starMapEngine?: StarMapEngine }).__starMapEngine = engine;
   }
 

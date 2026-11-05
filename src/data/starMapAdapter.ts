@@ -86,6 +86,13 @@ export interface StarMapEvent {
   destroyed?: boolean;
 }
 
+export interface LegendBranch {
+  id: string;
+  name: string;
+  color: string;
+  firstBook: BookNumber;
+}
+
 export interface StarMapPayload {
   stars: Record<string, StarMapStar>;
   bobs: Record<string, StarMapBob>;
@@ -93,6 +100,8 @@ export interface StarMapPayload {
   events: StarMapEvent[];
   /** Hand-tuned 0–1 positions for "spread" layout (from reference map). */
   customLayout: Record<string, { x: number; y: number }>;
+  /** Major lineage heads for the on-map legend (build-time markup). */
+  legendBranches: LegendBranch[];
   yearMin: number;
   yearMax: number;
 }
@@ -171,13 +180,35 @@ export function buildStarMapPayload(): StarMapPayload {
     firstBook: t.firstBook as BookNumber,
   }));
 
-  const events: StarMapEvent[] = mapEventsJson.events.map((e) => ({
-    year: e.year,
-    text: e.text,
-    bobId: e.bobId,
-    firstBook: e.firstBook as BookNumber,
-    destroyed: e.destroyed || undefined,
-  }));
+  const events: StarMapEvent[] = mapEventsJson.events
+    .map((e) => ({
+      year: e.year,
+      text: e.text,
+      bobId: e.bobId,
+      firstBook: e.firstBook as BookNumber,
+      destroyed: e.destroyed || undefined,
+    }))
+    .sort((a, b) => a.year - b.year || a.text.localeCompare(b.text));
+
+  /** Branch head colors from the reference map (CC BY-SA). */
+  const BRANCH_HUES: Record<string, [number, number, number]> = {
+    bob: [45, 90, 75],
+    bill: [210, 70, 65],
+    riker: [150, 60, 60],
+    milo: [280, 55, 65],
+    mario: [20, 75, 65],
+  };
+  const legendBranches: LegendBranch[] = (["bob", "bill", "riker", "milo", "mario"] as const)
+    .filter((id) => bobsOut[id])
+    .map((id) => {
+      const [h, s, l] = BRANCH_HUES[id];
+      return {
+        id,
+        name: bobsOut[id].name,
+        color: `hsl(${h} ${s}% ${l}%)`,
+        firstBook: bobsOut[id].firstBook,
+      };
+    });
 
   return {
     stars,
@@ -185,6 +216,7 @@ export function buildStarMapPayload(): StarMapPayload {
     travels,
     events,
     customLayout: CUSTOM_LAYOUT,
+    legendBranches,
     yearMin: 2133,
     yearMax: 2221,
   };

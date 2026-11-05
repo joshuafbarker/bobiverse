@@ -8,38 +8,42 @@
  * (https://creativecommons.org/licenses/by-sa/4.0/).
  *
  * Changes from the original (this project):
- * - TypeScript module with injected data payload (our src/data via adapter)
- * - Scoped to books 1–2; book filter via host BookToggle / localStorage
- * - System click → info panel callback (distance, description, Bobs here)
- * - Optional Sol light-year distance rings
- * - Lives under the site Layout header; no standalone config overlay for book
- *   (book comes from bobiverse-book). Layout spread/realistic toggle kept.
- * - Descriptive names and comments on modified sections
+ * - TypeScript module; data injected from our Astro build-time adapter
+ * - Books 1–2 only; spoiler level via host BookToggle (`bobiverse-book`)
+ * - System click → info panel (host markup); Sol ly rings
+ * - Event log / legend / panel shells are Astro markup — this module only
+ *   toggles classes/attributes and draws the canvas (no innerHTML)
+ * - On narrow canvases, crowded Bob name stacks collapse to "Name +N"
  */
 import type { StarMapPayload, StarMapBob, StarMapStar } from "../data/starMapAdapter";
 
 export type LayoutMode = "spread" | "realistic";
-
-export interface StarMapEngineOptions {
-  root: HTMLElement;
-  payload: StarMapPayload;
-  /** Called when the user selects a star (or null when cleared). */
-  onSelectSystem?: (systemId: string | null, detail: SystemDetail | null) => void;
-  /** Initial book spoiler level (1 or 2). */
-  initialBook?: 1 | 2;
-  /** Draw 10/20/30/40 ly rings from Sol (mostly meaningful in realistic layout). */
-  showLyRings?: boolean;
-}
 
 export interface SystemDetail {
   id: string;
   name: string;
   distanceLy: number;
   description: string;
-  bobNames: string[];
+  /** Bob ids currently at / related to this system (for showing prebuilt rows). */
+  bobIds: string[];
+  /** Parallel display labels (may include " (in transit)"). */
+  bobLabels: string[];
 }
 
-interface Vec2 { x: number; y: number }
+export interface StarMapEngineOptions {
+  root: HTMLElement;
+  payload: StarMapPayload;
+  onSelectSystem?: (systemId: string | null, detail: SystemDetail | null) => void;
+  /** Fired after year/book changes so the host can sync panel Bob rows. */
+  onFrame?: (year: number, book: 1 | 2) => void;
+  initialBook?: 1 | 2;
+  showLyRings?: boolean;
+}
+
+interface Vec2 {
+  x: number;
+  y: number;
+}
 
 interface ActiveBob {
   id: string;
@@ -55,6 +59,7 @@ export class StarMapEngine {
   private root: HTMLElement;
   private payload: StarMapPayload;
   private onSelectSystem?: StarMapEngineOptions["onSelectSystem"];
+  private onFrame?: StarMapEngineOptions["onFrame"];
   private showLyRings: boolean;
 
   private canvas: HTMLCanvasElement;
@@ -64,8 +69,6 @@ export class StarMapEngine {
   private slider: HTMLInputElement;
   private playBtn: HTMLButtonElement;
   private speedDisplay: HTMLElement;
-  private eventLog: HTMLElement;
-  private legend: HTMLElement;
   private layoutBtn: HTMLButtonElement;
 
   private width = 0;
@@ -84,12 +87,10 @@ export class StarMapEngine {
   private starPos3D: Record<string, { x: number; y: number; z: number }> = {};
   private bobColors: Record<string, string> = {};
   private bgStars: { xf: number; yf: number; br: number }[] = [];
-  private eventEls: HTMLElement[] = [];
 
   private filteredStars: Record<string, StarMapStar> = {};
   private filteredBobs: Record<string, StarMapBob> = {};
   private filteredTravels: StarMapPayload["travels"] = [];
-  private filteredEvents: StarMapPayload["events"] = [];
 
   private selectedSystemId: string | null = null;
   private pan: { id: number; x: number; y: number; dragged: boolean } | null = null;
@@ -101,6 +102,7 @@ export class StarMapEngine {
     this.root = options.root;
     this.payload = options.payload;
     this.onSelectSystem = options.onSelectSystem;
+    this.onFrame = options.onFrame;
     this.showLyRings = options.showLyRings !== false;
     this.book = options.initialBook ?? 1;
     this.year = options.payload.yearMin;
@@ -112,14 +114,7 @@ export class StarMapEngine {
     this.slider = this.root.querySelector("[data-sm-slider]")!;
     this.playBtn = this.root.querySelector("[data-sm-play]")!;
     this.speedDisplay = this.root.querySelector("[data-sm-speed]")!;
-    this.eventLog = this.root.querySelector("[data-sm-event-log]")!;
-    this.legend = this.root.querySelector("[data-sm-legend]")!;
     this.layoutBtn = this.root.querySelector("[data-sm-layout]")!;
-
-    this.slider.min = String(this.payload.yearMin);
-    this.slider.max = String(this.payload.yearMax);
-    this.slider.step = "0.1";
-    this.slider.value = String(this.payload.yearMin);
 
     this.precomputeStarPositions();
     this.buildBgStars();
@@ -127,20 +122,14 @@ export class StarMapEngine {
     this.bindChrome();
     this.bindPointer();
     this.resize();
-    this.buildEventLog();
-    this.buildLegend();
     this.update(this.year);
   }
 
-  /** Host BookToggle calls this when the spoiler level changes. */
   setBook(book: 1 | 2) {
     this.book = book;
     this.applyScope();
-    this.resize();
-    this.buildEventLog();
-    this.buildLegend();
-    // Clamp year into still-visible range
-    if (this.year > this.payload.yearMax) this.year = this.payload.yearMax;
+    this.syncBookScopedDom();
+    this.fitView();
     this.update(this.year);
   }
 
@@ -150,10 +139,23 @@ export class StarMapEngine {
     this.update(this.year);
   }
 
+  getYear() {
+    return this.year;
+  }
+
+  getBook() {
+    return this.book;
+  }
+
   clearSelection() {
     this.selectedSystemId = null;
     this.draw(this.year);
     this.emitSelection(null);
+  }
+
+  /** Public hit-test helper used by verification scripts. */
+  projectStar(starId: string): Vec2 | null {
+    return this.projectStarInternal(starId);
   }
 
   resize = () => {
@@ -175,18 +177,14 @@ export class StarMapEngine {
     window.removeEventListener("resize", this.onWindowResize);
   }
 
-  // ── Scope (books 1–2) ──────────────────────────────────────────────────────
+  // ── Scope ──────────────────────────────────────────────────────────────────
   private applyScope() {
     this.filteredBobs = {};
     for (const [id, bob] of Object.entries(this.payload.bobs)) {
       if (bob.firstBook <= this.book) this.filteredBobs[id] = bob;
     }
     this.filteredTravels = this.payload.travels.filter((t) => t.firstBook <= this.book);
-    this.filteredEvents = this.payload.events
-      .filter((e) => e.firstBook <= this.book)
-      .sort((a, b) => a.year - b.year);
 
-    // Stars used by visible bobs / travels, plus all stars up to book
     const used = new Set<string>();
     for (const bob of Object.values(this.filteredBobs)) used.add(bob.at);
     for (const t of this.filteredTravels) {
@@ -200,8 +198,47 @@ export class StarMapEngine {
     this.computeBobColors();
   }
 
-  // ── Colors (lineage branches — faithful to the reference BRANCH_HUES) ───────
-  /** HSL triples keyed by our bob ids for major branches (from reference map). */
+  /**
+   * Hide/show pre-rendered event rows and legend items by firstBook.
+   * Event past/active/future classes are applied in syncEventLog().
+   */
+  private syncBookScopedDom() {
+    for (const el of this.root.querySelectorAll<HTMLElement>("[data-event-item]")) {
+      const firstBook = Number(el.dataset.firstBook ?? 1);
+      el.classList.toggle("hidden", firstBook > this.book);
+    }
+    for (const el of this.root.querySelectorAll<HTMLElement>("[data-legend-item]")) {
+      const firstBook = Number(el.dataset.firstBook ?? 1);
+      el.classList.toggle("hidden", firstBook > this.book);
+    }
+    for (const el of this.root.querySelectorAll<HTMLElement>("[data-bob-row]")) {
+      const firstBook = Number(el.dataset.firstBook ?? 1);
+      // Book filter is applied; year/system visibility is handled by the host.
+      el.dataset.bookVisible = firstBook <= this.book ? "1" : "0";
+    }
+  }
+
+  private syncEventLog(year: number) {
+    let activeEl: HTMLElement | null = null;
+    for (const el of this.root.querySelectorAll<HTMLElement>("[data-event-item]")) {
+      if (el.classList.contains("hidden")) continue;
+      const eventYear = Number(el.dataset.year);
+      el.classList.remove("is-past", "is-active", "is-future");
+      if (eventYear <= year) {
+        el.classList.add("is-past");
+        activeEl = el;
+      } else {
+        el.classList.add("is-future");
+      }
+    }
+    if (activeEl) {
+      activeEl.classList.remove("is-past");
+      activeEl.classList.add("is-active");
+      activeEl.scrollIntoView({ block: "nearest" });
+    }
+  }
+
+  // ── Colors ─────────────────────────────────────────────────────────────────
   private static readonly BRANCH_HUES: Record<string, [number, number, number]> = {
     bob: [45, 90, 75],
     bill: [210, 70, 65],
@@ -216,7 +253,6 @@ export class StarMapEngine {
     victor: [100, 45, 55],
   };
 
-  /** Walk parents until a named branch head (child of Bob or listed hue). */
   private getBranch(bobId: string): string {
     const bob = this.payload.bobs[bobId];
     if (!bob || !bob.parentId) return bobId;
@@ -234,10 +270,10 @@ export class StarMapEngine {
       }
       const branch = this.getBranch(id);
       const hue = StarMapEngine.BRANCH_HUES[branch] || [0, 50, 60];
-      const bob = this.filteredBobs[id];
-      const gen = bob.gen ?? 2;
+      const gen = this.filteredBobs[id].gen ?? 2;
       const genOff = Math.min((gen - 2) * 10, 40);
-      this.bobColors[id] = `hsl(${hue[0] + genOff} ${hue[1]}% ${Math.min(hue[2] + genOff * 0.4, 85)}%)`;
+      this.bobColors[id] =
+        `hsl(${hue[0] + genOff} ${hue[1]}% ${Math.min(hue[2] + genOff * 0.4, 85)}%)`;
     }
   }
 
@@ -263,14 +299,17 @@ export class StarMapEngine {
       this.offsetY = 0;
       return;
     }
-    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    let minX = Infinity,
+      maxX = -Infinity,
+      minY = Infinity,
+      maxY = -Infinity;
     for (const id of Object.keys(this.filteredStars)) {
       const p = this.starPos3D[id];
       if (!p) continue;
-      if (p.x < minX) minX = p.x;
-      if (p.x > maxX) maxX = p.x;
-      if (p.y < minY) minY = p.y;
-      if (p.y > maxY) maxY = p.y;
+      minX = Math.min(minX, p.x);
+      maxX = Math.max(maxX, p.x);
+      minY = Math.min(minY, p.y);
+      maxY = Math.max(maxY, p.y);
     }
     if (!Number.isFinite(minX)) return;
     const pad = 70;
@@ -288,14 +327,22 @@ export class StarMapEngine {
     };
   }
 
-  private projectStar(starId: string): Vec2 | null {
+  private projectStarInternal(starId: string): Vec2 | null {
     if (this.layoutMode === "spread") {
       const c = this.payload.customLayout[starId];
       if (c) {
         const pad = 60;
         return {
-          x: pad + c.x * (this.width - pad * 2) * this.viewZoom + this.viewPanX + (1 - this.viewZoom) * this.width * 0.5,
-          y: pad + c.y * (this.height - pad * 2) * this.viewZoom + this.viewPanY + (1 - this.viewZoom) * this.height * 0.5,
+          x:
+            pad +
+            c.x * (this.width - pad * 2) * this.viewZoom +
+            this.viewPanX +
+            (1 - this.viewZoom) * this.width * 0.5,
+          y:
+            pad +
+            c.y * (this.height - pad * 2) * this.viewZoom +
+            this.viewPanY +
+            (1 - this.viewZoom) * this.height * 0.5,
         };
       }
     }
@@ -304,7 +351,7 @@ export class StarMapEngine {
     return this.project(p.x, p.y);
   }
 
-  // ── Bob position (core of the reference model) ─────────────────────────────
+  // ── Bob positions ──────────────────────────────────────────────────────────
   private getBobPosition(bobId: string, year: number): Vec2 | null {
     const bob = this.filteredBobs[bobId];
     if (!bob || year < bob.created) return null;
@@ -314,8 +361,8 @@ export class StarMapEngine {
       if (t.bobId !== bobId) continue;
       if (year >= t.depart && year <= t.arrive) {
         const frac = (year - t.depart) / (t.arrive - t.depart || 1);
-        const fromP = this.projectStar(t.from);
-        const toP = this.projectStar(t.to);
+        const fromP = this.projectStarInternal(t.from);
+        const toP = this.projectStarInternal(t.to);
         if (!fromP || !toP) continue;
         return {
           x: fromP.x + (toP.x - fromP.x) * frac,
@@ -333,8 +380,7 @@ export class StarMapEngine {
         lastArr = t.arrive;
       }
     }
-    if (!this.filteredStars[lastSys] && !this.payload.stars[lastSys]) return null;
-    return this.projectStar(lastSys);
+    return this.projectStarInternal(lastSys);
   }
 
   private isTraveling(bobId: string, year: number) {
@@ -343,19 +389,19 @@ export class StarMapEngine {
     );
   }
 
-  private bobsAtSystem(systemId: string, year: number): string[] {
-    const names: string[] = [];
+  /** Which Bobs belong in the system panel for the current year. */
+  bobsAtSystem(systemId: string, year = this.year): { id: string; label: string }[] {
+    const out: { id: string; label: string }[] = [];
     for (const bob of Object.values(this.filteredBobs)) {
       if (year < bob.created) continue;
       if (bob.destroyed != null && year > bob.destroyed) continue;
       const traveling = this.isTraveling(bob.id, year);
       if (traveling) {
         if (traveling.from === systemId || traveling.to === systemId) {
-          names.push(`${bob.name} (in transit)`);
+          out.push({ id: bob.id, label: `${bob.name} (in transit)` });
         }
         continue;
       }
-      // Settled location = last arrival or initial `at`
       let lastSys = bob.at;
       let lastArr = bob.created;
       for (const t of this.filteredTravels) {
@@ -365,12 +411,11 @@ export class StarMapEngine {
           lastArr = t.arrive;
         }
       }
-      if (lastSys === systemId) names.push(bob.name);
+      if (lastSys === systemId) out.push({ id: bob.id, label: bob.name });
     }
-    return names;
+    return out;
   }
 
-  // ── Background field stars ─────────────────────────────────────────────────
   private buildBgStars() {
     this.bgStars = [];
     for (let i = 0; i < 150; i++) {
@@ -382,7 +427,7 @@ export class StarMapEngine {
     }
   }
 
-  // ── Draw (faithful to reference styling) ───────────────────────────────────
+  // ── Draw ───────────────────────────────────────────────────────────────────
   private draw(year: number) {
     const ctx = this.ctx;
     const W = this.width;
@@ -394,14 +439,8 @@ export class StarMapEngine {
       ctx.fillRect(s.xf * W, s.yf * H, 1, 1);
     }
 
-    // Sol ly rings (addition) — use realistic 3D distance in both layouts by
-    // projecting a circle in the XY plane around Sol when in realistic mode;
-    // in spread mode, draw approximate rings scaled from Sol→Epsilon Eridani.
-    if (this.showLyRings) {
-      this.drawLyRings(ctx);
-    }
+    if (this.showLyRings) this.drawLyRings(ctx);
 
-    // Travel dashed lines
     ctx.save();
     ctx.setLineDash([4, 4]);
     ctx.lineWidth = 1;
@@ -409,8 +448,8 @@ export class StarMapEngine {
       if (year < t.depart || year > t.arrive) continue;
       const c = this.bobColors[t.bobId];
       if (!c) continue;
-      const fromP = this.projectStar(t.from);
-      const toP = this.projectStar(t.to);
+      const fromP = this.projectStarInternal(t.from);
+      const toP = this.projectStarInternal(t.to);
       if (!fromP || !toP) continue;
       ctx.strokeStyle = c.replace("hsl(", "hsla(").replace(")", ", 0.3)");
       ctx.beginPath();
@@ -421,9 +460,8 @@ export class StarMapEngine {
     ctx.setLineDash([]);
     ctx.restore();
 
-    // Stars
     for (const id of Object.keys(this.filteredStars)) {
-      const p = this.projectStar(id);
+      const p = this.projectStarInternal(id);
       if (!p) continue;
       const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 18);
       grad.addColorStop(0, "rgba(100,140,220,0.12)");
@@ -445,7 +483,6 @@ export class StarMapEngine {
       ctx.fillText(this.filteredStars[id].name, p.x, p.y + 16);
     }
 
-    // Bobs + cluster labels
     const active: ActiveBob[] = [];
     for (const bob of Object.values(this.filteredBobs)) {
       const pos = this.getBobPosition(bob.id, year);
@@ -479,6 +516,9 @@ export class StarMapEngine {
       clusters.push(cl);
     }
 
+    // Narrow canvases (phones): collapse long name stacks so Sol doesn't pile up.
+    const compactLabels = W < 520 || (W < 720 && this.viewZoom < 1.15);
+
     for (const cl of clusters) {
       for (const b of cl) {
         const r = b.group ? 7 : 5;
@@ -500,22 +540,32 @@ export class StarMapEngine {
           ctx.stroke();
         }
       }
+
       const cx = cl[0].x;
       const cy = cl[0].y;
       ctx.font = "10px Consolas, Monaco, monospace";
       ctx.textAlign = "left";
-      const startY = cy - (cl.length - 1) * 6;
-      for (let i = 0; i < cl.length; i++) {
-        ctx.fillStyle = cl[i].color;
-        const label = cl[i].name + (cl[i].traveling ? " >>" : "");
-        ctx.fillText(label, cx + 10, startY + i * 13);
+
+      if (compactLabels && cl.length > 2) {
+        // Show first name + count chip; zoom in or use desktop for full stack.
+        const first = cl[0];
+        const extra = cl.length - 1;
+        ctx.fillStyle = first.color;
+        const suffix = first.traveling ? " >>" : "";
+        ctx.fillText(`${first.name}${suffix} +${extra}`, cx + 10, cy + 3);
+      } else {
+        const startY = cy - (cl.length - 1) * 6;
+        for (let i = 0; i < cl.length; i++) {
+          ctx.fillStyle = cl[i].color;
+          const label = cl[i].name + (cl[i].traveling ? " >>" : "");
+          ctx.fillText(label, cx + 10, startY + i * 13);
+        }
       }
     }
   }
 
-  /** 10/20/30/40 ly rings centered on Sol (addition on top of the reference). */
   private drawLyRings(ctx: CanvasRenderingContext2D) {
-    const sol = this.projectStar("sol");
+    const sol = this.projectStarInternal("sol");
     if (!sol) return;
     ctx.save();
     ctx.setLineDash([3, 4]);
@@ -528,12 +578,10 @@ export class StarMapEngine {
     for (const ly of [10, 20, 30, 40]) {
       let radiusPx: number;
       if (this.layoutMode === "realistic") {
-        // Project a point `ly` light-years along +X from Sol in the same projection.
         const edge = this.project(ly, 0);
         radiusPx = Math.hypot(edge.x - sol.x, edge.y - sol.y);
       } else {
-        // Spread layout is not to scale; approximate using Sol→Epsilon Eridani screen distance.
-        const ee = this.projectStar("epsilon-eridani");
+        const ee = this.projectStarInternal("epsilon-eridani");
         if (!ee) continue;
         const eeDist = Math.hypot(ee.x - sol.x, ee.y - sol.y);
         const eeLy = this.payload.stars["epsilon-eridani"]?.distanceLy || 10.5;
@@ -547,87 +595,15 @@ export class StarMapEngine {
     ctx.restore();
   }
 
-  // ── Event log / legend ─────────────────────────────────────────────────────
-  private buildEventLog() {
-    this.eventLog.replaceChildren();
-    this.eventEls = [];
-    for (const ev of this.filteredEvents) {
-      const el = document.createElement("div");
-      el.className = "event-item future";
-      const ys = document.createElement("span");
-      ys.className = "event-year";
-      ys.textContent = String(Math.floor(ev.year));
-      el.appendChild(ys);
-      if (ev.destroyed) {
-        const ds = document.createElement("span");
-        ds.className = "event-destroyed";
-        ds.textContent = ev.text;
-        el.appendChild(ds);
-      } else if (ev.bobId && this.filteredBobs[ev.bobId]) {
-        const bs = document.createElement("span");
-        bs.className = "event-bob";
-        bs.textContent = `${this.filteredBobs[ev.bobId].name}: `;
-        el.appendChild(bs);
-        el.appendChild(document.createTextNode(ev.text));
-      } else {
-        el.appendChild(document.createTextNode(ev.text));
-      }
-      this.eventLog.appendChild(el);
-      this.eventEls.push(el);
-    }
-  }
-
-  private updateEventLog(year: number) {
-    let activeIdx = -1;
-    for (let i = 0; i < this.filteredEvents.length; i++) {
-      const ev = this.filteredEvents[i];
-      const el = this.eventEls[i];
-      if (!el) continue;
-      if (ev.year <= year) {
-        el.className = "event-item past";
-        activeIdx = i;
-      } else {
-        el.className = "event-item future";
-      }
-    }
-    if (activeIdx >= 0 && this.eventEls[activeIdx]) {
-      this.eventEls[activeIdx].className = "event-item active";
-      this.eventEls[activeIdx].scrollIntoView({ block: "nearest" });
-    }
-  }
-
-  private buildLegend() {
-    this.legend.replaceChildren();
-    const heads = ["bob", "bill", "riker", "milo", "mario"];
-    for (const id of heads) {
-      if (!this.filteredBobs[id]) continue;
-      const item = document.createElement("div");
-      item.className = "legend-item";
-      item.style.display = "inline-flex";
-      item.style.alignItems = "center";
-      item.style.gap = "4px";
-      item.style.marginRight = "12px";
-      const dot = document.createElement("span");
-      dot.style.width = "8px";
-      dot.style.height = "8px";
-      dot.style.borderRadius = "50%";
-      dot.style.background = this.bobColors[id] || "#5a7aaa";
-      dot.style.display = "inline-block";
-      item.appendChild(dot);
-      item.appendChild(document.createTextNode(this.filteredBobs[id].name));
-      this.legend.appendChild(item);
-    }
-  }
-
   // ── Update / playback ──────────────────────────────────────────────────────
   private update(year: number) {
     this.year = year;
     this.yearLabel.textContent = String(Math.floor(year));
     this.draw(year);
-    this.updateEventLog(year);
-    if (this.selectedSystemId) {
-      this.emitSelection(this.selectedSystemId);
-    }
+    this.syncEventLog(year);
+    this.syncBookScopedDom();
+    if (this.selectedSystemId) this.emitSelection(this.selectedSystemId);
+    this.onFrame?.(year, this.book);
   }
 
   private stopPlay() {
@@ -658,19 +634,20 @@ export class StarMapEngine {
     this.playRaf = requestAnimationFrame(this.tick);
   };
 
-  // ── Selection ──────────────────────────────────────────────────────────────
   private emitSelection(systemId: string | null) {
     if (!systemId || !this.filteredStars[systemId]) {
       this.onSelectSystem?.(null, null);
       return;
     }
     const star = this.filteredStars[systemId];
+    const present = this.bobsAtSystem(systemId, this.year);
     this.onSelectSystem?.(systemId, {
       id: systemId,
       name: star.name,
       distanceLy: star.distanceLy,
       description: star.description,
-      bobNames: this.bobsAtSystem(systemId, this.year),
+      bobIds: present.map((p) => p.id),
+      bobLabels: present.map((p) => p.label),
     });
   }
 
@@ -679,9 +656,9 @@ export class StarMapEngine {
     const x = clientX - rect.left;
     const y = clientY - rect.top;
     let best: string | null = null;
-    let bestDist = 16; // generous hit radius in CSS pixels
+    let bestDist = 16;
     for (const id of Object.keys(this.filteredStars)) {
-      const p = this.projectStar(id);
+      const p = this.projectStarInternal(id);
       if (!p) continue;
       const d = Math.hypot(p.x - x, p.y - y);
       if (d < bestDist) {
@@ -694,7 +671,7 @@ export class StarMapEngine {
     this.emitSelection(best);
   }
 
-  // ── Chrome bindings ────────────────────────────────────────────────────────
+  // ── Chrome ─────────────────────────────────────────────────────────────────
   private onWindowResize = () => {
     this.resize();
     this.update(this.year);
@@ -748,18 +725,10 @@ export class StarMapEngine {
         this.stopPlay();
         this.setYear(this.year - 1);
       }
-      if (e.key === "Escape") {
-        this.selectedSystemId = null;
-        this.draw(this.year);
-        this.emitSelection(null);
-      }
+      if (e.key === "Escape") this.clearSelection();
     });
   }
 
-  /**
-   * Pan / zoom / click. Click vs drag uses a movement threshold so selection
-   * works (same class of bug we hit in the SVG map).
-   */
   private bindPointer() {
     const DRAG_PX = 5;
 
@@ -782,8 +751,6 @@ export class StarMapEngine {
       this.pan.x = e.clientX;
       this.pan.y = e.clientY;
       this.draw(this.year);
-
-      // Tooltip while idle is handled below; hide while dragging
       this.tooltip.style.display = "none";
     });
 
@@ -817,7 +784,7 @@ export class StarMapEngine {
       const y = e.clientY - rect.top;
       let tip = "";
       for (const id of Object.keys(this.filteredStars)) {
-        const p = this.projectStar(id);
+        const p = this.projectStarInternal(id);
         if (!p) continue;
         if (Math.hypot(p.x - x, p.y - y) < 12) {
           const s = this.filteredStars[id];
