@@ -1,0 +1,784 @@
+[
+  {
+    "id": "sol",
+    "name": "Sol",
+    "catalogName": "Sun",
+    "distanceLy": 0.0,
+    "raDeg": null,
+    "decDeg": null,
+    "galacticXYZly": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "firstBook": 1,
+    "description": "Humanity's home system, where Bob is revived and launched in 2133. A global war in the mid-2100s leaves Earth's surviving population at an estimated 15 million (2158).",
+    "features": [
+      {
+        "name": "Earth",
+        "firstBook": 1,
+        "description": "Devastated by the war and by attempted Brazilian asteroid strikes, which Riker and Homer divert."
+      },
+      {
+        "name": "Saturn region",
+        "firstBook": 1,
+        "description": "Arthur is killed there by a nuclear booby trap (2166)."
+      },
+      {
+        "name": "Farming donuts",
+        "firstBook": 1,
+        "description": "Orbital farm stations designed by Homer. VEHEMENT destroys one in book 2."
+      }
+    ],
+    "bobsVisited": [
+      "bob",
+      "riker",
+      "homer",
+      "charles",
+      "arthur",
+      "ralph",
+      "bert",
+      "ernie",
+      "howard",
+      "sam",
+      "rudy",
+      "edwin",
+      "monty",
+      "dexter"
+    ],
+    "confidence": "confirmed",
+    "notes": "Coordinate origin for the star map.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Sol",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "epsilon-eridani",
+    "name": "Epsilon Eridani",
+    "catalogName": "ε Eridani",
+    "distanceLy": 10.47,
+    "distanceLyErr": 0.004,
+    "parallaxMas": 311.37,
+    "parallaxErrMas": 0.11,
+    "astrometryRef": "Benedict et al. 2006 (AJ 132, 2206) parallax; position van Leeuwen 2007 Hipparcos",
+    "raDeg": 53.232687,
+    "decDeg": -9.458259,
+    "galacticXYZly": {
+      "x": -6.736,
+      "y": -1.912,
+      "z": -7.791
+    },
+    "firstBook": 1,
+    "description": "Bob's first destination (HEAVEN's original target) and later Bill's 'Skunk Works' base. It is the main communications hub of the Bobiverse and hosts the moots.",
+    "features": [
+      {
+        "name": "Ragnarök (Epsilon Eridani 2)",
+        "firstBook": 1,
+        "description": "Rocky and lifeless, about 90% of Earth's size, with a 3%-oxygen atmosphere. Bill names it and starts terraforming it by dropping ice."
+      }
+    ],
+    "bobsVisited": [
+      "bob",
+      "riker",
+      "bill",
+      "milo",
+      "mario",
+      "homer",
+      "garfield",
+      "calvin",
+      "goku",
+      "linus",
+      "khan",
+      "hannibal",
+      "tom",
+      "barney",
+      "fred",
+      "kyle",
+      "ned",
+      "elmer",
+      "mulder",
+      "loki"
+    ],
+    "confidence": "confirmed",
+    "notes": "The fan wiki gives 10.52 ly; the parallax gives 10.47 ly.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Epsilon_Eridani",
+      "https://bobiverse.fandom.com/wiki/Epsilon_Eridani",
+      "https://bobiverse.fandom.com/wiki/Ragnarok"
+    ]
+  },
+  {
+    "id": "delta-eridani",
+    "name": "Delta Eridani",
+    "catalogName": "δ Eridani",
+    "distanceLy": 29.64,
+    "distanceLyErr": 0.052,
+    "parallaxMas": 110.0254,
+    "parallaxErrMas": 0.1944,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 55.812086,
+    "decDeg": -9.763392,
+    "galacticXYZly": {
+      "x": -19.576,
+      "y": -6.394,
+      "z": -21.322
+    },
+    "firstBook": 1,
+    "description": "An orange subgiant with about ten planets. Bob chooses it for its stability and wide habitable zone and arrives in April 2165.",
+    "features": [
+      {
+        "name": "Eden (Delta Eridani 4)",
+        "firstBook": 1,
+        "description": "The only planet in the habitable zone and home of the Deltans. Bender names it Eden."
+      },
+      {
+        "name": "Camelot",
+        "firstBook": 1,
+        "description": "The Deltans' old flint-rich home site, which they move back to with Bob's help (Jul 2166)."
+      },
+      {
+        "name": "Caerleon",
+        "firstBook": 2,
+        "description": "A second village founded by gangs that leave Camelot (Sep 2182). Also spelled Cairleon."
+      }
+    ],
+    "bobsVisited": [
+      "bob",
+      "marvin",
+      "luke",
+      "bender",
+      "victor",
+      "pete"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Delta_Eridani",
+      "https://bobiverse.fandom.com/wiki/Delta_Eridani",
+      "https://bobiverse.fandom.com/wiki/Eden",
+      "https://bobiverse.fandom.com/wiki/Camelot"
+    ]
+  },
+  {
+    "id": "omicron2-eridani",
+    "name": "Omicron² Eridani",
+    "catalogName": "40 Eridani (ο² Eridani)",
+    "aliases": [
+      "40 Eridani",
+      "Keid"
+    ],
+    "distanceLy": 16.34,
+    "distanceLyErr": 0.01,
+    "parallaxMas": 199.608,
+    "parallaxErrMas": 0.1208,
+    "astrometryRef": "Gaia DR3 (component A)",
+    "raDeg": 63.817998,
+    "decDeg": -7.65287,
+    "galacticXYZly": {
+      "x": -12.033,
+      "y": -4.559,
+      "z": -10.071
+    },
+    "firstBook": 1,
+    "description": "A triple star system. Milo finds twin habitable planets orbiting the A star, and they become the first colony destination for Earth's survivors.",
+    "features": [
+      {
+        "name": "Vulcan",
+        "firstBook": 1,
+        "description": "Earthlike, with an oxygen-rich atmosphere and dinosaur-like life such as Brontos. Milo finds and names it in Jul 2152. It forms a double planet with Romulus about 0.81 AU from the A star."
+      },
+      {
+        "name": "Romulus",
+        "firstBook": 1,
+        "description": "Earthlike sister planet of Vulcan, with no animals larger than a wolf."
+      }
+    ],
+    "book2Notes": [
+      "The USE builds the Landing colony on Vulcan (Dec 2188); raptors and Cupid bugs threaten it.",
+      "Sam's Exodus-3 colonists, from the FAITH enclave, settle Romulus (2189)."
+    ],
+    "bobsVisited": [
+      "milo",
+      "howard",
+      "bert",
+      "ernie",
+      "sam",
+      "dexter"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/40_Eridani",
+      "https://bobiverse.fandom.com/wiki/Omicron²_Eridani",
+      "https://bobiverse.fandom.com/wiki/Vulcan",
+      "https://bobiverse.fandom.com/wiki/Romulus"
+    ]
+  },
+  {
+    "id": "82-eridani",
+    "name": "82 Eridani",
+    "catalogName": "82 G. Eridani",
+    "distanceLy": 19.7,
+    "distanceLyErr": 0.009,
+    "parallaxMas": 165.5242,
+    "parallaxErrMas": 0.0784,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 49.981879,
+    "decDeg": -43.069783,
+    "galacticXYZly": {
+      "x": -3.626,
+      "y": -10.382,
+      "z": -16.35
+    },
+    "firstBook": 1,
+    "description": "A G-type star where a Brazilian replicant (Medeiros) builds a stronghold. Milo is killed here (2165), and the Bobs attack it twice.",
+    "features": [],
+    "book2Notes": [
+      "Loki's second strike wins (Nov 2195) and finds three habitable locations: two planets and a moon. The planet names come from book 3, so they are left out."
+    ],
+    "bobsVisited": [
+      "milo",
+      "khan",
+      "hannibal",
+      "tom",
+      "barney",
+      "fred",
+      "kyle",
+      "ned",
+      "elmer",
+      "loki",
+      "jeffrey",
+      "milton",
+      "zeke",
+      "verne",
+      "surly",
+      "hank"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/82_G._Eridani",
+      "https://bobiverse.fandom.com/wiki/82_Eridani"
+    ]
+  },
+  {
+    "id": "alpha-centauri",
+    "name": "Alpha Centauri",
+    "catalogName": "α Centauri",
+    "distanceLy": 4.34,
+    "distanceLyErr": 0.002,
+    "parallaxMas": 750.81,
+    "parallaxErrMas": 0.38,
+    "astrometryRef": "Akeson et al. 2021 parallax; position van Leeuwen 2007 (component A)",
+    "raDeg": 219.902058,
+    "decDeg": -60.833993,
+    "galacticXYZly": {
+      "x": 3.111,
+      "y": -3.032,
+      "z": -0.052
+    },
+    "firstBook": 1,
+    "description": "The nearest star system. A USE probe got here first and was destroyed by Medeiros. Calvin and Goku take the system in 2163, and it becomes Bart's base.",
+    "features": [
+      {
+        "name": "Alpha Centauri A habitable-zone planet",
+        "firstBook": 1,
+        "description": "A lifeless rock."
+      },
+      {
+        "name": "Alpha Centauri B",
+        "firstBook": 1,
+        "description": "Asteroid belts and a small Mercury-like planet; the remains of the USE probe are found here."
+      }
+    ],
+    "book2Notes": [
+      "Oliver comes online here from a backup and starts building an armada (Sep 2205)."
+    ],
+    "bobsVisited": [
+      "calvin",
+      "goku",
+      "bart",
+      "oliver",
+      "thor"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alpha_Centauri",
+      "https://bobiverse.fandom.com/wiki/Alpha_Centauri"
+    ]
+  },
+  {
+    "id": "eta-cassiopeiae",
+    "name": "Eta Cassiopeiae",
+    "catalogName": "η Cassiopeiae",
+    "distanceLy": 19.32,
+    "distanceLyErr": 0.019,
+    "parallaxMas": 168.8322,
+    "parallaxErrMas": 0.1663,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 12.276229,
+    "decDeg": 57.815178,
+    "galacticXYZly": {
+      "x": -10.373,
+      "y": 16.208,
+      "z": -1.702
+    },
+    "firstBook": 2,
+    "description": "A long-period binary system explored by Mulder in 2170.",
+    "features": [
+      {
+        "name": "Poseidon",
+        "firstBook": 2,
+        "description": "Third planet of Eta Cas A: a global ocean about 800 km deep, with floating plant mats and dangerous sea life. Settled from 2195."
+      }
+    ],
+    "bobsVisited": [
+      "mulder",
+      "skinner",
+      "jonny",
+      "marcus",
+      "monty"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eta_Cassiopeiae",
+      "https://bobiverse.fandom.com/wiki/Eta_Cassiopeiae",
+      "https://bobiverse.fandom.com/wiki/Poseidon"
+    ]
+  },
+  {
+    "id": "beta-hydri",
+    "name": "Beta Hydri",
+    "catalogName": "β Hydri",
+    "aliases": [
+      "GL 19"
+    ],
+    "distanceLy": 24.33,
+    "distanceLyErr": 0.02,
+    "parallaxMas": 134.07,
+    "parallaxErrMas": 0.11,
+    "astrometryRef": "van Leeuwen 2007 (Hipparcos)",
+    "raDeg": 6.437793,
+    "decDeg": -77.254246,
+    "galacticXYZly": {
+      "x": 10.662,
+      "y": -15.357,
+      "z": -15.566
+    },
+    "firstBook": 1,
+    "description": "Mario's first destination (arrived Aug 2169). He finds the system stripped of metal and its inhabited fourth planet wiped clean of life, the first evidence of the Others.",
+    "features": [
+      {
+        "name": "Beta Hydri 4",
+        "firstBook": 1,
+        "description": "Formerly inhabited and harvested. A crashed cargo ship with metal ingots and mechanical 'ants' is found nearby."
+      }
+    ],
+    "bobsVisited": [
+      "mario"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Beta_Hydri",
+      "https://bobiverse.fandom.com/wiki/Beta_Hydri"
+    ]
+  },
+  {
+    "id": "zeta-tucanae",
+    "name": "Zeta Tucanae",
+    "catalogName": "ζ Tucanae",
+    "distanceLy": 28.07,
+    "distanceLyErr": 0.032,
+    "parallaxMas": 116.1826,
+    "parallaxErrMas": 0.1334,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 5.017744,
+    "decDeg": -64.874794,
+    "galacticXYZly": {
+      "x": 10.735,
+      "y": -13.582,
+      "z": -22.099
+    },
+    "firstBook": 1,
+    "description": "Mario's next stop after Beta Hydri. Book 1 only names it as his destination.",
+    "features": [],
+    "book2Notes": [
+      "Mario arrives in Nov 2176 and finds the remains of an industrial civilization wiped out by the Others. In 2204 he is fleeing back toward it."
+    ],
+    "bobsVisited": [
+      "mario"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zeta_Tucanae",
+      "https://bobiverse.fandom.com/wiki/Zeta_Tucanae"
+    ]
+  },
+  {
+    "id": "gliese-54",
+    "name": "Gliese 54",
+    "catalogName": "GJ 54",
+    "aliases": [
+      "GL 54",
+      "HIP 5496"
+    ],
+    "distanceLy": 25.7,
+    "distanceLyErr": 0.081,
+    "parallaxMas": 126.9,
+    "parallaxErrMas": 0.4,
+    "astrometryRef": "Benedict et al. 2016 parallax; position Gaia DR2",
+    "raDeg": 17.595337,
+    "decDeg": -67.444986,
+    "galacticXYZly": {
+      "x": 8.366,
+      "y": -14.413,
+      "z": -19.567
+    },
+    "firstBook": 2,
+    "description": "A red dwarf system that the Others haven't touched when Mario arrives (May 2180). It becomes his base, and Bill later uses Mario's leftover probe there to try first contact with the Others (2204).",
+    "features": [
+      {
+        "name": "Inner rocky planet",
+        "firstBook": 2,
+        "description": "A single rocky planet in a close orbit, plus many asteroids."
+      }
+    ],
+    "bobsVisited": [
+      "mario",
+      "bashful",
+      "dopey",
+      "sleepy",
+      "hungry",
+      "hal"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gliese_54",
+      "https://bobiverse.fandom.com/wiki/Gliese_54"
+    ]
+  },
+  {
+    "id": "gliese-877",
+    "name": "Gliese 877",
+    "catalogName": "GJ 877",
+    "aliases": [
+      "GL 877"
+    ],
+    "distanceLy": 28.04,
+    "distanceLyErr": 0.004,
+    "parallaxMas": 116.3134,
+    "parallaxErrMas": 0.0168,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 343.939638,
+    "decDeg": -75.458667,
+    "galacticXYZly": {
+      "x": 14.463,
+      "y": -16.066,
+      "z": -17.861
+    },
+    "firstBook": 2,
+    "description": "Home system of the Others. They are building a Dyson sphere around the star.",
+    "features": [
+      {
+        "name": "Others' homeworld",
+        "firstBook": 2,
+        "description": "A rocky planet near the inner edge of the habitable zone, heavily polluted."
+      }
+    ],
+    "bobsVisited": [
+      "bashful",
+      "hal"
+    ],
+    "confidence": "confirmed",
+    "notes": "The wiki system page says Bashful explored it in Nov 2177, but the timeline says Nov 2187. The timeline is used.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gliese_877",
+      "https://bobiverse.fandom.com/wiki/Gliese_877"
+    ]
+  },
+  {
+    "id": "epsilon-indi",
+    "name": "Epsilon Indi",
+    "catalogName": "ε Indi",
+    "distanceLy": 11.87,
+    "distanceLyErr": 0.004,
+    "parallaxMas": 274.8431,
+    "parallaxErrMas": 0.0956,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 330.840223,
+    "decDeg": -56.785979,
+    "galacticXYZly": {
+      "x": 7.259,
+      "y": -3.203,
+      "z": -8.825
+    },
+    "firstBook": 1,
+    "description": "A K-type star with two brown-dwarf companions. Linus finds the Australian replicant Henry Roberts here in 2165.",
+    "features": [
+      {
+        "name": "Henry Roberts' station",
+        "firstBook": 1,
+        "description": "A huge, nonsensical space station built by the deranged Australian probe."
+      }
+    ],
+    "book2Notes": [
+      "Klown Kar Planet (KKP) is a habitable moon of the gas giant Big Top. Its orbit and axis are tilted 90 degrees. Rudy and Edwin bring colonists in Feb 2190."
+    ],
+    "bobsVisited": [
+      "linus",
+      "rudy",
+      "edwin"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Epsilon_Indi",
+      "https://bobiverse.fandom.com/wiki/Epsilon_Indi",
+      "https://bobiverse.fandom.com/wiki/Quilt",
+      "https://bobiverse.fandom.com/wiki/Henry_Roberts"
+    ]
+  },
+  {
+    "id": "kappa-ceti",
+    "name": "Kappa Ceti",
+    "catalogName": "κ¹ Ceti",
+    "distanceLy": 30.26,
+    "distanceLyErr": 0.052,
+    "parallaxMas": 107.8023,
+    "parallaxErrMas": 0.1838,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 49.840402,
+    "decDeg": 3.370199,
+    "galacticXYZly": {
+      "x": -22.091,
+      "y": 0.685,
+      "z": -20.662
+    },
+    "firstBook": 1,
+    "description": "Luke's destination (left Delta Eridani Oct 2165).",
+    "features": [
+      {
+        "name": "Super-Earth",
+        "firstBook": 2,
+        "description": "Gravity just over 3 g with a full ecosystem; not suitable for colonization (Luke)."
+      }
+    ],
+    "bobsVisited": [
+      "luke"
+    ],
+    "confidence": "uncertain",
+    "notes": "The books say 'Kappa Ceti'. The fan wiki thinks it is probably Kappa¹ Ceti, and the coordinates here are for κ¹ Ceti.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kappa1_Ceti",
+      "https://bobiverse.fandom.com/wiki/Kappa_Ceti"
+    ]
+  },
+  {
+    "id": "gamma-leporis",
+    "name": "Gamma Leporis",
+    "catalogName": "γ Leporis",
+    "distanceLy": 29.04,
+    "distanceLyErr": 0.038,
+    "parallaxMas": 112.296,
+    "parallaxErrMas": 0.1452,
+    "astrometryRef": "Gaia DR3 (component A)",
+    "raDeg": 86.115794,
+    "decDeg": -22.448386,
+    "galacticXYZly": {
+      "x": -18.126,
+      "y": -19.299,
+      "z": -11.94
+    },
+    "firstBook": 1,
+    "description": "Bender's stated destination ('Gamma Leporis A', Oct 2165). Books 1-2 never confirm that he arrived.",
+    "features": [],
+    "bobsVisited": [],
+    "confidence": "uncertain",
+    "notes": "bobsVisited is empty on purpose: Bender only set out for it. Later-book information about Bender's actual route is left out.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gamma_Leporis",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "pi3-orionis",
+    "name": "Pi³ Orionis",
+    "catalogName": "π³ Orionis",
+    "distanceLy": 26.32,
+    "distanceLyErr": 0.036,
+    "parallaxMas": 123.94,
+    "parallaxErrMas": 0.17,
+    "astrometryRef": "van Leeuwen 2007 (Hipparcos)",
+    "raDeg": 72.460045,
+    "decDeg": 6.961275,
+    "galacticXYZly": {
+      "x": -23.73,
+      "y": -4.807,
+      "z": -10.31
+    },
+    "firstBook": 2,
+    "description": "Marvin leaves Delta Eridani for this system (Dec 2173). Books 1-2 describe nothing in it.",
+    "features": [],
+    "bobsVisited": [
+      "marvin"
+    ],
+    "confidence": "confirmed",
+    "notes": "bobsVisited marks Marvin as headed there; his arrival isn't described in books 1-2.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pi3_Orionis",
+      "https://bobiverse.fandom.com/wiki/Pi3_Orionis"
+    ]
+  },
+  {
+    "id": "gamma-pavonis",
+    "name": "Gamma Pavonis",
+    "catalogName": "γ Pavonis",
+    "distanceLy": 30.2,
+    "distanceLyErr": 0.03,
+    "parallaxMas": 108.0102,
+    "parallaxErrMas": 0.1061,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 321.610854,
+    "decDeg": -65.366198,
+    "galacticXYZly": {
+      "x": 19.566,
+      "y": -12.152,
+      "z": -19.528
+    },
+    "firstBook": 2,
+    "description": "An F8 V star that Claude explores (May 2205).",
+    "features": [
+      {
+        "name": "Gamma Pavonis 1",
+        "firstBook": 2,
+        "description": "A blue-green planet that is excellent for colonization and a likely target for the Others. Its later name, Newholme, comes after book 2."
+      }
+    ],
+    "bobsVisited": [
+      "claude"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gamma_Pavonis",
+      "https://bobiverse.fandom.com/wiki/Gamma_Pavonis",
+      "https://bobiverse.fandom.com/wiki/Gamma_Pavonis_1"
+    ]
+  },
+  {
+    "id": "delta-pavonis",
+    "name": "Delta Pavonis",
+    "catalogName": "δ Pavonis",
+    "distanceLy": 19.89,
+    "distanceLyErr": 0.015,
+    "parallaxMas": 163.9544,
+    "parallaxErrMas": 0.1222,
+    "astrometryRef": "Gaia DR3",
+    "raDeg": 302.181704,
+    "decDeg": -66.182067,
+    "galacticXYZly": {
+      "x": 14.509,
+      "y": -8.456,
+      "z": -10.664
+    },
+    "firstBook": 2,
+    "description": "A G8 IV star whose fourth planet is the homeworld of the Pav. The Others strip it in 2217.",
+    "features": [
+      {
+        "name": "Delta Pavonis 4",
+        "firstBook": 2,
+        "description": "The Pav homeworld, which the Pav call Aszjan (per the timeline). The Others harvest it, beginning in May 2217."
+      }
+    ],
+    "bobsVisited": [
+      "jacques",
+      "phineas",
+      "ferb"
+    ],
+    "confidence": "confirmed",
+    "notes": "Bill directs the 2217 battle and watches the system remotely, so he isn't listed in bobsVisited.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Delta_Pavonis",
+      "https://bobiverse.fandom.com/wiki/Delta_Pavonis"
+    ]
+  },
+  {
+    "id": "hip-14101",
+    "name": "HIP 14101",
+    "catalogName": "LTT 1445",
+    "aliases": [
+      "LTT 1445"
+    ],
+    "distanceLy": 22.39,
+    "distanceLyErr": 0.004,
+    "parallaxMas": 145.6922,
+    "parallaxErrMas": 0.0244,
+    "astrometryRef": "Gaia DR3 (component A)",
+    "raDeg": 45.46414,
+    "decDeg": -16.593342,
+    "galacticXYZly": {
+      "x": -11.09,
+      "y": -4.143,
+      "z": -19.0
+    },
+    "firstBook": 2,
+    "description": "A triple M-dwarf system. Howard heads here after leaving Omicron² Eridani and arrives in Dec 2210.",
+    "features": [
+      {
+        "name": "Jovian planet",
+        "firstBook": 2,
+        "description": "Howard explores it. Its name, Odin, appears only after book 2."
+      }
+    ],
+    "bobsVisited": [
+      "howard"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://en.wikipedia.org/wiki/LTT_1445",
+      "https://bobiverse.fandom.com/wiki/HIP_14101"
+    ]
+  },
+  {
+    "id": "hip-84051",
+    "name": "HIP 84051",
+    "catalogName": "HIP 84051 (CD-52 7989)",
+    "raDeg": 257.746475,
+    "decDeg": -52.515511,
+    "parallaxMas": 78.3567,
+    "parallaxErrMas": 0.036,
+    "distanceLy": 41.62,
+    "astrometryRef": "Gaia DR2 via Wikidata Q86704518 (no Wikipedia article)",
+    "galacticXYZly": {
+      "x": 37.892,
+      "y": -16.316,
+      "z": -5.493
+    },
+    "firstBook": 2,
+    "description": "The system the rescued Pav choose as their new home and head for at the very end of book 2 (Apr 2221).",
+    "features": [],
+    "bobsVisited": [],
+    "confidence": "uncertain",
+    "notes": "The wiki gives about 40.7 ly (Hipparcos parallax 80.17 mas); Gaia DR2 gives about 41.6 ly. The wiki's Hazjiar character page puts the Pav decision in book 3, which conflicts with the timeline (book 2, ch. 77).",
+    "sources": [
+      "https://www.wikidata.org/wiki/Q86704518",
+      "https://bobiverse.fandom.com/wiki/HIP_84051",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "nn-4285",
+    "name": "NN 4285",
+    "catalogName": "NN 4285 (CNS3)",
+    "raDeg": null,
+    "decDeg": null,
+    "galacticXYZly": null,
+    "distanceLy": null,
+    "firstBook": 2,
+    "description": "Target of an Others expedition reported by Bill's surveillance drones (Apr 2205).",
+    "features": [],
+    "bobsVisited": [],
+    "confidence": "uncertain",
+    "notes": "No catalog coordinates could be confirmed; Wikipedia has no article. The fan wiki cites CNS3 for about 22.2 ly from Sol and about 5.9 ly from Delta Pavonis and Zeta Tucanae, but that is not verified, so distanceLy is null. Do not plot it until it is confirmed.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/NN_4285",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  }
+]

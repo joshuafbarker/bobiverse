@@ -1,0 +1,109 @@
+[
+  {
+    "id": "deltans",
+    "name": "Deltans",
+    "homeSystemId": "delta-eridani",
+    "homeWorld": "Eden (Delta Eridani 4)",
+    "firstBook": 1,
+    "summary": "Deltans are intelligent, mammal-like natives of Delta Eridani 4 (Eden) with a stone-age tribal society. Predators had pushed them to the brink of extinction when Bob found them in 2165.",
+    "book2Notes": [
+      "Population growth leads to gangs and a second village, Caerleon (2182).",
+      "Bob is revered as 'Bawbe'."
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Deltan",
+      "https://bobiverse.fandom.com/wiki/Eden"
+    ]
+  },
+  {
+    "id": "gorilloids",
+    "name": "Gorilloids",
+    "homeSystemId": "delta-eridani",
+    "homeWorld": "Eden (Delta Eridani 4)",
+    "firstBook": 1,
+    "summary": "Gorilloids are strong, ape-like pack predators on Eden that were hunting the Deltans toward extinction.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Gorilloid"
+    ]
+  },
+  {
+    "id": "hippogriffs",
+    "name": "Hippogriffs",
+    "homeSystemId": "delta-eridani",
+    "homeWorld": "Eden (Delta Eridani 4)",
+    "firstBook": 2,
+    "summary": "Hippogriffs are large, flying, camouflaged apex predators on Eden, with toothed beaks. They drove the Deltans out of Camelot long ago.",
+    "book2Notes": [
+      "Bob destroys their nesting archipelago with a ship buster (Jun 2172)."
+    ],
+    "confidence": "confirmed",
+    "notes": "A 'new predator' in book 1 ch. 53 is not clearly identified as a hippogriff; the name first appears in book 2 (ch. 17-19).",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Hippogriff"
+    ]
+  },
+  {
+    "id": "raptors",
+    "name": "Raptors",
+    "homeSystemId": "omicron2-eridani",
+    "homeWorld": "Vulcan",
+    "firstBook": 2,
+    "summary": "Raptors are intelligent pack-hunting theropod-like predators on Vulcan that attack the Landing colony from 2188.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Raptor"
+    ]
+  },
+  {
+    "id": "cupid-bugs",
+    "name": "Cupid bugs",
+    "homeSystemId": "omicron2-eridani",
+    "homeWorld": "Vulcan",
+    "firstBook": 2,
+    "summary": "Cupid bugs are hummingbird-sized parasites on Vulcan that lay eggs under the skin. The larvae burrow into the host's heart.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Cupid_Bug",
+      "https://bobiverse.fandom.com/wiki/Vulcan"
+    ]
+  },
+  {
+    "id": "others",
+    "name": "The Others",
+    "homeSystemId": "gliese-877",
+    "homeWorld": null,
+    "firstBook": 1,
+    "summary": "The Others are an alien species that harvests entire star systems for metal and food. Mario finds the first evidence of them at Beta Hydri (2169).",
+    "book2Notes": [
+      "Their home system is GL 877.",
+      "They are four-foot, many-eyed creatures with a vertical mouth.",
+      "They are building a Dyson sphere and see other sentient species as food.",
+      "They destroy Delta Pavonis (2217) and then target Sol and Epsilon Eridani."
+    ],
+    "confidence": "confirmed",
+    "notes": "homeSystemId (GL 877) is only revealed in book 2. Book 1 has only their aftermath at Beta Hydri; whether the name 'the Others' is used in book 1 isn't confirmed.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/The_Others",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "pav",
+    "name": "Pav",
+    "homeSystemId": "delta-pavonis",
+    "homeWorld": "Delta Pavonis 4 (Aszjan)",
+    "firstBook": 2,
+    "summary": "The Pav are meerkat-like intelligent natives of Delta Pavonis 4, at roughly a Victorian-era technology level with steam and coal. Jacques discovers them in 2207.",
+    "book2Notes": [
+      "Phineas and Ferb rescue 20,000 Pav before the Others destroy the planet (2217).",
+      "The survivors choose HIP 84051 (2221)."
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Pav",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  }
+]

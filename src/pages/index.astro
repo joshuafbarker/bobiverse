@@ -1,0 +1,121 @@
+---
+/**
+ * Landing page: what this is, which books are covered, spoiler-safe counts,
+ * and a plain list of upcoming sections (no dead links).
+ */
+import Layout from "../layouts/Layout.astro";
+import {
+  bobs,
+  books,
+  characters,
+  countByFirstBook,
+  events,
+  species,
+  systems,
+} from "../data";
+
+const bobCounts = countByFirstBook(bobs);
+const systemCounts = countByFirstBook(systems);
+const eventCounts = countByFirstBook(events);
+const characterCounts = countByFirstBook(characters);
+const speciesCounts = countByFirstBook(species);
+
+/** At-a-glance rows shown per book so book-1 readers aren't spoiled by totals. */
+const glanceRows = [
+  { label: "Bobs", book1: bobCounts[1], book2: bobCounts[2] },
+  { label: "Star systems", book1: systemCounts[1], book2: systemCounts[2] },
+  { label: "Timeline events", book1: eventCounts[1], book2: eventCounts[2] },
+  { label: "Characters", book1: characterCounts[1], book2: characterCounts[2] },
+  { label: "Species", book1: speciesCounts[1], book2: speciesCounts[2] },
+];
+
+const comingSoon = [
+  "Bob family tree",
+  "Interactive star map",
+  "Timeline",
+  "Character & species guide",
+  "Spoiler picker (choose book 1 or 2)",
+];
+---
+
+<Layout>
+  <section class="space-y-4">
+    <p class="text-sm font-medium uppercase tracking-[0.18em] text-accent">
+      Fan companion
+    </p>
+    <h1 class="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+      Explore the Bobiverse
+    </h1>
+    <p class="max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+      A fan-made companion to Dennis E. Taylor’s Bobiverse novels. We’re starting
+      with books 1–2, <em class="text-ink">We Are Legion (We Are Bob)</em> and <em
+        class="text-ink">For We Are Many</em
+      >, and building out from a shared data set.
+    </p>
+    <p class="text-sm text-ink-faint">
+      Unofficial project. No plot spoilers on this page beyond book titles and
+      spoiler-scoped counts.
+    </p>
+  </section>
+
+  <section class="mt-12" aria-labelledby="books-heading">
+    <h2 id="books-heading" class="font-display text-xl font-semibold text-ink">
+      Covered so far
+    </h2>
+    <ul class="mt-4 space-y-3">
+      {
+        books.map((book) => (
+          <li class="rounded-xl border border-line bg-surface px-4 py-3 sm:px-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-ink-faint">
+              Book {book.number} · {book.year}
+            </p>
+            <p class="mt-1 font-medium text-ink">{book.title}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-12" aria-labelledby="glance-heading">
+    <h2 id="glance-heading" class="font-display text-xl font-semibold text-ink">
+      At a glance
+    </h2>
+    <p class="mt-2 text-sm text-ink-muted">
+      Counts are split by the book where each entry first appears, so book-1
+      readers can ignore the book-2 column.
+    </p>
+    <div class="mt-4 overflow-hidden rounded-xl border border-line bg-surface">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-surface-2 text-ink-faint">
+          <tr>
+            <th scope="col" class="px-4 py-3 font-medium sm:px-5">Dataset</th>
+            <th scope="col" class="px-4 py-3 font-medium sm:px-5">Book 1</th>
+            <th scope="col" class="px-4 py-3 font-medium sm:px-5">Book 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            glanceRows.map((row) => (
+              <tr class="border-t border-line">
+                <th scope="row" class="px-4 py-3 font-medium text-ink sm:px-5">
+                  {row.label}
+                </th>
+                <td class="px-4 py-3 tabular-nums text-ink-muted sm:px-5">{row.book1}</td>
+                <td class="px-4 py-3 tabular-nums text-ink-muted sm:px-5">{row.book2}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="coming-heading">
+    <h2 id="coming-heading" class="font-display text-xl font-semibold text-ink">
+      Coming soon
+    </h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink-muted">
+      {comingSoon.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+</Layout>

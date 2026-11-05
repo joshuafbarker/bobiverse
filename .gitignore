@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# build
+dist
+
+# logs / local
+*.log
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# astro
+.astro
+
+# vercel (if an adapter is added later)
+.vercel
+
+# typescript
+*.tsbuildinfo

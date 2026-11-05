@@ -1,0 +1,3762 @@
+[
+  {
+    "id": "2016-robert-johansson-dies",
+    "year": 2016,
+    "month": null,
+    "day": null,
+    "season": "Summer",
+    "order": 1,
+    "title": "Robert Johansson dies",
+    "description": "Robert \"Bob\" Johansson signs up with CryoEterna, attends The Vortex SF convention, and dies the next day after being hit by a car.",
+    "firstBook": 1,
+    "chapter": 1,
+    "pov": "Original Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "robert-johansson"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2036-andrew-handle-elected-us-president",
+    "year": 2036,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 2,
+    "title": "Andrew Handle elected US president",
+    "description": "The United States elects an ultra-conservative fundamentalist Christian president, Andrew Handle, who brings the USA to the worst economic collapse in its history.",
+    "firstBook": 1,
+    "chapter": null,
+    "pov": null,
+    "bobsInvolved": [],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Backstory from book 1, not tied to a chapter in the timeline.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2040-desmond-ahern-elected",
+    "year": 2040,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 3,
+    "title": "Desmond Ahern elected",
+    "description": "As typical of the political system the United States next elects an atheist president, Desmond Ahern.",
+    "firstBook": 1,
+    "chapter": null,
+    "pov": null,
+    "bobsInvolved": [],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Backstory from book 1, not tied to a chapter in the timeline.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2041-fundamentalist-coup-creates-faith",
+    "year": 2041,
+    "month": null,
+    "day": null,
+    "season": null,
+    "order": 4,
+    "title": "Fundamentalist coup creates FAITH",
+    "description": "Fundamentalists stage a successful coup creating the new governing body and the governments of the world are thrown into upheaval with this new world order.",
+    "firstBook": 1,
+    "chapter": null,
+    "pov": null,
+    "bobsInvolved": [],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Backstory from book 1, not tied to a chapter in the timeline.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-reawakens-as-a-replicant",
+    "year": 2133,
+    "month": 6,
+    "day": 24,
+    "season": null,
+    "order": 5,
+    "title": "Bob reawakens as a replicant",
+    "description": "Bob is reanimated as a replicant and property of the Free American Independent Theocratic Hegemony (FAITH) government by Doctor Landers, given some history of what's changed in the last century and is told he is in competition with four other replicants for a mission.",
+    "firstBook": 1,
+    "chapter": 2,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "dr-landers",
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-begins-learning-how-to-use-his-new-systems",
+    "year": 2133,
+    "month": 6,
+    "day": 25,
+    "season": null,
+    "order": 6,
+    "title": "Bob begins learning how to use his new systems",
+    "description": "Bob begins learning how to use his new systems.",
+    "firstBook": 1,
+    "chapter": 3,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-a-rival-candidate-goes-insane",
+    "year": 2133,
+    "month": 7,
+    "day": 15,
+    "season": null,
+    "order": 7,
+    "title": "A rival candidate goes insane",
+    "description": "Bob continues to learn how to use his new systems and is told that one of the other candidates has gone psychotic and been removed from the program.",
+    "firstBook": 1,
+    "chapter": 4,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-faith-inspection",
+    "year": 2133,
+    "month": 7,
+    "day": 18,
+    "season": null,
+    "order": 8,
+    "title": "FAITH inspection",
+    "description": "Bob undergoes an inspection from a Minister of FAITH and continues to be tested on his systems.",
+    "firstBook": 1,
+    "chapter": 5,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-two-more-candidates-rejected",
+    "year": 2133,
+    "month": 7,
+    "day": 19,
+    "season": null,
+    "order": 9,
+    "title": "Two more candidates rejected",
+    "description": "Bob is told that two more of the candidates have been rejected from the program and that the mission he is training for is to be a Von Neumann Probe and sent out to find new planets for colonization.",
+    "firstBook": 1,
+    "chapter": 6,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-learns-earth-s-new-politics",
+    "year": 2133,
+    "month": 7,
+    "day": 25,
+    "season": null,
+    "order": 10,
+    "title": "Bob learns Earth's new politics",
+    "description": "Bob learns much more about the new political structures and governments of Earth.",
+    "firstBook": 1,
+    "chapter": 7,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-attack-on-the-heaven-facility",
+    "year": 2133,
+    "month": 8,
+    "day": 4,
+    "season": null,
+    "order": 11,
+    "title": "Attack on the HEAVEN facility",
+    "description": "Bob helps defend the facility during an attack from an enemy faction.",
+    "firstBook": 1,
+    "chapter": 8,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-watches-as-another-minister-of-faith-berates",
+    "year": 2133,
+    "month": 8,
+    "day": 6,
+    "season": null,
+    "order": 12,
+    "title": "Bob watches as another Minister of FAITH berates Dr",
+    "description": "Bob watches as another Minister of FAITH berates Dr. Landers about the project.",
+    "firstBook": 1,
+    "chapter": 9,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "dr-landers",
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-restored-from-backup-last-candidate-left",
+    "year": 2133,
+    "month": 8,
+    "day": 10,
+    "season": null,
+    "order": 13,
+    "title": "Bob restored from backup; last candidate left",
+    "description": "Bob is restored from a backup after another attack and told that he is the last replicant remaining in the program.",
+    "firstBook": 1,
+    "chapter": 10,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-bob-learns-of-faith-s-safeguards",
+    "year": 2133,
+    "month": 8,
+    "day": 15,
+    "season": null,
+    "order": 14,
+    "title": "Bob learns of FAITH's safeguards",
+    "description": "Bob is eventually told that there are safeguards in place to make sure that he follows instructions and does what FAITH tells him to.",
+    "firstBook": 1,
+    "chapter": 11,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2133-heaven-1-launches-as-war-breaks-out",
+    "year": 2133,
+    "month": 8,
+    "day": 17,
+    "season": null,
+    "order": 15,
+    "title": "HEAVEN-1 launches as war breaks out",
+    "description": "Bob is transferred to his ship and launches while all-out war breaks between the governments of Earth. An enemy probe also launches after Bob and starts following him to Epsilon Eridani.",
+    "firstBook": 1,
+    "chapter": 12,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Earth, Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2144-bob-builds-his-vr-and-removes-faith-s-safeguards",
+    "year": 2144,
+    "month": 8,
+    "day": 17,
+    "season": null,
+    "order": 16,
+    "title": "Bob builds his VR and removes FAITH's safeguards",
+    "description": "Bob begins building his own personal VR world to save his sanity, starts planning to battle the tailing enemy probe, removes the safeguards FAITH set in him, and watches the governments of Earth nuke each other.",
+    "firstBook": 1,
+    "chapter": 13,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": null,
+    "locationLabel": "En Route to Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2144-arrival-at-epsilon-eridani",
+    "year": 2144,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 17,
+    "title": "Arrival at Epsilon Eridani",
+    "description": "Bob arrives in Epsilon Eridani and begins preparing for the enemy probe.",
+    "firstBook": 1,
+    "chapter": 14,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2144-battle-of-epsilon-eridani-bob-defeats-medeiros",
+    "year": 2144,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 18,
+    "title": "Battle of Epsilon Eridani: Bob defeats Medeiros",
+    "description": "Bob fights the enemy Brazilian Empire probe, Major Ernesto Medeiros, and wins.",
+    "firstBook": 1,
+    "chapter": 15,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "brazilian-empire",
+      "major-ernesto-medeiros"
+    ],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2144-first-auto-factory",
+    "year": 2144,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 19,
+    "title": "First auto-factory",
+    "description": "Bob begins exploring Epsilon Eridani, finds several planets, and sets up an auto factory station.",
+    "firstBook": 1,
+    "chapter": 16,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2145-first-clones-riker-bill-milo-and-mario",
+    "year": 2145,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 20,
+    "title": "First clones: Riker, Bill, Milo and Mario",
+    "description": "Bob clones himself and creates Riker, Bill, Milo, and Mario. Bill stays put at Epsilon Eridani to setup a Skunk Works and names Epsilon Eridani 2 Ragnarök, while Riker begins preparing to return to Earth, and Bob heads for Delta Eridani, Milo heads for Omicron² Eridani, and Mario heads for Beta Hydri.",
+    "firstBook": 1,
+    "chapter": 17,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bill",
+      "bob",
+      "mario",
+      "milo",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2145-bill-and-riker-begin-working-on-new-ships-and-cl",
+    "year": 2145,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 21,
+    "title": "Bill and Riker begin working on new ships and cloning themselves",
+    "description": "Bill and Riker begin working on new ships and cloning themselves.",
+    "firstBook": 1,
+    "chapter": 18,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2145-garfield-and-homer-created-riker-leaves-for-sol",
+    "year": 2145,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 22,
+    "title": "Garfield and Homer created; Riker leaves for Sol",
+    "description": "Bill and his clone Garfield continue setting up the Skunk Works and begin working on terraforming Ragnarök, while Riker and his clone Homer leave heading back to Earth.",
+    "firstBook": 1,
+    "chapter": 20,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2150-calvin-goku-and-linus-created",
+    "year": 2150,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 23,
+    "title": "Calvin, Goku and Linus created",
+    "description": "Bill clones himself three more times creating Calvin, Goku, and Linus; Calvin and Goku together head to Alpha Centauri while Linus heads to Epsilon Indi.",
+    "firstBook": 1,
+    "chapter": 22,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "calvin",
+      "goku",
+      "linus"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2151-scut-first-test",
+    "year": 2151,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 24,
+    "title": "SCUT first test",
+    "description": "Bill and Garfield test out their newly created FTL comms, the Subspace Communications Universal Transceiver (SCUT).",
+    "firstBook": 1,
+    "chapter": 25,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2152-milo-discovers-vulcan-and-romulus",
+    "year": 2152,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 25,
+    "title": "Milo discovers Vulcan and Romulus",
+    "description": "Milo arrives at Omicron² Eridani A and finds two habitable planets and names them Vulcan and Romulus. He sets up an auto station and begins surveying the two habitable worlds.",
+    "firstBook": 1,
+    "chapter": 19,
+    "pov": "Milo",
+    "bobsInvolved": [
+      "milo"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2153-milo-leaves-for-82-eridani",
+    "year": 2153,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 26,
+    "title": "Milo leaves for 82 Eridani",
+    "description": "Milo finishes surveying Vulcan and Romulus and sets up an auto factory with a high-level AMI per the request of Bill (to remotely connect the system via SCUT in the future), then heads out to 82 Eridani.",
+    "firstBook": 1,
+    "chapter": 23,
+    "pov": "Milo",
+    "bobsInvolved": [
+      "bill",
+      "milo"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2157-riker-and-homer-reach-sol",
+    "year": 2157,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 27,
+    "title": "Riker and Homer reach Sol",
+    "description": "Riker and Homer return to Sol and begin their fight with the Brazilian probes in the system and find out that the Brazilian probes are dropping asteroids on Earth.",
+    "firstBook": 1,
+    "chapter": 21,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "brazilian-empire"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2157-brazilian-probes-beaten-asteroids-diverted",
+    "year": 2157,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 28,
+    "title": "Brazilian probes beaten; asteroids diverted",
+    "description": "Riker and Homer finish the fight with the Brazilian probes and win then divert the remaining asteroids from hitting Earth and begin searching for survivors.",
+    "firstBook": 1,
+    "chapter": 24,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "brazilian-empire"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2157-contact-with-col-butterworth",
+    "year": 2157,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 29,
+    "title": "Contact with Col. Butterworth",
+    "description": "Riker and Homer receive a transmission from Colonel George Butterworth of the United States of Eurasia, learn the history of the war, and begin working on colony ships.",
+    "firstBook": 1,
+    "chapter": 26,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "col-george-butterworth",
+      "use"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2157-riker-negotiates-with-earth-s-survivors",
+    "year": 2157,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 30,
+    "title": "Riker negotiates with Earth's survivors",
+    "description": "Riker negotiates with the remaining humans while working with Homer on surveying the system for resources and to get ready for more Bob clones.",
+    "firstBook": 1,
+    "chapter": 29,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-charles-and-arthur-created",
+    "year": 2158,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 31,
+    "title": "Charles and Arthur created",
+    "description": "Riker clones himself twice creating Charles and Arthur and continues searching for survivors, with the remaining human population estimated at 15 million.",
+    "firstBook": 1,
+    "chapter": 31,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "arthur",
+      "charles",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-first-post-war-un-sessions",
+    "year": 2158,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 32,
+    "title": "First post-war UN sessions",
+    "description": "Riker hosts the first UN sessions.",
+    "firstBook": 1,
+    "chapter": 33,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-homer-s-plan-for-the-un-delegates",
+    "year": 2158,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 33,
+    "title": "Homer's plan for the UN delegates",
+    "description": "Homer begins coming up with a plan to appease the UN delegates and contacts Colonel Butterworth.",
+    "firstBook": 1,
+    "chapter": 34,
+    "pov": "Homer",
+    "bobsInvolved": [
+      "homer"
+    ],
+    "charactersInvolved": [
+      "col-george-butterworth"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-cranston-tries-to-pressure-riker",
+    "year": 2158,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 34,
+    "title": "Cranston tries to pressure Riker",
+    "description": "Minister Cranston from the FAITH enclave attempts and fails to threaten Riker into moving them up the list, while Homer's plan to appease the UN seems to be working.",
+    "firstBook": 1,
+    "chapter": 36,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "faith",
+      "minister-cranston"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-milo-s-report-reaches-epsilon-eridani",
+    "year": 2158,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 35,
+    "title": "Milo's report reaches Epsilon Eridani",
+    "description": "Bill and Garfield receive Milo's report about twin habitable planets from Omicron² Eridani and continue working on terraforming Ragnarök.",
+    "firstBook": 1,
+    "chapter": 32,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield",
+      "milo"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2158-vehement-and-julia-hendricks",
+    "year": 2158,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 36,
+    "title": "VEHEMENT and Julia Hendricks",
+    "description": "Riker learns of a terrorist group called VEHEMENT and is introduced to Julia Hendricks, one of the descendants from Bob’s sister, living inside the FAITH enclave.",
+    "firstBook": 1,
+    "chapter": 38,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "riker"
+    ],
+    "charactersInvolved": [
+      "faith",
+      "julia-hendricks",
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2162-terraforming-ragnar-k-vr-physics",
+    "year": 2162,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 37,
+    "title": "Terraforming Ragnarök; VR physics",
+    "description": "Bill and Garfield continue working on terraforming Ragnarök and fine-tuning the VR physics.",
+    "firstBook": 1,
+    "chapter": 42,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Timeline note: continuity for these chapters are inconsistent, months should be swapped or combined",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2162-sol-joins-bobnet",
+    "year": 2162,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 38,
+    "title": "Sol joins BobNet",
+    "description": "Riker and Homer connect to BobNet, learn of the twin habitable planets at Omicron² Eridani, and bring the news to the UN.",
+    "firstBook": 1,
+    "chapter": 41,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Timeline note: continuity for these chapters are inconsistent, months should be swapped or combined",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2163-battle-of-alpha-centauri",
+    "year": 2163,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 39,
+    "title": "Battle of Alpha Centauri",
+    "description": "Calvin arrives at Alpha Centauri B and finds the remains of a USE vessel, while Goku arrives at Alpha Centauri A and finds a Medeiros auto factory. They both meet up and fight with several Medeiros probes and win but one probe escapes. They then start setting up an auto factory station.",
+    "firstBook": 1,
+    "chapter": 28,
+    "pov": "Calvin",
+    "bobsInvolved": [
+      "calvin",
+      "goku"
+    ],
+    "charactersInvolved": [
+      "major-ernesto-medeiros",
+      "use"
+    ],
+    "speciesInvolved": [],
+    "systemId": "alpha-centauri",
+    "locationLabel": "Alpha Centauri",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2164-first-colony-ships-under-construction",
+    "year": 2164,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 40,
+    "title": "First colony ships under construction",
+    "description": "Riker inspects the construction of the first two colony ships while Homer, Charles, and Arthur discuss how to feed the remaining humans for long enough to get them off planet.",
+    "firstBook": 1,
+    "chapter": 43,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "arthur",
+      "charles",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-bart-contacts-bill",
+    "year": 2165,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 41,
+    "title": "Bart contacts Bill",
+    "description": "Bill connects with Bart (a clone of Calvin) at Alpha Centauri through BobNet.",
+    "firstBook": 1,
+    "chapter": 45,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bart",
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-bob-discovers-the-deltans",
+    "year": 2165,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 42,
+    "title": "Bob discovers the Deltans",
+    "description": "Bob arrives in Delta Eridani and finds intelligent life on Delta Eridani 4 (later named Eden) and names them Deltans.",
+    "firstBook": 1,
+    "chapter": 27,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-archimedes-marvin-luke-and-bender-created",
+    "year": 2165,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 43,
+    "title": "Archimedes; Marvin, Luke and Bender created",
+    "description": "Bob continues observing the Deltans, sees one smarter than the rest and names him Archimedes, meanwhile he creates three new clones Marvin, Luke, and Bender.",
+    "firstBook": 1,
+    "chapter": 30,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bender",
+      "bob",
+      "luke",
+      "marvin"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-linus-finds-henry-roberts",
+    "year": 2165,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 44,
+    "title": "Linus finds Henry Roberts",
+    "description": "Linus arrives at Epsilon Indi and finds an Australian probe that made it off Earth before the war and stays to help the replicant, Henry Roberts, who is suffering from a mental breakdown from being in isolation for so many decades.",
+    "firstBook": 1,
+    "chapter": 40,
+    "pov": "Linus",
+    "bobsInvolved": [
+      "linus"
+    ],
+    "charactersInvolved": [
+      "henry-roberts"
+    ],
+    "speciesInvolved": [],
+    "systemId": "epsilon-indi",
+    "locationLabel": "Epsilon Indi",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-gorilloid-attacks-flint-for-archimedes",
+    "year": 2165,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 45,
+    "title": "Gorilloid attacks; flint for Archimedes",
+    "description": "Bob watches as the Deltans are attacked by gorilloids and begins leaving flint for Archimedes to find.",
+    "firstBook": 1,
+    "chapter": 35,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans",
+      "gorilloids"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-bob-s-drone-stops-an-attack",
+    "year": 2165,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 46,
+    "title": "Bob's drone stops an attack",
+    "description": "Bob uses a drone to stop another attack against the Deltans and Luke and Bender decide they are heading out while Marvin chooses to stick around for now to help Bob.",
+    "firstBook": 1,
+    "chapter": 37,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bender",
+      "bob",
+      "luke",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-milo-killed-at-82-eridani",
+    "year": 2165,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 47,
+    "title": "Milo killed at 82 Eridani",
+    "description": "Milo makes it to 82 Eridani only to find a Medeiros probe already there and is killed but not before sending word back to Bill at Epsilon Eridani.",
+    "firstBook": 1,
+    "chapter": 46,
+    "pov": "Milo",
+    "bobsInvolved": [
+      "bill",
+      "milo"
+    ],
+    "charactersInvolved": [
+      "major-ernesto-medeiros"
+    ],
+    "speciesInvolved": [],
+    "systemId": "82-eridani",
+    "locationLabel": "82 Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2165-luke-and-bender-depart",
+    "year": 2165,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 48,
+    "title": "Luke and Bender depart",
+    "description": "Bob and Marvin stay to continue monitoring the Deltans while Luke heads out to Kappa Ceti and Bender heads to Gamma Leporis A.",
+    "firstBook": 1,
+    "chapter": 39,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bender",
+      "bob",
+      "luke",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-first-contact-with-archimedes",
+    "year": 2166,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 49,
+    "title": "First contact with Archimedes",
+    "description": "Bob uses a drone to make first contact with Archimedes and the rest of the Deltans and convinces them to move back to the previous flint site for their own safety.",
+    "firstBook": 1,
+    "chapter": 44,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-arthur-killed-near-saturn",
+    "year": 2166,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 50,
+    "title": "Arthur killed near Saturn",
+    "description": "Riker and Homer continue trying to deal with VEHEMENT and the remaining humans though Arthur is killed by a booby trap out by Saturn.",
+    "firstBook": 1,
+    "chapter": 47,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "arthur",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-the-deltan-trek-begins",
+    "year": 2166,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 51,
+    "title": "The Deltan trek begins",
+    "description": "Bob begins leading the Deltans back to one of their old settlements in hopes of more food and better shelter and protection from gorilloids.",
+    "firstBook": 1,
+    "chapter": 48,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans",
+      "gorilloids"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-new-zealand-hack-donut-farms-proposed",
+    "year": 2166,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 52,
+    "title": "New Zealand hack; donut farms proposed",
+    "description": "Riker intercepts an attempted hack from New Zealand, discovers the HEAVEN plans were stolen from Australia, and Homer make a breakthrough with plans for donut shaped space stations to use as farmland; FAITH agrees to give up some reserve food for space on 3rd ship.",
+    "firstBook": 1,
+    "chapter": 49,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "faith"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-why-the-deltans-left-camelot",
+    "year": 2166,
+    "month": 6,
+    "day": null,
+    "season": null,
+    "order": 53,
+    "title": "Why the Deltans left Camelot",
+    "description": "Bob intervenes in another gorilloid attack and learns that the Deltans left their old settlement due to the increased gorilloid population in the area but decides that with his help the Deltans will be able to survive there.",
+    "firstBook": 1,
+    "chapter": 50,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans",
+      "gorilloids"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-diana-introduced",
+    "year": 2166,
+    "month": 6,
+    "day": null,
+    "season": null,
+    "order": 54,
+    "title": "Diana introduced",
+    "description": "Bob watches as a new predator attacks the Deltans and is introduced to a potential mate for Archimedes, Diana.",
+    "firstBook": 1,
+    "chapter": 53,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes",
+      "diana"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2166-deltans-reach-camelot",
+    "year": 2166,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 55,
+    "title": "Deltans reach Camelot",
+    "description": "Bob and Marvin supervise as the Deltans finally reach their old/new settlement, Camelot.",
+    "firstBook": 1,
+    "chapter": 55,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2167-marvin-traces-deltan-origins",
+    "year": 2167,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 56,
+    "title": "Marvin traces Deltan origins",
+    "description": "Bob continues to observe the Deltans and teach them more advancing skills while Marvin determines the origin area of the Deltans.",
+    "firstBook": 2,
+    "chapter": 1,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2167-android-bodies-in-development",
+    "year": 2167,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 57,
+    "title": "Android bodies in development",
+    "description": "Bill and Garfield continue working on terraforming Ragnarök as well as creating physical android bodies.",
+    "firstBook": 1,
+    "chapter": 56,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2167-archimedes-learns-how-bob-replicates",
+    "year": 2167,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 58,
+    "title": "Archimedes learns how Bob replicates",
+    "description": "Bob and Archimedes continue to talk and learn more about each other, including how Bob replicates.",
+    "firstBook": 2,
+    "chapter": 3,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2168-donut-farms-inspected",
+    "year": 2168,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 59,
+    "title": "Donut farms inspected",
+    "description": "Riker and Homer inspect the donut space station farms.",
+    "firstBook": 1,
+    "chapter": 52,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2169-beta-hydri-stripped-first-sign-of-the-others",
+    "year": 2169,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 60,
+    "title": "Beta Hydri stripped: first sign of the Others",
+    "description": "Mario arrives at Beta Hydri and finds the system has been cleaned out of all metal as well as the remnants of the alien race that did it (first evidence of The Others), but without any resources he can't create a station to relay word back to Bill so moves on to Zeta Tucanae.",
+    "firstBook": 1,
+    "chapter": 57,
+    "pov": "Mario",
+    "bobsInvolved": [
+      "bill",
+      "mario"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "beta-hydri",
+    "locationLabel": "Beta Hydri",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2169-marvin-reports-an-even-larger-predator",
+    "year": 2169,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 61,
+    "title": "Marvin reports an even larger predator",
+    "description": "Bob gets word from Marvin about an even larger predator that originally hunted the Deltans to almost extinction and they begin looking for it.",
+    "firstBook": 2,
+    "chapter": 9,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2169-archimedes-mating-season",
+    "year": 2169,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 62,
+    "title": "Archimedes' mating season",
+    "description": "Bob teaches Archimedes how to defend himself as mating season begins so that he can partner with Diana, and Marvin finds fresh Deltan remains while Bob informs the Deltans of the new threat.",
+    "firstBook": 2,
+    "chapter": 11,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [
+      "archimedes",
+      "diana"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2170-exodus-1-and-2-assembled",
+    "year": 2170,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 63,
+    "title": "Exodus-1 and -2 assembled",
+    "description": "Riker, Homer, Charles, and Ralph (Arthur's replacement) supervise the final assembly of the first two colony ships Exodus-1 and Exodus-2.",
+    "firstBook": 1,
+    "chapter": 54,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "arthur",
+      "charles",
+      "homer",
+      "ralph",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2170-mulder-discovers-poseidon",
+    "year": 2170,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 64,
+    "title": "Mulder discovers Poseidon",
+    "description": "Mulder (a clone of Bill) arrives at Eta Cassiopeiae and discovers a planet covered in water which he names Poseidon. He sets up an auto factory and creates two clones Skinner and Jonny.",
+    "firstBook": 2,
+    "chapter": 4,
+    "pov": "Mulder",
+    "bobsInvolved": [
+      "jonny",
+      "mulder",
+      "skinner"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "eta-cassiopeiae",
+    "locationLabel": "Eta Cassiopeiae",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2170-vehement-attack-in-the-maldives",
+    "year": 2170,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 65,
+    "title": "VEHEMENT attack in the Maldives",
+    "description": "Riker receives word of another VEHEMENT attack in the Maldives, while Homer admits he has been under reporting the production of the farms to establish a surplus.",
+    "firstBook": 2,
+    "chapter": 14,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2171-bert-ernie-and-howard-created",
+    "year": 2171,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 66,
+    "title": "Bert, Ernie and Howard created",
+    "description": "Riker supervises as the colony ships are loaded and creates Bert and Ernie to fly them, while Charles creates Howard as an escort to Omicron² Eridani.",
+    "firstBook": 1,
+    "chapter": 58,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "bert",
+      "charles",
+      "ernie",
+      "howard",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2171-mulder-joins-bobnet",
+    "year": 2171,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 67,
+    "title": "Mulder joins BobNet",
+    "description": "Mulder receives the SCUT plans and gets connected to BobNet.",
+    "firstBook": 2,
+    "chapter": 6,
+    "pov": "Mulder",
+    "bobsInvolved": [
+      "mulder"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "eta-cassiopeiae",
+    "locationLabel": "Eta Cassiopeiae",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2171-bob-joins-bobnet",
+    "year": 2171,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 68,
+    "title": "Bob joins BobNet",
+    "description": "Bill and Garfield receive word that Bob has joined BobNet, and they all update each other on what's going on.",
+    "firstBook": 2,
+    "chapter": 12,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "bob",
+      "garfield"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2171-a-flying-predator-destroys-a-drone",
+    "year": 2171,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 69,
+    "title": "A flying predator destroys a drone",
+    "description": "Bob and Marvin lose a drone to a flying predator and learn that there is a more dangerous creature to the Deltans than the gorilloids out there.",
+    "firstBook": 2,
+    "chapter": 17,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans",
+      "gorilloids",
+      "hippogriffs"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2171-sam-and-exodus-3",
+    "year": 2171,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 70,
+    "title": "Sam and Exodus-3",
+    "description": "Riker is missing his extended family who are all heading to Omicron² Eridani with another clone Sam on Exodus-3. Riker speaks with Charles about the recent VEHEMENT attacks and consults with the remaining colonists about the possibility of settling on the newly discovered Poseidon.",
+    "firstBook": 2,
+    "chapter": 7,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "charles",
+      "riker",
+      "sam"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2172-first-bob-moot",
+    "year": 2172,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 71,
+    "title": "First Bob-moot",
+    "description": "Bill holds the first Bob-moot in the Bobiverse.",
+    "firstBook": 1,
+    "chapter": 59,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2172-hippogriff-nest-destroyed-bob-told-to-leave",
+    "year": 2172,
+    "month": 6,
+    "day": null,
+    "season": null,
+    "order": 72,
+    "title": "Hippogriff nest destroyed; Bob told to leave",
+    "description": "Bob and Marvin finally engage with one of the flying predators, calling them hippogriffs, and help to deal with a large-scale attack on the Deltans. Marvin finds their nest, and Bob drops a ship buster on it destroying the colony. The Deltans tell Bob to leave after seeing this show of destruction.",
+    "firstBook": 2,
+    "chapter": 19,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans",
+      "hippogriffs"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2172-riker-deals-with-another-vehement-attack",
+    "year": 2172,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 73,
+    "title": "Riker deals with another VEHEMENT attack",
+    "description": "Riker deals with another VEHEMENT attack.",
+    "firstBook": 2,
+    "chapter": 18,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2173-marvin-leaves-for-pi-orionis",
+    "year": 2173,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 74,
+    "title": "Marvin leaves for Pi³ Orionis",
+    "description": "Bob visits alone with Archimedes. Afterwards Marvin decides to leave and heads out to Pi³ Orionis.",
+    "firstBook": 2,
+    "chapter": 22,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "marvin"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2174-milo-s-last-transmission-received",
+    "year": 2174,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 75,
+    "title": "Milo's last transmission received",
+    "description": "Bill receives Milo's last transmission from 82 Eridani.",
+    "firstBook": 1,
+    "chapter": 51,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "milo"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2174-pete-and-victor-depart",
+    "year": 2174,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 76,
+    "title": "Pete and Victor depart",
+    "description": "Bob visits Marvin in VR and lets him know that his two new clones, Pete and Victor are preparing to head out. Pete plans to go his own way, while Victor plans to follow Bender to find out what happened to him.",
+    "firstBook": 2,
+    "chapter": 24,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bender",
+      "bob",
+      "marvin",
+      "pete",
+      "victor"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Pete's parent isn't confirmed; the author's genealogy lists Victor only.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2174-another-vehement-attack",
+    "year": 2174,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 77,
+    "title": "Another VEHEMENT attack",
+    "description": "Riker, Charles, and Homer deal with another VEHEMENT attack.",
+    "firstBook": 2,
+    "chapter": 21,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "charles",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2175-vehement-destroys-a-farm-donut",
+    "year": 2175,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 78,
+    "title": "VEHEMENT destroys a farm donut",
+    "description": "Riker and Homer look on at the remains of one of the farming donuts that has been blown up by VEHEMENT.",
+    "firstBook": 2,
+    "chapter": 23,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2175-riker-detects-an-encrypted-signal-from-new-zeala",
+    "year": 2175,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 79,
+    "title": "Riker detects an encrypted signal from New Zealand to Homer",
+    "description": "Riker detects an encrypted signal from New Zealand to Homer.",
+    "firstBook": 2,
+    "chapter": 26,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2175-homer-hacked-by-vehement",
+    "year": 2175,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 80,
+    "title": "Homer hacked by VEHEMENT",
+    "description": "Riker and Charles discover that VEHEMENT have infected and taken total control of Homer. They clean out the infection and track back the signal to VEHEMENT headquarters.",
+    "firstBook": 2,
+    "chapter": 28,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "charles",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2176-homer-self-deactivates",
+    "year": 2176,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 81,
+    "title": "Homer self-deactivates",
+    "description": "Riker learns from Charles that Homer has self-deactivated and deleted all his backups.",
+    "firstBook": 2,
+    "chapter": 37,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "charles",
+      "homer",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2176-zeta-tucanae-a-murdered-civilization",
+    "year": 2176,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 82,
+    "title": "Zeta Tucanae: a murdered civilization",
+    "description": "Mario arrives at Zeta Tucanae and finds the remnants of an entire industrial civilization that has been wiped out by the Others.",
+    "firstBook": 2,
+    "chapter": 10,
+    "pov": "Mario",
+    "bobsInvolved": [
+      "mario"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "zeta-tucanae",
+    "locationLabel": "Zeta Tucanae",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2178-riker-finds-the-vehement-leader",
+    "year": 2178,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 83,
+    "title": "Riker finds the VEHEMENT leader",
+    "description": "Riker finds the VEHEMENT leader.",
+    "firstBook": 2,
+    "chapter": 40,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2178-luke-visits-from-kappa-ceti",
+    "year": 2178,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 84,
+    "title": "Luke visits from Kappa Ceti",
+    "description": "Bob continues to monitor the Deltans and gets a surprise visit from Luke at Kappa Ceti.",
+    "firstBook": 2,
+    "chapter": 27,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob",
+      "luke"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2178-riker-kills-vickers",
+    "year": 2178,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 85,
+    "title": "Riker kills Vickers",
+    "description": "Riker takes out the leader of VEHEMENT, Vickers, and their HQ after learning that Vickers invented replicant systems.",
+    "firstBook": 2,
+    "chapter": 43,
+    "pov": "Riker",
+    "bobsInvolved": [
+      "riker"
+    ],
+    "charactersInvolved": [
+      "vehement",
+      "vickers"
+    ],
+    "speciesInvolved": [],
+    "systemId": "sol",
+    "locationLabel": "Sol",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2178-linus-returns-klown-kar-planet",
+    "year": 2178,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 86,
+    "title": "Linus returns; Klown Kar Planet",
+    "description": "Bill connects with Linus who is arriving back at Epsilon Eridani, is introduced to Henry Roberts, and learns of Klown Kar Planet (KKP), a habitable satellite around the Jovian in Epsilon Indi.",
+    "firstBook": 2,
+    "chapter": 32,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "linus"
+    ],
+    "charactersInvolved": [
+      "henry-roberts"
+    ],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2180-buster-takes-a-mate",
+    "year": 2180,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 87,
+    "title": "Buster takes a mate",
+    "description": "Bob observes as Archimedes' son Buster takes a mate and the Deltan population continues to grow, causing fissures in society and leading to gang activity.",
+    "firstBook": 2,
+    "chapter": 33,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes",
+      "buster"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2180-mario-at-gl-54-four-new-clones",
+    "year": 2180,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 88,
+    "title": "Mario at GL 54: four new clones",
+    "description": "Mario arrives at GL 54 and finds it untouched by the Others. He creates four new clones, Bashful, Dopey, Sleepy, and Hungry and the four new clones decide to head out in different directions to try to find the range of the Others.",
+    "firstBook": 2,
+    "chapter": 13,
+    "pov": "Mario",
+    "bobsInvolved": [
+      "bashful",
+      "dopey",
+      "hungry",
+      "mario",
+      "sleepy"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-54",
+    "locationLabel": "Gliese 54",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2180-mario-joins-bobnet",
+    "year": 2180,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 89,
+    "title": "Mario joins BobNet",
+    "description": "Mario receives the SCUT plans and gets connected to BobNet.",
+    "firstBook": 2,
+    "chapter": 15,
+    "pov": "Mario",
+    "bobsInvolved": [
+      "mario"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "gliese-54",
+    "locationLabel": "Gliese 54",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2182-deltan-riots",
+    "year": 2182,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 90,
+    "title": "Deltan riots",
+    "description": "Bob watches as a riot occurs among the Deltans, then he and Archimedes begin planning to repopulate one of the abandoned Deltan villages.",
+    "firstBook": 2,
+    "chapter": 41,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2182-caerleon-founded",
+    "year": 2182,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 91,
+    "title": "Caerleon founded",
+    "description": "Bobs watches as Archimedes along with the Deltan council convince the gangs to leave and form a second village, Caerleon.",
+    "firstBook": 2,
+    "chapter": 47,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2183-bob-watches-as-archimedes-family-continues-to-gr",
+    "year": 2183,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 92,
+    "title": "Bob watches as Archimedes' family continues to grow",
+    "description": "Bob watches as Archimedes' family continues to grow.",
+    "firstBook": 2,
+    "chapter": 56,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2185-first-battle-of-82-eridani",
+    "year": 2185,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 93,
+    "title": "First Battle of 82 Eridani",
+    "description": "Khan and seven other Bill clones (Hannibal, Tom, Barney, Fred, Kyle/Jackson, Ned/Hector, and Elmer) arrive at 82 Eridani to avenge Milo with several upgrades provided by Bill (plasma spikes). They manage to take out all active Medeiros probes but not the auto factories. Khan is the only Bob to survive and escape.",
+    "firstBook": 1,
+    "chapter": 60,
+    "pov": "Khan",
+    "bobsInvolved": [
+      "barney",
+      "bill",
+      "elmer",
+      "fred",
+      "hannibal",
+      "khan",
+      "kyle",
+      "ned",
+      "tom"
+    ],
+    "charactersInvolved": [
+      "major-ernesto-medeiros"
+    ],
+    "speciesInvolved": [],
+    "systemId": "82-eridani",
+    "locationLabel": "82 Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Kyle and Ned are called 'Jackson' and 'Hector' in this chapter; the author confirmed this was a naming error.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2185-bullwinkle-loki-to-lead-second-strike",
+    "year": 2185,
+    "month": 6,
+    "day": null,
+    "season": null,
+    "order": 94,
+    "title": "Bullwinkle; Loki to lead second strike",
+    "description": "Bill tests the first android prototype called Bullwinkle, then heads to a VR session with the Bobs that are leading the next charge against Medeiros at 85 Eridani. A backup of Khan, named Loki, is leading. Bill hosts another moot and introduces Henry Roberts to the rest of the Bobs.",
+    "firstBook": 2,
+    "chapter": 34,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "khan",
+      "loki"
+    ],
+    "charactersInvolved": [
+      "bullwinkle",
+      "henry-roberts",
+      "major-ernesto-medeiros"
+    ],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "The timeline says '85 Eridani', a typo for 82 Eridani.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2187-surge-mover-plates",
+    "year": 2187,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 95,
+    "title": "SURGE mover plates",
+    "description": "Bill demonstrates to Garfield a working asteroid moving system using SURGE pusher plates.",
+    "firstBook": 2,
+    "chapter": 36,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2187-bashful-lost-at-gl-877",
+    "year": 2187,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 96,
+    "title": "Bashful lost at GL 877",
+    "description": "Bashful arrives at GL 877 and discovers Others activity before being taken offline and self-destructs.",
+    "firstBook": 2,
+    "chapter": 30,
+    "pov": "Bashful",
+    "bobsInvolved": [
+      "bashful"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-877",
+    "locationLabel": "Gliese 877",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2188-hal-finds-the-others-homeworld",
+    "year": 2188,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 97,
+    "title": "Hal finds the Others' homeworld",
+    "description": "Hal arrives at GL 877 after receiving Bashful's last transmission and finds the Others home system. The Others detect him, and he is taken offline and self-destructs.",
+    "firstBook": 2,
+    "chapter": 38,
+    "pov": "Hal",
+    "bobsInvolved": [
+      "bashful",
+      "hal"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-877",
+    "locationLabel": "Gliese 877",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2188-moot-on-the-others-threat",
+    "year": 2188,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 98,
+    "title": "Moot on the Others threat",
+    "description": "Bill hosts a moot to discuss the threat from the Others.",
+    "firstBook": 2,
+    "chapter": 39,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2188-colony-ships-reach-omicron-eridani",
+    "year": 2188,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 99,
+    "title": "Colony ships reach Omicron² Eridani",
+    "description": "Howard, Bert, and Ernie all arrive at Omicron² Eridani and begin helping to colonize Vulcan.",
+    "firstBook": 1,
+    "chapter": 61,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "bert",
+      "ernie",
+      "howard"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2188-raptors-attack-landing",
+    "year": 2188,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 100,
+    "title": "Raptors attack Landing",
+    "description": "Howard works on setting up surveillance and fencing due to local fauna (called raptors) attacking the colony site.",
+    "firstBook": 2,
+    "chapter": 2,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "raptors"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2188-landing-colony-established",
+    "year": 2188,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 101,
+    "title": "Landing colony established",
+    "description": "Howard continues supervising the setup of the first colony site, called Landing. Security fencing is set up to protect against the raptors, while Bert and Ernie, now with permission to begin offloading, are eager to return to Earth for more colonists.",
+    "firstBook": 2,
+    "chapter": 5,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "bert",
+      "ernie",
+      "howard"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "raptors"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2189-rocky-the-flying-android",
+    "year": 2189,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 102,
+    "title": "Rocky, the flying android",
+    "description": "Bill hosts a scrub baseball game with several other Bobs, and after they retire to the VR pub where they talk about the benefits of android bodies and the possible limits of mover plates. Then Bill watches Garfield test his flying android called Rocky.",
+    "firstBook": 2,
+    "chapter": 44,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "garfield"
+    ],
+    "charactersInvolved": [
+      "rocky"
+    ],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2189-romulus-colonized-via-exodus-3",
+    "year": 2189,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 103,
+    "title": "Romulus colonized via Exodus-3",
+    "description": "Howard supervises the creation of orbital farms, while Sam with Exodus-3 arrives and begins dropping his colonists on Romulus. Howard works at negotiations between all the colonists.",
+    "firstBook": 2,
+    "chapter": 8,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard",
+      "sam"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2189-howard-meets-with-bill-and-bob",
+    "year": 2189,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 104,
+    "title": "Howard meets with Bill and Bob",
+    "description": "Howard continues supervising the security of Landing, then has a meeting with Bill and Bob, before contacting Col. Butterworth to inform him about the Others.",
+    "firstBook": 2,
+    "chapter": 16,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "bill",
+      "bob",
+      "howard"
+    ],
+    "charactersInvolved": [
+      "col-george-butterworth"
+    ],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2189-cupid-bugs-julia-revived",
+    "year": 2189,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 105,
+    "title": "Cupid bugs; Julia revived",
+    "description": "Howard learns about an egg-laying parasite called a Cupid Bug that has been discovered on Vulcan. Then the colonization of Romulus begins, and Julia and the rest of the extended Bob family are brought out of stasis.",
+    "firstBook": 2,
+    "chapter": 20,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "julia-hendricks"
+    ],
+    "speciesInvolved": [
+      "cupid-bugs"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2189-howard-meets-bridget",
+    "year": 2189,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 106,
+    "title": "Howard meets Bridget",
+    "description": "Howard meets Dr. Bridget Sheehy.",
+    "firstBook": 2,
+    "chapter": 25,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2190-rudy-and-edwin-reach-kkp",
+    "year": 2190,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 107,
+    "title": "Rudy and Edwin reach KKP",
+    "description": "Rudy and Edwin (clones of Riker) arrive at KKP with colonists on Exodus-6. Edwin will return to Earth to collect more colonists while Rudy will stay behind to manage the settlement.",
+    "firstBook": 2,
+    "chapter": 46,
+    "pov": "Rudy",
+    "bobsInvolved": [
+      "edwin",
+      "rudy"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-indi",
+    "locationLabel": "Epsilon Indi",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2190-howard-deals-with-another-raptor-attack-on-landi",
+    "year": 2190,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 108,
+    "title": "Howard deals with another raptor attack on Landing",
+    "description": "Howard deals with another raptor attack on Landing.",
+    "firstBook": 2,
+    "chapter": 29,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "raptors"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2191-whiskey-and-st-phane",
+    "year": 2191,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 109,
+    "title": "Whiskey and Stéphane",
+    "description": "Howard rolls out AMI-controlled surveillance drones to manage the Cupid bug, then has Bridget test his first batch of whiskey and introduces her to Stéphane.",
+    "firstBook": 2,
+    "chapter": 31,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [
+      "cupid-bugs"
+    ],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2192-howard-and-bridget-s-whiskey-first-date",
+    "year": 2192,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 110,
+    "title": "Howard and Bridget's whiskey; first 'date'",
+    "description": "Howard and Bridget produce an acceptable batch of whiskey and then have their first \"date.\"",
+    "firstBook": 2,
+    "chapter": 35,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2193-distillery-talk-with-bridget-and-st-phane",
+    "year": 2193,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 111,
+    "title": "Distillery talk with Bridget and Stéphane",
+    "description": "Howard chats with Bridget and Stéphane about distillery business and life as a replicant.",
+    "firstBook": 2,
+    "chapter": 42,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2193-howard-and-riker-begin-looking-into-replicant-te",
+    "year": 2193,
+    "month": 8,
+    "day": null,
+    "season": null,
+    "order": 112,
+    "title": "Howard and Riker begin looking into replicant tech",
+    "description": "Howard and Riker begin looking into replicant tech.",
+    "firstBook": 2,
+    "chapter": 45,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard",
+      "riker"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2193-bridget-s-tumor-surgery",
+    "year": 2193,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 113,
+    "title": "Bridget's tumor surgery",
+    "description": "Howard stresses as Bridget undergoes surgery to remove a tumor and he sees how close she and Stéphane have become.",
+    "firstBook": 2,
+    "chapter": 48,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2195-archimedes-becomes-a-grandfather",
+    "year": 2195,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 114,
+    "title": "Archimedes becomes a grandfather",
+    "description": "Bob watches as Archimedes becomes a grandfather.",
+    "firstBook": 2,
+    "chapter": 65,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2195-marcus-and-monty-reach-poseidon",
+    "year": 2195,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 115,
+    "title": "Marcus and Monty reach Poseidon",
+    "description": "Mulder greets Marcus and Monty as they arrive at Poseidon with another colony transport. Marcus will stay and eventually take over managing the colony site, while Monty will return to Earth for more colonists.",
+    "firstBook": 2,
+    "chapter": 49,
+    "pov": "Mulder",
+    "bobsInvolved": [
+      "marcus",
+      "monty",
+      "mulder"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "eta-cassiopeiae",
+    "locationLabel": "Eta Cassiopeiae",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2195-bridget-and-st-phane-wed-howard-leaves",
+    "year": 2195,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 116,
+    "title": "Bridget and Stéphane wed; Howard leaves",
+    "description": "Howard attends Bridget and Stéphane's wedding then signs over the whiskey business to them as a wedding present and leaves. Dexter agrees to take over management of the system after escorting Exodus-7 to Vulcan.",
+    "firstBook": 2,
+    "chapter": 51,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "dexter",
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2195-second-battle-of-82-eridani",
+    "year": 2195,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 117,
+    "title": "Second Battle of 82 Eridani",
+    "description": "Loki leads the follow up strike against Medeiros (named replicants include Loki, Elmer, Jeffery, Milton, Zeke, Verne, Surly, and Hank, with four remaining unnamed) at 82 Eridani and wins. They discover three habitable locations: two planets and a moon.",
+    "firstBook": 2,
+    "chapter": 50,
+    "pov": "Loki",
+    "bobsInvolved": [
+      "elmer",
+      "hank",
+      "jeffrey",
+      "loki",
+      "milton",
+      "surly",
+      "verne",
+      "zeke"
+    ],
+    "charactersInvolved": [
+      "major-ernesto-medeiros"
+    ],
+    "speciesInvolved": [],
+    "systemId": "82-eridani",
+    "locationLabel": "82 Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2195-talk-of-a-bender-expedition",
+    "year": 2195,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 118,
+    "title": "Talk of a Bender expedition",
+    "description": "Bill receives the report back from 82 Eridani, notices the tendency of new Bobs voicing an unwillingness to help humanity, and talk of sending an expedition for Bender begins.",
+    "firstBook": 2,
+    "chapter": 52,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bender",
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2196-hal-scouts-gl-877-again",
+    "year": 2196,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 119,
+    "title": "Hal scouts GL 877 again",
+    "description": "Hal returns to GL 877 and scouts the Others in the system then turns around to head back to GL 54.",
+    "firstBook": 2,
+    "chapter": 53,
+    "pov": "Hal",
+    "bobsInvolved": [
+      "hal"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-877",
+    "locationLabel": "Gliese 877",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "Hal self-destructed in 2188 (ch. 38). How he survives is uncertain; probably a restored backup.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2197-warning-the-others-head-for-gl-54",
+    "year": 2197,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 120,
+    "title": "Warning: the Others head for GL 54",
+    "description": "Hal receives a transmission from Bill that the Others are heading towards GL 54.",
+    "firstBook": 2,
+    "chapter": 54,
+    "pov": "Hal",
+    "bobsInvolved": [
+      "bill",
+      "hal"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": null,
+    "locationLabel": "On Route to Gliese 54",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2198-news-from-vulcan-howie-born",
+    "year": 2198,
+    "month": 7,
+    "day": null,
+    "season": null,
+    "order": 121,
+    "title": "News from Vulcan; Howie born",
+    "description": "Howard receives updates from Dexter about how the Vulcan and Romulus colonies are doing. The FAITH colony has removed Cranston from power, Butterworth has retired, and Bridget and Stéphane had a son and named him Howie.",
+    "firstBook": 2,
+    "chapter": 58,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "dexter",
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "col-george-butterworth",
+      "faith",
+      "howie-brodeur",
+      "minister-cranston",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": null,
+    "locationLabel": "Interstellar Space",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2201-mulder-leaves-poseidon",
+    "year": 2201,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 122,
+    "title": "Mulder leaves Poseidon",
+    "description": "Mulder leaves Poseidon, with Marcus staying behind as the Bob-in-residence and Monty returning to Earth for more colonists.",
+    "firstBook": 2,
+    "chapter": 62,
+    "pov": "Mulder",
+    "bobsInvolved": [
+      "marcus",
+      "monty",
+      "mulder"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "eta-cassiopeiae",
+    "locationLabel": "Eta Cassiopeiae",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2204-first-contact-attempt-with-the-others",
+    "year": 2204,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 123,
+    "title": "First contact attempt with the Others",
+    "description": "Bill uses a probe left behind by Mario, who is now fleeing to Zeta Tucanae, to make first contact with the Others.",
+    "firstBook": 2,
+    "chapter": 55,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "mario"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-54",
+    "locationLabel": "Gliese 54",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2204-moot-images-of-the-others",
+    "year": 2204,
+    "month": 10,
+    "day": null,
+    "season": null,
+    "order": 124,
+    "title": "Moot: images of the Others",
+    "description": "Bill holds a moot to discuss the Others and reveal images taken of them from GL 54.",
+    "firstBook": 2,
+    "chapter": 57,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "gliese-54",
+    "locationLabel": "Gliese 54",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2205-others-expedition-to-nn-4285",
+    "year": 2205,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 125,
+    "title": "Others expedition to NN 4285",
+    "description": "Bill receives reports from surveillance drones at GL 577 that the Others have launched another expedition, this time to NN 4285. Mario clones Claude and Jacques are heading towards Gamma Pavonis and Delta Pavonis, the next closest systems. Bill tells Claude to start mobilizing for war when he gets there, just in case.",
+    "firstBook": 2,
+    "chapter": 59,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill",
+      "claude",
+      "jacques",
+      "mario"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "The timeline says 'GL 577', probably a typo for GL 877.",
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2205-claude-at-gamma-pavonis",
+    "year": 2205,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 126,
+    "title": "Claude at Gamma Pavonis",
+    "description": "Claude arrives in Gamma Pavonis and finds an excellent planet for colonization.",
+    "firstBook": 2,
+    "chapter": 60,
+    "pov": "Claude",
+    "bobsInvolved": [
+      "claude"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "gamma-pavonis",
+    "locationLabel": "Gamma Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2205-oliver-activated-at-alpha-centauri",
+    "year": 2205,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 127,
+    "title": "Oliver activated at Alpha Centauri",
+    "description": "Oliver (a clone of Bill's) is brought online at Alpha Centauri via a SCUT transmitted backup and begins building an armada.",
+    "firstBook": 2,
+    "chapter": 61,
+    "pov": "Oliver",
+    "bobsInvolved": [
+      "oliver"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [],
+    "systemId": "alpha-centauri",
+    "locationLabel": "Alpha Centauri",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2207-jacques-discovers-the-pav",
+    "year": 2207,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 128,
+    "title": "Jacques discovers the Pav",
+    "description": "Jacques discovers intelligent life (Pavs) at Delta Pavonis 4.",
+    "firstBook": 2,
+    "chapter": 63,
+    "pov": "Jacques",
+    "bobsInvolved": [
+      "jacques"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "pav"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2207-bill-hosts-another-moot-to-discuss-the-others",
+    "year": 2207,
+    "month": 3,
+    "day": null,
+    "season": null,
+    "order": 129,
+    "title": "Bill hosts another moot to discuss the Others",
+    "description": "Bill hosts another moot to discuss the Others.",
+    "firstBook": 2,
+    "chapter": 64,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2208-others-convoy-heads-for-delta-pavonis",
+    "year": 2208,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 130,
+    "title": "Others convoy heads for Delta Pavonis",
+    "description": "Bills received an alert that the Others have launched a convoy towards Delta Pavonis. A moot is held, and reinforcements are launched to Delta Pavonis.",
+    "firstBook": 2,
+    "chapter": 66,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "epsilon-eridani",
+    "locationLabel": "Epsilon Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2210-howard-at-hip-14101",
+    "year": 2210,
+    "month": 12,
+    "day": null,
+    "season": null,
+    "order": 131,
+    "title": "Howard at HIP 14101",
+    "description": "Howard arrives at HIP 14101 and begins exploring a Jovian planet in the system, then receives word from Dexter that Stéphane is dying. Howard contacts Bill about a human android prototype.",
+    "firstBook": 2,
+    "chapter": 67,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "bill",
+      "dexter",
+      "howard"
+    ],
+    "charactersInvolved": [
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": "hip-14101",
+    "locationLabel": "HIP 14101",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2211-st-phane-s-funeral-via-manny",
+    "year": 2211,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 132,
+    "title": "Stéphane's funeral via Manny",
+    "description": "Howard uses the human android prototype (Manny) to attend Stéphane's funeral.",
+    "firstBook": 2,
+    "chapter": 69,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "manny",
+      "stephane-brodeur"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2211-butterworth-agrees-to-replication",
+    "year": 2211,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 133,
+    "title": "Butterworth agrees to replication",
+    "description": "Howard convinces Col. Butterworth to be replicated upon death, but Bridget refuses.",
+    "firstBook": 2,
+    "chapter": 70,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy",
+      "col-george-butterworth"
+    ],
+    "speciesInvolved": [],
+    "systemId": "omicron2-eridani",
+    "locationLabel": "Omicron² Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2212-jacques-catalogs-the-pav-s-planet-and-society",
+    "year": 2212,
+    "month": 9,
+    "day": null,
+    "season": null,
+    "order": 134,
+    "title": "Jacques catalogs the Pav's planet and society",
+    "description": "Jacques catalogs the Pav's planet and society.",
+    "firstBook": 2,
+    "chapter": 68,
+    "pov": "Jacques",
+    "bobsInvolved": [
+      "jacques"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "pav"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2213-bob-s-deltan-android",
+    "year": 2213,
+    "month": 6,
+    "day": null,
+    "season": null,
+    "order": 135,
+    "title": "Bob's Deltan android",
+    "description": "Bob refines the android prototype and creates a Deltan variant to visit Archimedes on Eden.",
+    "firstBook": 2,
+    "chapter": 71,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes"
+    ],
+    "speciesInvolved": [
+      "deltans"
+    ],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2216-howard-meets-bridget-in-an-android",
+    "year": 2216,
+    "month": 1,
+    "day": null,
+    "season": null,
+    "order": 136,
+    "title": "Howard meets Bridget in an android",
+    "description": "Howard uses a more refined and realistic android to meet with Bridget.",
+    "firstBook": 2,
+    "chapter": 75,
+    "pov": "Howard",
+    "bobsInvolved": [
+      "howard"
+    ],
+    "charactersInvolved": [
+      "bridget-sheehy"
+    ],
+    "speciesInvolved": [],
+    "systemId": "hip-14101",
+    "locationLabel": "HIP 14101",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2217-first-battle-against-the-others-fails",
+    "year": 2217,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 137,
+    "title": "First battle against the Others fails",
+    "description": "Bill directs the first real attack against the Others and fails at taking them all out. The Others decide to go after Sol and Epsilon Eridani next.",
+    "firstBook": 2,
+    "chapter": 72,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2217-phineas-and-ferb-rescue-20-000-pav",
+    "year": 2217,
+    "month": 2,
+    "day": null,
+    "season": null,
+    "order": 138,
+    "title": "Phineas and Ferb rescue 20,000 Pav",
+    "description": "Phineas and Ferb (clones of Jacques) rescue 20,000 Pav and put them into stasis onboard Refuge-1 and Refuge-2.",
+    "firstBook": 2,
+    "chapter": 73,
+    "pov": "Phineas",
+    "bobsInvolved": [
+      "ferb",
+      "phineas"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "pav"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2217-delta-pavonis-destroyed",
+    "year": 2217,
+    "month": 5,
+    "day": null,
+    "season": null,
+    "order": 139,
+    "title": "Delta Pavonis destroyed",
+    "description": "Bill observes the Others destroy Delta Pavonis, then has an idea on how to deal with the Others permanently.",
+    "firstBook": 2,
+    "chapter": 74,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [],
+    "speciesInvolved": [
+      "others"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2220-diana-s-funeral",
+    "year": 2220,
+    "month": 11,
+    "day": null,
+    "season": null,
+    "order": 140,
+    "title": "Diana's funeral",
+    "description": "Bob attends the funeral of Diana, Archimedes' wife, and notes how old Archimedes is now.",
+    "firstBook": 2,
+    "chapter": 76,
+    "pov": "Bob",
+    "bobsInvolved": [
+      "bob"
+    ],
+    "charactersInvolved": [
+      "archimedes",
+      "diana"
+    ],
+    "speciesInvolved": [],
+    "systemId": "delta-eridani",
+    "locationLabel": "Delta Eridani",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "confidence": "confirmed"
+  },
+  {
+    "id": "2221-the-pav-choose-hip-84051",
+    "year": 2221,
+    "month": 4,
+    "day": null,
+    "season": null,
+    "order": 141,
+    "title": "The Pav choose HIP 84051",
+    "description": "Bill observes as the Others finish stripping Delta Pavonis and leave. He then wakes Hazjiar and 7 other Pav to ask them if they want to return to their home planet (called Aszjan) or find a new one. They choose to find a new home and start heading for HIP 84051.",
+    "firstBook": 2,
+    "chapter": 77,
+    "pov": "Bill",
+    "bobsInvolved": [
+      "bill"
+    ],
+    "charactersInvolved": [
+      "hazjiar"
+    ],
+    "speciesInvolved": [
+      "others",
+      "pav"
+    ],
+    "systemId": "delta-pavonis",
+    "locationLabel": "Delta Pavonis",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "notes": "The wiki's character pages put Hazjiar's choice in book 3; the timeline says book 2, ch. 77. Marked uncertain.",
+    "confidence": "uncertain"
+  }
+]
