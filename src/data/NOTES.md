@@ -54,3 +54,35 @@ Scope: *We Are Legion (We Are Bob)* (2016) and *For We Are Many* (2017). Anythin
 - Author genealogy: http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/
 - Kurt Anderson's chart: http://www.kurt-anderson.com/main/uploads/2017/04/Bob-by-construction.pdf
 - Wikipedia star articles (linked per system) and Wikidata Q86704518.
+
+## Star map data sync (vs thunfischtoast/bobiverse-map)
+
+Compared the reference map’s books 1–2 data to this companion (2026-11).
+
+### Added (map-oriented, CC BY-SA adapted)
+- `travels.json` — 46 explicit travel legs with fractional depart/arrive years (the
+  largest gap vs our previous inferred `bobLocations.ts` segments).
+- `mapPresence.json` — created / initial system / destroyed years for map animation.
+- `mapEvents.json` — short event-log lines for the canvas UI.
+- Map-only identities: `loki-plus-4` (group of 4 unnamed strike Bobs), `elmer-2`
+  (second-strike Elmer distinct from Khan’s first-strike Elmer).
+
+### Corrected / filled from the reference (into map presence)
+- Destroyed years for Milo (2165.6), Arthur (2166.1), Homer (2176.6), Bashful (2187.8),
+  Hal (2188.4), Khan’s first-strike cohort (2185.3), and Jeffrey/Milton/Zeke (2195.8).
+- Hal’s initial map system set to Gliese 54 (travels depart there; ref listed EE).
+
+### Kept ours (deliberately not copying reference)
+- Astrometry: our Gaia-based `raDeg`/`decDeg`/`galacticXYZly` (ref used rounded RA hours).
+- NN 4285 kept as unplottable (ref omitted it).
+- Thor kept (author genealogy; absent from the reference map).
+- Parent links where our NOTES cite author genealogy / wiki conflicts (e.g. Claude→Mario,
+  Dexter→Charles, Sam→Riker uncertain) — reference differs on some of these; we did not
+  overwrite site `bobs.json` parents solely from the map.
+- Did **not** add Ragnarok or Odin as star systems (planet/colony names; book-3-leaning
+  placeholders in the reference).
+- Did **not** add Jackson/Hector as separate Bobs (our NOTES: naming aliases for Kyle/Ned).
+
+### Removed
+- `src/data/bobLocations.ts` — superseded by explicit travels + presence for the map.
+  No other site feature depended on it.
