@@ -1,0 +1,484 @@
+{
+  "_comment": "Map presence metadata (created/at/destroyed) adapted from thunfischtoast/bobiverse-map (CC BY-SA 4.0), books 1\u20132. mapOnly entries exist for the map only.",
+  "presence": [
+    {
+      "bobId": "bob",
+      "created": 2133.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Bob"
+    },
+    {
+      "bobId": "bill",
+      "created": 2145.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Bill"
+    },
+    {
+      "bobId": "riker",
+      "created": 2145.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Riker"
+    },
+    {
+      "bobId": "milo",
+      "created": 2145.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2165.6,
+      "firstBook": 1,
+      "refName": "Milo"
+    },
+    {
+      "bobId": "mario",
+      "created": 2145.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Mario"
+    },
+    {
+      "bobId": "homer",
+      "created": 2145.9,
+      "at": "epsilon-eridani",
+      "destroyed": 2176.6,
+      "firstBook": 1,
+      "refName": "Homer"
+    },
+    {
+      "bobId": "garfield",
+      "created": 2145.9,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Garfield"
+    },
+    {
+      "bobId": "calvin",
+      "created": 2150.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Calvin"
+    },
+    {
+      "bobId": "goku",
+      "created": 2150.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Goku"
+    },
+    {
+      "bobId": "linus",
+      "created": 2150.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Linus"
+    },
+    {
+      "bobId": "marvin",
+      "created": 2165.0,
+      "at": "delta-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Marvin"
+    },
+    {
+      "bobId": "luke",
+      "created": 2165.0,
+      "at": "delta-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Luke"
+    },
+    {
+      "bobId": "bender",
+      "created": 2165.0,
+      "at": "delta-eridani",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Bender"
+    },
+    {
+      "bobId": "arthur",
+      "created": 2158.0,
+      "at": "sol",
+      "destroyed": 2166.1,
+      "firstBook": 1,
+      "refName": "Arthur"
+    },
+    {
+      "bobId": "charles",
+      "created": 2158.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Charles"
+    },
+    {
+      "bobId": "howard",
+      "created": 2171.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Howard"
+    },
+    {
+      "bobId": "ralph",
+      "created": 2170.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Ralph"
+    },
+    {
+      "bobId": "bert",
+      "created": 2171.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Bert"
+    },
+    {
+      "bobId": "ernie",
+      "created": 2171.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 1,
+      "refName": "Ernie"
+    },
+    {
+      "bobId": "mulder",
+      "created": 2160.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Mulder"
+    },
+    {
+      "bobId": "skinner",
+      "created": 2170.0,
+      "at": "eta-cassiopeiae",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Skinner"
+    },
+    {
+      "bobId": "jonny",
+      "created": 2170.0,
+      "at": "eta-cassiopeiae",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Johnny Quest"
+    },
+    {
+      "bobId": "khan",
+      "created": 2180.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Khan"
+    },
+    {
+      "bobId": "bashful",
+      "created": 2180.0,
+      "at": "gliese-54",
+      "destroyed": 2187.8,
+      "firstBook": 2,
+      "refName": "Bashful"
+    },
+    {
+      "bobId": "hal",
+      "created": 2185.0,
+      "at": "gliese-54",
+      "destroyed": 2188.4,
+      "firstBook": 2,
+      "refName": "Hal",
+      "notes": " Initial system set to Gliese 54 (Mario branch); ref listed EE but travels depart Gliese 54."
+    },
+    {
+      "bobId": "pete",
+      "created": 2174.0,
+      "at": "delta-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Pete"
+    },
+    {
+      "bobId": "victor",
+      "created": 2174.0,
+      "at": "delta-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Victor"
+    },
+    {
+      "bobId": "bart",
+      "created": 2165.0,
+      "at": "alpha-centauri",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Bart"
+    },
+    {
+      "bobId": "claude",
+      "created": 2200.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Claude"
+    },
+    {
+      "bobId": "jacques",
+      "created": 2207.0,
+      "at": "gamma-pavonis",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Jacques"
+    },
+    {
+      "bobId": "oliver",
+      "created": 2205.0,
+      "at": "alpha-centauri",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Oliver"
+    },
+    {
+      "bobId": "loki",
+      "created": 2190.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Loki"
+    },
+    {
+      "bobId": "dexter",
+      "created": 2195.0,
+      "at": "omicron2-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Dexter"
+    },
+    {
+      "bobId": "sam",
+      "created": 2171.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Sam"
+    },
+    {
+      "bobId": "rudy",
+      "created": 2188.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Rudy"
+    },
+    {
+      "bobId": "edwin",
+      "created": 2188.0,
+      "at": "sol",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Edwin"
+    },
+    {
+      "bobId": "monty",
+      "created": 2193.0,
+      "at": "eta-cassiopeiae",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Monty"
+    },
+    {
+      "bobId": "hannibal",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Hannibal"
+    },
+    {
+      "bobId": "tom",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Tom"
+    },
+    {
+      "bobId": "barney",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Barney"
+    },
+    {
+      "bobId": "fred",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Fred B."
+    },
+    {
+      "bobId": "elmer",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Elmer"
+    },
+    {
+      "bobId": "kyle",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Kyle"
+    },
+    {
+      "bobId": "ned",
+      "created": 2182.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2185.3,
+      "firstBook": 2,
+      "refName": "Ned"
+    },
+    {
+      "bobId": "verne",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Vern"
+    },
+    {
+      "bobId": "jeffrey",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2195.8,
+      "firstBook": 2,
+      "refName": "Jeffrey"
+    },
+    {
+      "bobId": "milton",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2195.8,
+      "firstBook": 2,
+      "refName": "Milton"
+    },
+    {
+      "bobId": "zeke",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": 2195.8,
+      "firstBook": 2,
+      "refName": "Zeke"
+    },
+    {
+      "bobId": "surly",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Surly"
+    },
+    {
+      "bobId": "hank",
+      "created": 2192.0,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Hank"
+    },
+    {
+      "bobId": "dopey",
+      "created": 2180.0,
+      "at": "gliese-54",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Dopey"
+    },
+    {
+      "bobId": "sleepy",
+      "created": 2180.0,
+      "at": "gliese-54",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Sleepy"
+    },
+    {
+      "bobId": "hungry",
+      "created": 2180.0,
+      "at": "gliese-54",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Hungry"
+    },
+    {
+      "bobId": "phineas",
+      "created": 2215.0,
+      "at": "delta-pavonis",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Phineas"
+    },
+    {
+      "bobId": "ferb",
+      "created": 2215.0,
+      "at": "delta-pavonis",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Ferb"
+    },
+    {
+      "bobId": "marcus",
+      "created": 2195.0,
+      "at": "eta-cassiopeiae",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Marcus"
+    },
+    {
+      "bobId": "elmer-2",
+      "created": 2192,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Elmer-2",
+      "mapOnly": true,
+      "notes": "Map-only identity for Loki's second-strike Elmer (distinct from Khan's first-strike Elmer)."
+    },
+    {
+      "bobId": "thor",
+      "created": 2188,
+      "at": "alpha-centauri",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Thor",
+      "notes": "Present in our dataset (author genealogy); not in thunfischtoast map. Created year approximate (first moot mention 2188)."
+    },
+    {
+      "bobId": "loki-plus-4",
+      "created": 2192,
+      "at": "epsilon-eridani",
+      "destroyed": null,
+      "firstBook": 2,
+      "refName": "Loki +4",
+      "group": 4,
+      "mapOnly": true,
+      "notes": "Group marker for 4 unnamed Bobs in Loki's strike force (adapted from reference map)."
+    }
+  ]
+}

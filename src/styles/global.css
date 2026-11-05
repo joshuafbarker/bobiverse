@@ -2,6 +2,7 @@
 
 /*
   Bobiverse design tokens. Always dark — a quiet space feel with a cool accent.
+  Map-* tokens match the thunfischtoast/bobiverse-map palette (CC BY-SA adapted UI).
 */
 @theme inline {
   --color-bg: var(--bg);
@@ -14,8 +15,23 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+
+  /* Star-map chrome (reference palette) */
+  --color-map-bg: var(--map-bg);
+  --color-map-panel: var(--map-panel);
+  --color-map-bar: var(--map-bar);
+  --color-map-line: var(--map-line);
+  --color-map-ink: var(--map-ink);
+  --color-map-muted: var(--map-muted);
+  --color-map-faint: var(--map-faint);
+  --color-map-accent: var(--map-accent);
+  --color-map-year: var(--map-year);
+  --color-map-danger: var(--map-danger);
+  --color-map-bob: var(--map-bob);
+
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-map: "Consolas", "Monaco", ui-monospace, monospace;
 }
 
 @layer base {
@@ -31,6 +47,19 @@
     --accent: #6ea8ff;
     --accent-ink: #05070d;
     --accent-soft: #13233f;
+
+    /* Reference map palette */
+    --map-bg: #0a0e1a;
+    --map-panel: #0d1120;
+    --map-bar: #12162a;
+    --map-line: #1e2440;
+    --map-ink: #c8cad0;
+    --map-muted: #5a6a8a;
+    --map-faint: #3a5070;
+    --map-accent: #7ea8e0;
+    --map-year: #e0c878;
+    --map-danger: #e07878;
+    --map-bob: #c8a0e0;
   }
 
   html {
@@ -39,7 +68,6 @@
 
   body {
     @apply bg-bg text-ink font-sans antialiased;
-    /* Soft top glows that fade fully into --bg so there is no hard seam mid-page. */
     background-color: var(--bg);
     background-image:
       radial-gradient(ellipse 120% 80% at 50% -30%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 70%),
@@ -47,6 +75,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+  }
+
+  /* Fullscreen map page: flat map background, no site glow */
+  body:has([data-star-map-app]) {
+    background-image: none;
+    background-color: var(--map-bg);
   }
 
   ::selection {

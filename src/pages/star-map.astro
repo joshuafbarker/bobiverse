@@ -1,1175 +1,549 @@
 ---
 /**
- * Interactive star map v2: fullscreen galactic x/y view inspired by
- * thunfischtoast/bobiverse-map (CC BY-SA — behavior/style only; own code).
+ * Star map page — canvas engine adapted from thunfischtoast/bobiverse-map
+ * (CC BY-SA 4.0). See LICENSE-star-map.md and the engine file header.
  *
- * Markup (stars, labels, Bob markers with name labels, chips) is rendered at
- * build time. The client script only toggles visibility, classes, transforms,
- * opacity, and textContent — no HTML string building / innerHTML.
+ * Static chrome (top bar, event log, legend, system panel, About, timeline)
+ * is rendered here at build time. The client script only toggles classes /
+ * text / visibility; canvas drawing lives in star-map-engine.ts.
  */
 import Layout from "../layouts/Layout.astro";
 import BookToggle from "../components/BookToggle.astro";
-import {
-  bobLocationSegments,
-  MAP_YEAR_MAX,
-  MAP_YEAR_MIN,
-  plottableSystems,
-  unplottableSystems,
-} from "../data/bobLocations";
-import { bobs } from "../data";
+import { buildStarMapPayload } from "../data/starMapAdapter";
+import { unplottableNote } from "../data/starMapMeta";
 
-/**
- * Projection: top-down galactic plane (x toward Galactic Centre, y toward
- * rotation). SVG y grows downward, so we plot screenY = -galacticY so +y is up.
- * Sol sits at the origin. Distances are already in light-years.
- */
-const VIEW_HALF = 48;
-const RING_LY = [10, 20, 30, 40];
-
-type LabelNudge = { dx: number; dy: number; anchor?: "start" | "middle" | "end" };
-
-/**
- * Subtle label offsets (SVG ly units). Kept small — reference map puts tiny
- * muted labels near each star; we only nudge crowded pairs.
- */
-const LABEL_NUDGES: Record<string, LabelNudge> = {
-  "omicron2-eridani": { dx: -1.4, dy: -1.35, anchor: "end" },
-  "hip-14101": { dx: 1.4, dy: 1.55, anchor: "start" },
-  "beta-hydri": { dx: 0, dy: -1.4, anchor: "middle" },
-  "zeta-tucanae": { dx: 1.5, dy: 0.35, anchor: "start" },
-  "gliese-54": { dx: -1.5, dy: 1.1, anchor: "end" },
-  "gliese-877": { dx: 1.4, dy: 1.55, anchor: "start" },
-  "pi3-orionis": { dx: -1.5, dy: 1.3, anchor: "end" },
-  "delta-eridani": { dx: -1.4, dy: -1.4, anchor: "end" },
-  "alpha-centauri": { dx: 1.35, dy: 1.4, anchor: "start" },
-  "epsilon-indi": { dx: 1.45, dy: -1.2, anchor: "start" },
-  sol: { dx: -1.3, dy: -1.35, anchor: "end" },
-  "epsilon-eridani": { dx: -1.35, dy: 1.35, anchor: "end" },
-  "82-eridani": { dx: 1.4, dy: -1.35, anchor: "start" },
-  "kappa-ceti": { dx: -1.3, dy: -1.2, anchor: "end" },
-  "gamma-leporis": { dx: 1.4, dy: -1.3, anchor: "start" },
-  "eta-cassiopeiae": { dx: -1.4, dy: -1.2, anchor: "end" },
-  "delta-pavonis": { dx: 1.35, dy: 1.25, anchor: "start" },
-  "gamma-pavonis": { dx: 1.4, dy: -1.2, anchor: "start" },
-  "hip-84051": { dx: 0, dy: -1.4, anchor: "middle" },
-};
-
-/** Shorter on-map labels; detail panel keeps the full name. */
-const MAP_LABEL_SHORT: Record<string, string> = {
-  "omicron2-eridani": "Omicron² Eri",
-  "delta-eridani": "Delta Eri",
-  "epsilon-eridani": "Epsilon Eri",
-  "alpha-centauri": "α Centauri",
-  "eta-cassiopeiae": "Eta Cas",
-  "gamma-leporis": "γ Leporis",
-  "gamma-pavonis": "γ Pavonis",
-  "delta-pavonis": "δ Pavonis",
-  "pi3-orionis": "π³ Orionis",
-};
-
-interface ProjectedSystem {
-  id: string;
-  name: string;
-  mapLabel: string;
-  description: string;
-  distanceLy: number | null;
-  firstBook: 1 | 2;
-  x: number;
-  y: number;
-  labelDx: number;
-  labelDy: number;
-  labelAnchor: "start" | "middle" | "end";
-  /** Crisp core radius in ly — slightly larger when closer to Sol. */
-  starR: number;
-  starFill: string;
-}
-
-const projected: ProjectedSystem[] = plottableSystems.map((system) => {
-  const { x, y } = system.galacticXYZly!;
-  const nudge = LABEL_NUDGES[system.id] ?? { dx: 0, dy: 1.35, anchor: "middle" as const };
-  const dist = system.distanceLy ?? 20;
-  // Closer stars read a touch larger; keep everything small/crisp (no glow blob).
-  const starR = system.id === "sol" ? 0.42 : Math.max(0.22, Math.min(0.34, 0.36 - dist * 0.003));
-  const starFill =
-    system.id === "sol"
-      ? "#ffe9a8"
-      : dist < 8
-        ? "#d8e6ff"
-        : dist < 20
-          ? "#b8c8e8"
-          : "#8fa0c0";
-  return {
-    id: system.id,
-    name: system.name,
-    mapLabel: MAP_LABEL_SHORT[system.id] ?? system.name,
-    description: system.description,
-    distanceLy: system.distanceLy,
-    firstBook: system.firstBook,
-    x,
-    y: -y,
-    labelDx: nudge.dx,
-    labelDy: nudge.dy,
-    labelAnchor: nudge.anchor ?? "middle",
-    starR,
-    starFill,
-  };
-});
-
-const systemById = Object.fromEntries(projected.map((s) => [s.id, s]));
-
-const presentSegments = bobLocationSegments.filter((s) => s.status === "present" && s.systemId);
-const transitSegments = bobLocationSegments.filter((s) => s.status === "transit");
-
-/** Stable color from Bob id for markers + labels. */
-function bobColor(bobId: string): string {
-  let hash = 0;
-  for (let i = 0; i < bobId.length; i++) hash = (hash * 31 + bobId.charCodeAt(i)) | 0;
-  const hue = Math.abs(hash) % 360;
-  return `hsl(${hue} 70% 65%)`;
-}
-
-const bobColorMap = Object.fromEntries(bobs.map((b) => [b.id, bobColor(b.id)]));
-
-const defaultYear = 2165;
-const unknownNote = unplottableSystems.map((s) => s.name).join(", ");
+const payload = buildStarMapPayload();
+const payloadJson = JSON.stringify(payload);
+const bobList = Object.values(payload.bobs).sort((a, b) => a.name.localeCompare(b.name));
+const bobNameById = Object.fromEntries(bobList.map((b) => [b.id, b.name]));
 ---
 
 <Layout
   title="Star map · Bobiverse Companion"
-  description="Interactive map of star systems and Bob locations across books 1–2 of the Bobiverse."
+  description="Interactive Bobiverse star map (books 1–2), adapted from thunfischtoast/bobiverse-map."
   fullscreen
 >
   <div
-    class="relative h-full w-full bg-bg"
-    data-star-map
-    data-year-min={MAP_YEAR_MIN}
-    data-year-max={MAP_YEAR_MAX}
-    data-default-year={defaultYear}
+    class="relative flex h-full flex-col overflow-hidden bg-map-bg font-map text-map-ink"
+    data-star-map-app
   >
-    <!-- Compact title + hint (overlay, not a page card) -->
-    <div class="pointer-events-none absolute left-3 top-3 z-20 max-w-[min(20rem,70vw)] sm:left-4 sm:top-4">
-      <p class="font-display text-sm font-semibold tracking-tight text-ink/90 sm:text-base">
-        Star map
-      </p>
-      <p class="mt-0.5 text-[11px] leading-snug text-ink-faint">
-        Drag to pan · scroll to zoom · tap a star
-      </p>
-    </div>
-
-    <!-- About / credit toggle -->
-    <div class="absolute right-3 top-3 z-20 sm:right-4 sm:top-4">
+    <!-- Top bar -->
+    <div
+      class="flex shrink-0 flex-wrap items-center gap-2 border-b border-map-line bg-map-bar px-3 py-2 sm:gap-3 sm:px-4"
+    >
+      <h1 class="m-0 text-sm font-normal text-map-accent">Bobiverse Star Map</h1>
+      <span
+        class="font-bold tabular-nums tracking-wide text-map-year text-[22px]"
+        data-sm-year
+      >
+        {payload.yearMin}
+      </span>
       <button
         type="button"
-        class="rounded-md border border-line/80 bg-surface/80 px-2 py-1 text-[11px] text-ink-muted backdrop-blur hover:border-accent hover:text-accent"
-        data-about-btn
-        aria-expanded="false"
-        aria-controls="star-map-about"
+        class="cursor-pointer rounded-sm border border-[#2a3a60] bg-[#1a2040] px-2.5 py-0.5 text-[10px] text-[#5a7aaa] hover:border-map-accent hover:text-map-accent"
+        data-sm-layout
       >
-        About
+        Layout: Spread
       </button>
-      <div
-        id="star-map-about"
-        class="absolute right-0 mt-2 hidden w-[min(20rem,calc(100vw-2rem))] rounded-lg border border-line bg-surface/95 p-3 text-[11px] leading-relaxed text-ink-muted shadow-xl backdrop-blur"
-        data-about-panel
-        role="dialog"
-        aria-label="About this star map"
-      >
-        <p>
-          Positions use heliocentric galactic x/y from the companion dataset. Bob
-          locations are inferred at build time from dated events (SCUT-only
-          mentions are ignored; some travel has no dated arrival).
-        </p>
-        {
-          unknownNote && (
-            <p class="mt-2 text-ink-faint">
-              Location unknown: {unknownNote} — no reliable coordinates; not plotted.
-            </p>
-          )
-        }
-        <p class="mt-2">
-          Behavior inspired by{" "}
-          <a
-            class="text-ink underline decoration-line underline-offset-2 hover:text-accent"
-            href="https://github.com/thunfischtoast/bobiverse-map"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            thunfischtoast/bobiverse-map
-          </a>{" "}
-          (CC BY-SA 4.0) — inspiration only; no code copied.
-        </p>
-        <p class="mt-2 text-ink-faint">
-          Unofficial fan project. Not affiliated with Dennis E. Taylor.
-        </p>
+      <div class="ml-auto flex flex-wrap items-center gap-2 sm:gap-2.5">
+        <BookToggle />
+        <button
+          type="button"
+          class="cursor-pointer rounded-sm border border-[#2a3a60] bg-[#1a2040] px-2.5 py-0.5 text-[10px] text-[#5a7aaa] hover:border-map-accent hover:text-map-accent"
+          data-about-btn
+          aria-expanded="false"
+          aria-controls="star-map-about"
+        >
+          About
+        </button>
       </div>
     </div>
 
-    <!-- Map stage fills everything; controls/drawer overlay on top -->
-    <div class="absolute inset-0 touch-none" data-map-stage>
-      <svg
-        class="h-full w-full cursor-grab active:cursor-grabbing"
-        viewBox={`${-VIEW_HALF} ${-VIEW_HALF} ${VIEW_HALF * 2} ${VIEW_HALF * 2}`}
-        role="img"
-        aria-label="Bobiverse star map"
-        data-map-svg
-      >
-        <!-- Distance rings from Sol -->
-        <g class="pointer-events-none" aria-hidden="true">
-          {
-            RING_LY.map((ly) => (
-              <g>
-                <circle
-                  cx="0"
-                  cy="0"
-                  r={ly}
-                  fill="none"
-                  stroke="#1e2a3d"
-                  stroke-width="0.07"
-                  stroke-dasharray="0.35 0.4"
-                  opacity="0.85"
-                />
-                <text
-                  x={ly * 0.707}
-                  y={-ly * 0.707}
-                  class="fill-ink-faint"
-                  font-size="0.85"
-                  font-family="Inter, sans-serif"
-                  opacity="0.7"
-                >
-                  {ly} ly
-                </text>
-              </g>
-            ))
-          }
-          <line x1="-0.9" y1="0" x2="0.9" y2="0" stroke="#66748f" stroke-width="0.05" opacity="0.5"></line>
-          <line x1="0" y1="-0.9" x2="0" y2="0.9" stroke="#66748f" stroke-width="0.05" opacity="0.5"></line>
-        </g>
-
-        <!-- Transit routes -->
-        <g data-transit-lines>
-          {
-            transitSegments.map((segment, index) => {
-              const from = segment.fromSystemId ? systemById[segment.fromSystemId] : null;
-              const to = segment.toSystemId ? systemById[segment.toSystemId] : null;
-              if (!from) return null;
-              return (
-                <g
-                  data-transit-line
-                  data-segment-index={index}
-                  data-bob={segment.bobId}
-                  data-first-book={segment.firstBook}
-                  data-from-year={segment.fromYear}
-                  data-to-year={segment.toYear ?? MAP_YEAR_MAX + 1}
-                  data-from-system={segment.fromSystemId}
-                  data-to-system={segment.toSystemId ?? ""}
-                  class="hidden"
-                  opacity="0"
-                >
-                  {to ? (
-                    <line
-                      x1={from.x}
-                      y1={from.y}
-                      x2={to.x}
-                      y2={to.y}
-                      stroke={bobColorMap[segment.bobId]}
-                      stroke-width="0.1"
-                      stroke-dasharray="0.4 0.3"
-                      opacity="0.45"
-                    />
-                  ) : null}
-                </g>
-              );
-            })
-          }
-        </g>
-
-        <!-- Stars + labels -->
-        <g data-systems>
-          {
-            projected.map((system) => (
-              <g
-                transform={`translate(${system.x} ${system.y})`}
-                data-system={system.id}
-                data-map-x={system.x}
-                data-map-y={system.y}
-                data-first-book={system.firstBook}
-                data-name={system.name}
-                data-distance={system.distanceLy ?? ""}
-                data-description={system.description}
-                class="system-group"
-              >
-                {/* Generous invisible hit target — click/tap lands here even when the core is tiny */}
-                <circle r="1.6" fill="transparent" data-star-hit></circle>
-                {/* Crisp core only — no soft glow blob */}
-                <circle
-                  r={system.starR}
-                  fill={system.starFill}
-                  class="pointer-events-none"
-                  data-star-core
-                ></circle>
-                <text
-                  x={system.labelDx}
-                  y={system.labelDy}
-                  text-anchor={system.labelAnchor}
-                  class="pointer-events-none select-none fill-ink-faint"
-                  font-size="0.78"
-                  font-family="Inter, ui-monospace, monospace"
-                  font-weight="400"
-                  opacity="0.85"
-                  data-star-label
-                >
-                  {system.mapLabel}
-                </text>
-                {/* Present-Bob stack lives here; client translates each marker */}
-                <g data-bob-slot></g>
-                {/* Collapsed count chip when many Bobs share a system at fit zoom */}
-                <g data-bob-chip class="hidden pointer-events-none" transform="translate(1.15 -0.15)">
-                  <rect
-                    x="-0.15"
-                    y="-0.55"
-                    width="4.2"
-                    height="1.1"
-                    rx="0.25"
-                    fill="#141b29"
-                    stroke="#1e2a3d"
-                    stroke-width="0.06"
-                    data-chip-bg
-                  ></rect>
-                  <text
-                    x="0.15"
-                    y="0.22"
-                    class="fill-ink"
-                    font-size="0.7"
-                    font-family="Inter, sans-serif"
-                    data-chip-text
-                  ></text>
-                </g>
-              </g>
-            ))
-          }
-        </g>
-
-        <!-- Present Bob markers (depot → slotted into systems by the client) -->
-        <g data-present-markers class="hidden">
-          {
-            presentSegments.map((segment) => (
-              <g
-                data-bob-marker
-                data-status="present"
-                data-bob={segment.bobId}
-                data-bob-name={segment.bobName}
-                data-system={segment.systemId!}
-                data-first-book={segment.firstBook}
-                data-from-year={segment.fromYear}
-                data-to-year={segment.toYear ?? MAP_YEAR_MAX + 1}
-                data-jump={segment.locationJump ? "1" : "0"}
-                opacity="0"
-              >
-                <circle
-                  r="0.32"
-                  fill={bobColorMap[segment.bobId]}
-                  stroke="#05070d"
-                  stroke-width="0.08"
-                  data-bob-dot
-                ></circle>
-                <text
-                  x="0.48"
-                  y="0.22"
-                  font-size="0.68"
-                  font-family="Inter, sans-serif"
-                  fill={bobColorMap[segment.bobId]}
-                  data-bob-label
-                >
-                  {segment.bobName}
-                </text>
-              </g>
-            ))
-          }
-        </g>
-
-        <!-- In-transit Bob markers (glide along the travel line) -->
-        <g data-transit-markers>
-          {
-            transitSegments.map((segment, index) => {
-              const from = segment.fromSystemId ? systemById[segment.fromSystemId] : null;
-              if (!from) return null;
-              const to =
-                segment.toSystemId && systemById[segment.toSystemId]
-                  ? systemById[segment.toSystemId]
-                  : null;
-              return (
-                <g
-                  data-bob-marker
-                  data-status="transit"
-                  data-segment-index={index}
-                  data-bob={segment.bobId}
-                  data-bob-name={segment.bobName}
-                  data-first-book={segment.firstBook}
-                  data-from-year={segment.fromYear}
-                  data-to-year={segment.toYear ?? MAP_YEAR_MAX + 1}
-                  data-from-system={segment.fromSystemId}
-                  data-to-system={segment.toSystemId ?? ""}
-                  data-from-x={from.x}
-                  data-from-y={from.y}
-                  data-to-x={to ? to.x : from.x}
-                  data-to-y={to ? to.y : from.y}
-                  class="hidden"
-                  opacity="0"
-                >
-                  <circle
-                    r="0.38"
-                    fill="none"
-                    stroke={bobColorMap[segment.bobId]}
-                    stroke-width="0.08"
-                    opacity="0.7"
-                    data-transit-ring
-                  ></circle>
-                  <circle
-                    r="0.28"
-                    fill={bobColorMap[segment.bobId]}
-                    stroke="#05070d"
-                    stroke-width="0.07"
-                    data-bob-dot
-                  ></circle>
-                  <text
-                    x="0.55"
-                    y="0.22"
-                    font-size="0.68"
-                    font-family="Inter, sans-serif"
-                    fill={bobColorMap[segment.bobId]}
-                    data-bob-label
-                  >
-                    {segment.bobName}
-                  </text>
-                </g>
-              );
-            })
-          }
-        </g>
-      </svg>
+    <!-- About overlay (attribution) -->
+    <div
+      id="star-map-about"
+      class="absolute right-3 top-14 z-40 hidden w-[min(22rem,calc(100vw-1.5rem))] rounded-md border border-[#2a3a60] bg-map-bar p-3 text-[11px] leading-relaxed text-map-muted shadow-xl"
+      data-about-panel
+      role="dialog"
+      aria-label="About this star map"
+    >
+      <p>
+        Interactive map of star systems and Bob locations for books 1–2. Positions use
+        catalog astrometry from this companion’s dataset. Travel legs, presence years,
+        event-log wording, spread layout, and the canvas renderer are
+        <strong class="text-map-ink">adapted</strong> from
+        <a
+          class="text-map-accent underline-offset-2 hover:underline"
+          href="https://github.com/thunfischtoast/bobiverse-map"
+          rel="noopener noreferrer"
+          target="_blank">thunfischtoast/bobiverse-map</a
+        >
+        by Chris (CC BY-SA 4.0) — see <code class="text-map-ink">LICENSE-star-map.md</code>.
+      </p>
+      <p class="mt-2 text-map-faint">{unplottableNote}</p>
+      <p class="mt-2 text-map-faint">Unofficial fan project. Not affiliated with Dennis E. Taylor.</p>
     </div>
 
-    <!-- System detail drawer: side panel on desktop, bottom sheet on mobile -->
-    <aside
-      class="star-map-drawer pointer-events-none absolute z-30 flex flex-col opacity-0"
-      data-details-panel
-      data-open="false"
-      aria-hidden="true"
-    >
-      <div class="pointer-events-auto flex h-full max-h-full flex-col overflow-hidden rounded-xl border border-line bg-surface/95 shadow-2xl backdrop-blur-md">
-        <div class="flex items-start justify-between gap-2 border-b border-line px-3 py-2.5">
-          <div class="min-w-0">
-            <p class="text-[10px] font-medium uppercase tracking-wider text-ink-faint">Selected system</p>
-            <h2 class="mt-0.5 truncate font-display text-base font-semibold text-ink" data-detail-name>
-              —
-            </h2>
-            <p class="text-xs text-ink-muted" data-detail-distance></p>
-          </div>
-          <button
-            type="button"
-            class="shrink-0 rounded-md px-2 py-1 text-sm text-ink-faint hover:bg-surface-2 hover:text-ink"
-            data-drawer-close
-            aria-label="Close system details"
-          >
-            ✕
-          </button>
+    <!-- Main stage: map + desktop side column -->
+    <div class="flex min-h-0 flex-1 flex-col md:flex-row">
+      <div class="relative min-h-0 min-w-0 flex-1" data-sm-map>
+        <canvas class="block h-full w-full cursor-grab active:cursor-grabbing" data-sm-canvas
+        ></canvas>
+        <div
+          class="pointer-events-none absolute z-10 hidden max-w-[260px] rounded border border-[#2a3a60] bg-[#1a2040] px-2.5 py-2 text-[11px] leading-snug"
+          data-sm-tooltip
+        >
         </div>
-        <div class="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-2.5 text-sm">
-          <p class="text-xs leading-relaxed text-ink-muted" data-detail-description></p>
-          <div>
-            <p class="text-[10px] font-medium uppercase tracking-wider text-ink-faint">Bobs here</p>
-            <ul class="mt-1 space-y-1 text-ink" data-detail-bobs>
-              <li class="text-ink-faint">—</li>
+        <div
+          class="pointer-events-none absolute bottom-2 left-2 z-10 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#4a5a7a]"
+          data-sm-legend
+        >
+          {
+            payload.legendBranches.map((branch) => (
+              <div
+                class="inline-flex items-center gap-1"
+                data-legend-item
+                data-bob={branch.id}
+                data-first-book={branch.firstBook}
+              >
+                <span
+                  class="inline-block h-2 w-2 rounded-full"
+                  style={`background:${branch.color}`}
+                />
+                <span>{branch.name}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Desktop side column: event log + system panel -->
+      <aside
+        class="hidden min-h-0 w-[300px] shrink-0 flex-col border-l border-map-line bg-map-panel md:flex"
+        data-desktop-side
+      >
+        <div class="flex min-h-0 flex-1 flex-col">
+          <h2
+            class="m-0 border-b border-[#1a1f35] px-3 py-2.5 text-xs font-normal uppercase tracking-wider text-map-muted"
+          >
+            Event Log
+          </h2>
+          <div class="min-h-0 flex-1 overflow-y-auto py-1.5" data-sm-event-log data-event-log>
+            {
+              payload.events.map((ev) => (
+                <div
+                  class="event-item is-future border-l-2 border-transparent px-3 py-1.5 text-[11px] leading-snug"
+                  data-event-item
+                  data-year={ev.year}
+                  data-first-book={ev.firstBook}
+                  data-bob={ev.bobId ?? ""}
+                  data-destroyed={ev.destroyed ? "1" : "0"}
+                >
+                  <span class="mr-1.5 text-[10px] text-map-accent">{Math.floor(ev.year)}</span>
+                  {ev.destroyed ? (
+                    <span class="text-map-danger">{ev.text}</span>
+                  ) : ev.bobId && bobNameById[ev.bobId] ? (
+                    <>
+                      <span class="text-map-bob">{bobNameById[ev.bobId]}: </span>
+                      <span>{ev.text}</span>
+                    </>
+                  ) : (
+                    <span>{ev.text}</span>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          class="max-h-0 overflow-hidden border-t border-map-line opacity-0 transition-[max-height,opacity] duration-150 data-[open=true]:max-h-60 data-[open=true]:opacity-100 data-[open=true]:overflow-y-auto"
+          data-system-panel
+          data-open="false"
+          aria-hidden="true"
+        >
+          <div class="flex items-start justify-between gap-2 px-3 pt-2.5">
+            <div class="min-w-0">
+              <p class="m-0 text-[10px] uppercase tracking-wider text-map-muted">Selected system</p>
+              <h2 class="m-0 mt-0.5 truncate text-sm font-normal text-[#e8e8e8]" data-detail-name>
+                —
+              </h2>
+              <p class="m-0 mt-0.5 text-[11px] text-map-muted" data-detail-distance></p>
+            </div>
+            <button
+              type="button"
+              class="cursor-pointer border-0 bg-transparent text-sm text-map-muted hover:text-map-ink"
+              data-drawer-close
+              aria-label="Close system details"
+            >
+              ✕
+            </button>
+          </div>
+          <p class="mx-3 my-2 text-[11px] leading-snug text-[#8090b0]" data-detail-description>
+          </p>
+          <p class="mx-3 mb-1 text-[10px] uppercase tracking-wider text-map-muted">Bobs here</p>
+          <ul class="mx-3 mb-3 list-disc space-y-0.5 pl-4 text-[11px]" data-detail-bobs>
+            <li class="list-none text-map-faint" data-bobs-empty>No Bobs here in this year</li>
+            {
+              bobList.map((bob) => (
+                <li
+                  class="hidden"
+                  data-bob-row
+                  data-bob={bob.id}
+                  data-first-book={bob.firstBook}
+                  data-book-visible={bob.firstBook <= 1 ? "1" : "0"}
+                >
+                  <span data-bob-label>{bob.name}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Mobile bottom sheet: tabs for Events / System (avoids overlap) -->
+    <div
+      class="flex shrink-0 flex-col border-t border-map-line bg-map-panel md:hidden"
+      data-mobile-sheet
+    >
+      <div class="flex items-center gap-1 border-b border-map-line px-2 py-1">
+        <button
+          type="button"
+          class="flex-1 rounded px-2 py-1.5 text-[11px] text-map-muted data-[active=true]:bg-[#141a30] data-[active=true]:text-map-year"
+          data-sheet-tab="events"
+          data-active="true"
+        >
+          Events
+        </button>
+        <button
+          type="button"
+          class="flex-1 rounded px-2 py-1.5 text-[11px] text-map-muted data-[active=true]:bg-[#141a30] data-[active=true]:text-map-year"
+          data-sheet-tab="system"
+          data-active="false"
+        >
+          System
+        </button>
+        <button
+          type="button"
+          class="rounded px-2 py-1 text-[10px] text-map-faint hover:text-map-accent"
+          data-sheet-toggle
+          aria-expanded="true"
+        >
+          Hide
+        </button>
+      </div>
+      <div class="max-h-[32vh] min-h-0 overflow-hidden data-[collapsed=true]:max-h-0" data-sheet-body data-collapsed="false">
+        <div class="h-[32vh] overflow-y-auto" data-sheet-pane="events">
+          <div class="py-1" data-event-log-mobile>
+            {
+              payload.events.map((ev) => (
+                <div
+                  class="event-item is-future border-l-2 border-transparent px-3 py-1.5 text-[11px] leading-snug"
+                  data-event-item
+                  data-year={ev.year}
+                  data-first-book={ev.firstBook}
+                  data-bob={ev.bobId ?? ""}
+                  data-destroyed={ev.destroyed ? "1" : "0"}
+                >
+                  <span class="mr-1.5 text-[10px] text-map-accent">{Math.floor(ev.year)}</span>
+                  {ev.destroyed ? (
+                    <span class="text-map-danger">{ev.text}</span>
+                  ) : ev.bobId && bobNameById[ev.bobId] ? (
+                    <>
+                      <span class="text-map-bob">{bobNameById[ev.bobId]}: </span>
+                      <span>{ev.text}</span>
+                    </>
+                  ) : (
+                    <span>{ev.text}</span>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="hidden h-[32vh] overflow-y-auto px-3 py-2" data-sheet-pane="system">
+          <div data-system-panel-mobile data-open="false">
+            <p class="m-0 text-[10px] uppercase tracking-wider text-map-muted">Selected system</p>
+            <h2 class="m-0 mt-0.5 text-sm font-normal text-[#e8e8e8]" data-detail-name-mobile>—</h2>
+            <p class="m-0 mt-0.5 text-[11px] text-map-muted" data-detail-distance-mobile></p>
+            <p
+              class="my-2 text-[11px] leading-snug text-[#8090b0]"
+              data-detail-description-mobile
+            >
+              Tap a star on the map to see details.
+            </p>
+            <p class="mb-1 text-[10px] uppercase tracking-wider text-map-muted">Bobs here</p>
+            <ul class="list-disc space-y-0.5 pl-4 text-[11px]" data-detail-bobs-mobile>
+              <li class="list-none text-map-faint" data-bobs-empty-mobile>No Bobs here in this year</li>
+              {
+                bobList.map((bob) => (
+                  <li
+                    class="hidden"
+                    data-bob-row-mobile
+                    data-bob={bob.id}
+                    data-first-book={bob.firstBook}
+                    data-book-visible={bob.firstBook <= 1 ? "1" : "0"}
+                  >
+                    <span data-bob-label>{bob.name}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
       </div>
-    </aside>
+    </div>
 
-    <!-- Bottom control bar -->
+    <!-- Timeline -->
     <div
-      class="absolute inset-x-0 bottom-0 z-20 border-t border-line/80 bg-surface/90 px-3 py-2 backdrop-blur-md sm:px-4"
-      data-control-bar
+      class="flex h-14 shrink-0 items-center gap-2 border-t border-map-line bg-map-panel px-3 sm:gap-3 sm:px-4"
     >
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-        <BookToggle />
-        <button
-          type="button"
-          class="rounded-md border border-line bg-surface-2 px-2.5 py-1 text-xs text-accent hover:border-accent sm:text-sm"
-          data-play-btn
-          aria-label="Play or pause timeline"
-        >
-          Play
-        </button>
-        <span
-          class="min-w-[4.5rem] font-display text-lg font-semibold tabular-nums text-accent sm:text-xl"
-          data-year-label
-        >
-          {defaultYear}
-        </span>
-        <label class="flex min-w-0 flex-1 items-center gap-2 text-xs text-ink-muted">
-          <span class="sr-only">Year</span>
-          <input
-            type="range"
-            class="year-slider h-1.5 w-full min-w-0 cursor-pointer appearance-none rounded-full bg-line accent-accent"
-            min={MAP_YEAR_MIN}
-            max={MAP_YEAR_MAX}
-            value={defaultYear}
-            step="0.05"
-            data-year-slider
-          />
-          <span class="hidden shrink-0 tabular-nums text-ink-faint sm:inline">
-            {MAP_YEAR_MIN}–{MAP_YEAR_MAX}
-          </span>
-        </label>
-      </div>
+      <label class="shrink-0 text-[11px] text-map-muted">YEAR</label>
+      <input
+        type="range"
+        class="year-slider min-w-0 flex-1 cursor-pointer appearance-none rounded-sm bg-[#1a2040]"
+        data-sm-slider
+        min={payload.yearMin}
+        max={payload.yearMax}
+        step="0.1"
+        value={payload.yearMin}
+      />
+      <button
+        type="button"
+        class="shrink-0 cursor-pointer rounded-sm border border-[#3a4060] bg-transparent px-3 py-1 text-[11px] text-map-accent hover:border-map-accent"
+        data-sm-play
+      >
+        Play
+      </button>
+      <span class="hidden shrink-0 text-[10px] text-map-muted sm:inline" data-sm-speed>2.0 yr/s</span>
     </div>
   </div>
 </Layout>
 
-<!-- Reusable list-item for the details Bob list (cloneNode, not HTML strings) -->
-<template data-bob-list-item-template>
-  <li class="flex items-center gap-2 text-xs">
-    <span class="inline-block h-2 w-2 shrink-0 rounded-full" data-swatch></span>
-    <span data-label></span>
-  </li>
-</template>
+<script type="application/json" id="star-map-payload" set:html={payloadJson} />
 
 <style>
-  /* Soft halo on SVG text so labels stay readable on the dark field */
-  [data-map-svg] text {
-    paint-order: stroke;
-    stroke: #05070d;
-    stroke-width: 0.35px;
-    stroke-linejoin: round;
+  /* Event log states (toggled by the engine — Tailwind data variants alone are awkward here) */
+  .event-item.is-past {
+    color: #4a5068;
+  }
+  .event-item.is-active {
+    background: #141a30;
+    border-left-color: var(--map-year);
+    color: #e8e8e8;
+  }
+  .event-item.is-future {
+    color: #2a3048;
   }
 
-  .system-group[data-selected="true"] [data-star-core] {
-    stroke: #ffe9a8;
-    stroke-width: 0.12;
+  /* Range thumb — not fully expressible in Tailwind utilities */
+  .year-slider {
+    height: 6px;
   }
-
-  .system-group.is-dimmed {
-    opacity: 0.28;
-  }
-
-  /* Desktop: right-side drawer above the control bar */
-  .star-map-drawer {
-    top: 3.25rem;
-    right: 0.75rem;
-    bottom: 4.25rem;
-    width: min(18.5rem, calc(100vw - 1.5rem));
-    transform: translateX(0.75rem);
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease;
-  }
-  .star-map-drawer[data-open="true"] {
-    pointer-events: auto;
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* Mobile: bottom sheet sitting above the control bar */
-  @media (max-width: 639px) {
-    .star-map-drawer {
-      top: auto;
-      right: 0.5rem;
-      left: 0.5rem;
-      bottom: 4.1rem;
-      width: auto;
-      max-height: min(42vh, 22rem);
-      transform: translateY(0.75rem);
-    }
-    .star-map-drawer[data-open="true"] {
-      transform: translateY(0);
-    }
-  }
-
   .year-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--bg);
+    background: var(--map-year);
+    border: 2px solid #0a0e1a;
     cursor: grab;
   }
   .year-slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--bg);
+    background: var(--map-year);
+    border: 2px solid #0a0e1a;
     cursor: grab;
+  }
+
+  /* Soften BookToggle into map chrome */
+  [data-star-map-app] .book-toggle {
+    border-color: #2a3a60;
+    background: #1a2040;
+  }
+  [data-star-map-app] .book-toggle__btn {
+    font-size: 11px;
+    padding: 3px 8px;
   }
 </style>
 
 <script>
-  /**
-   * Star map client: book filter, continuous year scrub / rAF play, pan-zoom
-   * with click-vs-drag threshold, labeled Bob stacks, overlay drawer.
-   * All Bob/system nodes already exist in the DOM.
-   */
-  type Book = 1 | 2;
+  import { StarMapEngine } from "../scripts/star-map-engine";
+  import type { SystemDetail } from "../scripts/star-map-engine";
 
-  const mapRoot = document.querySelector<HTMLElement>("[data-star-map]");
-  if (!mapRoot) {
-    // page chrome only
-  } else {
-    const root = mapRoot;
-    const svg = root.querySelector<SVGSVGElement>("[data-map-svg]")!;
-    const stage = root.querySelector<HTMLElement>("[data-map-stage]")!;
-    const slider = root.querySelector<HTMLInputElement>("[data-year-slider]")!;
-    const yearLabel = root.querySelector<HTMLElement>("[data-year-label]")!;
-    const playBtn = root.querySelector<HTMLButtonElement>("[data-play-btn]")!;
-    const detailPanel = root.querySelector<HTMLElement>("[data-details-panel]")!;
+  function readBook(): 1 | 2 {
+    const raw = document.documentElement.dataset.book;
+    if (raw === "2") return 2;
+    try {
+      if (localStorage.getItem("bobiverse-book") === "2") return 2;
+    } catch {
+      /* ignore */
+    }
+    return 1;
+  }
+
+  function init() {
+    const maybeRoot = document.querySelector<HTMLElement>("[data-star-map-app]");
+    const raw = document.getElementById("star-map-payload");
+    if (!maybeRoot || !raw) return;
+    const root = maybeRoot;
+    // Avoid double-init on astro:page-load if already wired
+    if (root.dataset.engineReady === "1") return;
+    root.dataset.engineReady = "1";
+
+    const payload = JSON.parse(raw.textContent || "{}");
+
+    const panel = root.querySelector<HTMLElement>("[data-system-panel]")!;
     const detailName = root.querySelector<HTMLElement>("[data-detail-name]")!;
     const detailDistance = root.querySelector<HTMLElement>("[data-detail-distance]")!;
     const detailDescription = root.querySelector<HTMLElement>("[data-detail-description]")!;
-    const detailBobs = root.querySelector<HTMLElement>("[data-detail-bobs]")!;
-    const drawerClose = root.querySelector<HTMLButtonElement>("[data-drawer-close]")!;
-    const listTemplate = document.querySelector<HTMLTemplateElement>(
-      "[data-bob-list-item-template]",
+    const bobsEmpty = root.querySelector<HTMLElement>("[data-bobs-empty]")!;
+
+    const mobilePanel = root.querySelector<HTMLElement>("[data-system-panel-mobile]")!;
+    const detailNameMobile = root.querySelector<HTMLElement>("[data-detail-name-mobile]")!;
+    const detailDistanceMobile = root.querySelector<HTMLElement>("[data-detail-distance-mobile]")!;
+    const detailDescriptionMobile = root.querySelector<HTMLElement>(
+      "[data-detail-description-mobile]",
     )!;
-    const presentDepot = root.querySelector<SVGGElement>("[data-present-markers]")!;
+    const bobsEmptyMobile = root.querySelector<HTMLElement>("[data-bobs-empty-mobile]")!;
+
     const aboutBtn = root.querySelector<HTMLButtonElement>("[data-about-btn]")!;
     const aboutPanel = root.querySelector<HTMLElement>("[data-about-panel]")!;
-    const yearMin = Number(root.dataset.yearMin);
-    const yearMax = Number(root.dataset.yearMax);
+    const sheetBody = root.querySelector<HTMLElement>("[data-sheet-body]")!;
+    const sheetToggle = root.querySelector<HTMLButtonElement>("[data-sheet-toggle]")!;
 
-    const DRAG_THRESHOLD_PX = 5;
-    const FADE_WINDOW = 0.12; // years of opacity ramp at segment edges
-    const PLAY_YEARS_PER_SEC = 2.2;
-    const STACK_ROW = 0.85; // ly between stacked Bob rows
-    const COLLAPSE_COUNT = 5; // show "Name +N" chip above this when zoomed out
+    function fillPanel(detail: SystemDetail | null) {
+      // Desktop panel
+      if (!detail) {
+        panel.dataset.open = "false";
+        panel.setAttribute("aria-hidden", "true");
+        mobilePanel.dataset.open = "false";
+        detailName.textContent = "—";
+        detailNameMobile.textContent = "—";
+        detailDistance.textContent = "";
+        detailDistanceMobile.textContent = "";
+        detailDescription.textContent = "";
+        detailDescriptionMobile.textContent = "Tap a star on the map to see details.";
+        for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row], [data-bob-row-mobile]")) {
+          row.classList.add("hidden");
+        }
+        bobsEmpty.classList.remove("hidden");
+        bobsEmptyMobile.classList.remove("hidden");
+        return;
+      }
 
-    let book: Book = 1;
-    let year = Number(root.dataset.defaultYear);
-    let selectedSystemId: string | null = null;
-    let playing = false;
-    let playRaf: number | null = null;
-    let playLastTs = 0;
+      detailName.textContent = detail.name;
+      detailNameMobile.textContent = detail.name;
+      detailDistance.textContent = `${detail.distanceLy.toFixed(2)} light-years from Sol`;
+      detailDistanceMobile.textContent = `${detail.distanceLy.toFixed(2)} light-years from Sol`;
+      detailDescription.textContent = detail.description;
+      detailDescriptionMobile.textContent = detail.description;
 
-    // --- Pan / zoom via viewBox ---
-    const FALLBACK_HALF = 48;
-    let fittedSize = FALLBACK_HALF * 2;
-    let view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
+      const labelById = new Map(detail.bobIds.map((id, i) => [id, detail.bobLabels[i]]));
+      let any = false;
+      for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row]")) {
+        const id = row.dataset.bob!;
+        const show = row.dataset.bookVisible !== "0" && labelById.has(id);
+        row.classList.toggle("hidden", !show);
+        if (show) {
+          any = true;
+          const label = row.querySelector<HTMLElement>("[data-bob-label]")!;
+          label.textContent = labelById.get(id) ?? label.textContent;
+        }
+      }
+      for (const row of root.querySelectorAll<HTMLElement>("[data-bob-row-mobile]")) {
+        const id = row.dataset.bob!;
+        const show = row.dataset.bookVisible !== "0" && labelById.has(id);
+        row.classList.toggle("hidden", !show);
+        if (show) {
+          const label = row.querySelector<HTMLElement>("[data-bob-label]")!;
+          label.textContent = labelById.get(id) ?? label.textContent;
+        }
+      }
+      bobsEmpty.classList.toggle("hidden", any);
+      bobsEmptyMobile.classList.toggle("hidden", any);
 
-    function applyViewBox() {
-      svg.setAttribute("viewBox", `${view.x} ${view.y} ${view.w} ${view.h}`);
+      panel.dataset.open = "true";
+      panel.setAttribute("aria-hidden", "false");
+      mobilePanel.dataset.open = "true";
+
+      // On mobile, jump to the System tab when a star is selected
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        activateSheetTab("system");
+        sheetBody.dataset.collapsed = "false";
+        sheetToggle.textContent = "Hide";
+        sheetToggle.setAttribute("aria-expanded", "true");
+      }
     }
 
-    function fitViewToVisibleStars() {
-      const visibles = [...root.querySelectorAll<SVGGElement>(".system-group")].filter(
-        (el) => !el.classList.contains("hidden"),
+    function activateSheetTab(tab: "events" | "system") {
+      for (const btn of root.querySelectorAll<HTMLElement>("[data-sheet-tab]")) {
+        btn.dataset.active = btn.dataset.sheetTab === tab ? "true" : "false";
+      }
+      for (const pane of root.querySelectorAll<HTMLElement>("[data-sheet-pane]")) {
+        const match = pane.dataset.sheetPane === tab;
+        pane.classList.toggle("hidden", !match);
+      }
+    }
+
+    const engine = new StarMapEngine({
+      root,
+      payload,
+      initialBook: readBook(),
+      showLyRings: true,
+      onSelectSystem: (_id, detail) => fillPanel(detail),
+    });
+
+    root.querySelector("[data-drawer-close]")!.addEventListener("click", () => {
+      engine.clearSelection();
+    });
+
+    aboutBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      aboutPanel.classList.toggle("hidden");
+      aboutBtn.setAttribute(
+        "aria-expanded",
+        aboutPanel.classList.contains("hidden") ? "false" : "true",
       );
-      if (visibles.length === 0) {
-        view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
-        fittedSize = FALLBACK_HALF * 2;
-        applyViewBox();
-        return;
-      }
-
-      let minX = Infinity;
-      let maxX = -Infinity;
-      let minY = Infinity;
-      let maxY = -Infinity;
-      for (const el of visibles) {
-        const x = Number(el.dataset.mapX);
-        const y = Number(el.dataset.mapY);
-        if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
-        const labelPad = 4.5;
-        minX = Math.min(minX, x - labelPad);
-        maxX = Math.max(maxX, x + labelPad);
-        minY = Math.min(minY, y - labelPad);
-        maxY = Math.max(maxY, y + labelPad);
-      }
-      if (!Number.isFinite(minX)) {
-        view = { x: -FALLBACK_HALF, y: -FALLBACK_HALF, w: FALLBACK_HALF * 2, h: FALLBACK_HALF * 2 };
-        fittedSize = FALLBACK_HALF * 2;
-        applyViewBox();
-        return;
-      }
-
-      const width = Math.max(12, maxX - minX);
-      const height = Math.max(12, maxY - minY);
-      const pad = 0.1;
-      const side = Math.max(width, height) * (1 + pad * 2);
-      const cx = (minX + maxX) / 2;
-      const cy = (minY + maxY) / 2;
-      view = { x: cx - side / 2, y: cy - side / 2, w: side, h: side };
-      fittedSize = side;
-      applyViewBox();
-    }
-
-    function clientToSvg(clientX: number, clientY: number) {
-      const pt = svg.createSVGPoint();
-      pt.x = clientX;
-      pt.y = clientY;
-      const ctm = svg.getScreenCTM();
-      if (!ctm) return { x: 0, y: 0 };
-      const local = pt.matrixTransform(ctm.inverse());
-      return { x: local.x, y: local.y };
-    }
-
-    /**
-     * Click-vs-drag: do NOT capture the pointer until movement exceeds the
-     * threshold. Capturing on pointerdown (old bug) retargeted the click to the
-     * stage, so closest(".system-group") never matched and selection failed.
-     */
-    type PointerGesture = {
-      id: number;
-      startX: number;
-      startY: number;
-      lastX: number;
-      lastY: number;
-      dragged: boolean;
-    };
-    let gesture: PointerGesture | null = null;
-
-    stage.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0) return;
-      // Ignore presses on overlay chrome that sits outside the stage.
-      gesture = {
-        id: event.pointerId,
-        startX: event.clientX,
-        startY: event.clientY,
-        lastX: event.clientX,
-        lastY: event.clientY,
-        dragged: false,
-      };
     });
-
-    stage.addEventListener("pointermove", (event) => {
-      if (!gesture || event.pointerId !== gesture.id) return;
-      const dx = event.clientX - gesture.startX;
-      const dy = event.clientY - gesture.startY;
-      if (!gesture.dragged && Math.hypot(dx, dy) > DRAG_THRESHOLD_PX) {
-        gesture.dragged = true;
-        stage.setPointerCapture(event.pointerId);
-        stage.classList.add("cursor-grabbing");
-      }
-      if (!gesture.dragged) return;
-
-      const a = clientToSvg(gesture.lastX, gesture.lastY);
-      const b = clientToSvg(event.clientX, event.clientY);
-      view.x += a.x - b.x;
-      view.y += a.y - b.y;
-      gesture.lastX = event.clientX;
-      gesture.lastY = event.clientY;
-      applyViewBox();
-    });
-
-    function endGesture(event: PointerEvent) {
-      if (!gesture || event.pointerId !== gesture.id) return;
-      const wasDrag = gesture.dragged;
-      const clientX = event.clientX;
-      const clientY = event.clientY;
-      if (wasDrag && stage.hasPointerCapture(event.pointerId)) {
-        stage.releasePointerCapture(event.pointerId);
-      }
-      stage.classList.remove("cursor-grabbing");
-      gesture = null;
-
-      if (wasDrag) return;
-
-      // True click/tap: hit-test under the pointer (works even if target is the svg).
-      const hit = document.elementFromPoint(clientX, clientY);
-      const group = hit?.closest?.(".system-group") as SVGGElement | null;
-      if (group && root.contains(group) && !group.classList.contains("hidden")) {
-        selectSystem(group.dataset.system!);
-      }
-    }
-
-    stage.addEventListener("pointerup", endGesture);
-    stage.addEventListener("pointercancel", endGesture);
-
-    stage.addEventListener(
-      "wheel",
-      (event) => {
-        event.preventDefault();
-        const factor = event.deltaY > 0 ? 1.12 : 1 / 1.12;
-        const nextW = Math.min(fittedSize * 3.5, Math.max(fittedSize * 0.28, view.w * factor));
-        const nextH = nextW;
-        const anchor = clientToSvg(event.clientX, event.clientY);
-        const rx = (anchor.x - view.x) / view.w;
-        const ry = (anchor.y - view.y) / view.h;
-        view.w = nextW;
-        view.h = nextH;
-        view.x = anchor.x - rx * view.w;
-        view.y = anchor.y - ry * view.h;
-        applyViewBox();
-        // Re-evaluate collapsed chips when zoom changes density.
-        placePresentMarkers();
-      },
-      { passive: false },
-    );
-
-    // --- Book / year ---
-    function currentBook(): Book {
-      const raw = document.documentElement.dataset.book;
-      return raw === "2" ? 2 : 1;
-    }
-
-    /** Opacity fade near segment start/end so markers appear/disappear smoothly. */
-    function segmentOpacity(fromYear: number, toYear: number): number {
-      if (year < fromYear || year >= toYear) return 0;
-      const into = year - fromYear;
-      const outOf = toYear - year;
-      const fadeIn = Math.min(1, into / FADE_WINDOW);
-      const fadeOut = Math.min(1, outOf / FADE_WINDOW);
-      return Math.max(0, Math.min(1, fadeIn, fadeOut));
-    }
-
-    function markerActive(el: Element): boolean {
-      const firstBook = Number((el as HTMLElement).dataset.firstBook ?? 1);
-      if (firstBook > book) return false;
-      const fromYear = Number((el as HTMLElement).dataset.fromYear);
-      const toYear = Number((el as HTMLElement).dataset.toYear);
-      return year >= fromYear && year < toYear;
-    }
-
-    function syncBookScoped() {
-      for (const el of root.querySelectorAll<HTMLElement>(".system-group")) {
-        const firstBook = Number(el.dataset.firstBook ?? 1);
-        el.classList.toggle("hidden", firstBook > book);
-      }
-    }
-
-    function placePresentMarkers() {
-      for (const marker of [
-        ...root.querySelectorAll<SVGGElement>("[data-bob-marker][data-status='present']"),
-      ]) {
-        presentDepot.appendChild(marker);
-        marker.classList.add("hidden");
-        marker.setAttribute("opacity", "0");
-      }
-
-      // Reset chips
-      for (const chip of root.querySelectorAll<SVGGElement>("[data-bob-chip]")) {
-        chip.classList.add("hidden");
-      }
-
-      const bySystem = new Map<string, SVGGElement[]>();
-      for (const marker of root.querySelectorAll<SVGGElement>(
-        "[data-bob-marker][data-status='present']",
-      )) {
-        if (!markerActive(marker)) continue;
-        const systemId = marker.dataset.system!;
-        const systemGroup = root.querySelector<SVGGElement>(
-          `.system-group[data-system="${systemId}"]`,
-        );
-        if (!systemGroup || systemGroup.classList.contains("hidden")) continue;
-        const list = bySystem.get(systemId) ?? [];
-        list.push(marker);
-        bySystem.set(systemId, list);
-      }
-
-      const zoomedOut = view.w > fittedSize * 0.85;
-
-      for (const [systemId, markers] of bySystem) {
-        const systemGroup = root.querySelector<SVGGElement>(
-          `.system-group[data-system="${systemId}"]`,
-        )!;
-        const slot = systemGroup.querySelector<SVGGElement>("[data-bob-slot]")!;
-        const chip = systemGroup.querySelector<SVGGElement>("[data-bob-chip]")!;
-        const collapse = zoomedOut && markers.length >= COLLAPSE_COUNT;
-
-        markers.forEach((marker, index) => {
-          const fromYear = Number(marker.dataset.fromYear);
-          const toYear = Number(marker.dataset.toYear);
-          const opacity = segmentOpacity(fromYear, toYear);
-          marker.classList.remove("hidden");
-          marker.setAttribute("opacity", String(opacity));
-
-          if (collapse) {
-            // Only the first marker's dot stays; names collapse into the chip.
-            if (index === 0) {
-              marker.setAttribute("transform", `translate(1.1 0)`);
-              const label = marker.querySelector<SVGTextElement>("[data-bob-label]");
-              if (label) label.classList.add("hidden");
-              slot.appendChild(marker);
-            } else {
-              marker.classList.add("hidden");
-              marker.setAttribute("opacity", "0");
-              presentDepot.appendChild(marker);
-            }
-          } else {
-            const label = marker.querySelector<SVGTextElement>("[data-bob-label]");
-            if (label) label.classList.remove("hidden");
-            // Vertical stack to the right of the star (readable names).
-            const mx = 1.1;
-            const my = (index - (markers.length - 1) / 2) * STACK_ROW;
-            marker.setAttribute("transform", `translate(${mx} ${my})`);
-            slot.appendChild(marker);
-          }
-        });
-
-        if (collapse && markers.length > 0) {
-          const firstName = markers[0].dataset.bobName ?? "Bob";
-          const extra = markers.length - 1;
-          const chipText = chip.querySelector<SVGTextElement>("[data-chip-text]")!;
-          const chipBg = chip.querySelector<SVGRectElement>("[data-chip-bg]")!;
-          chipText.textContent = `${firstName} +${extra}`;
-          // Widen the chip roughly with the label length.
-          const width = Math.max(3.2, 0.42 * chipText.textContent.length + 0.6);
-          chipBg.setAttribute("width", String(width));
-          chip.classList.remove("hidden");
-        }
-      }
-    }
-
-    function placeTransitMarkers() {
-      for (const marker of root.querySelectorAll<SVGGElement>(
-        "[data-bob-marker][data-status='transit']",
-      )) {
-        const fromYear = Number(marker.dataset.fromYear);
-        const toYear = Number(marker.dataset.toYear);
-        const firstBook = Number(marker.dataset.firstBook ?? 1);
-        const inBook = firstBook <= book;
-        const opacity = inBook ? segmentOpacity(fromYear, toYear) : 0;
-        const active = opacity > 0;
-
-        marker.classList.toggle("hidden", !active);
-        marker.setAttribute("opacity", String(opacity));
-        if (!active) continue;
-
-        const fromX = Number(marker.dataset.fromX);
-        const fromY = Number(marker.dataset.fromY);
-        const toX = Number(marker.dataset.toX);
-        const toY = Number(marker.dataset.toY);
-        const hasDest = Boolean(marker.dataset.toSystem);
-        let t = 0.5;
-        if (hasDest && toYear > fromYear) {
-          t = Math.min(1, Math.max(0, (year - fromYear) / (toYear - fromYear)));
-        } else if (!hasDest) {
-          t = Math.min(0.85, (year - fromYear) / 20);
-        }
-        const x = fromX + (toX - fromX) * t;
-        const y = fromY + (toY - fromY) * t;
-        marker.setAttribute("transform", `translate(${x} ${y})`);
-      }
-
-      for (const line of root.querySelectorAll<SVGGElement>("[data-transit-line]")) {
-        const fromYear = Number(line.dataset.fromYear);
-        const toYear = Number(line.dataset.toYear);
-        const firstBook = Number(line.dataset.firstBook ?? 1);
-        const opacity = firstBook <= book ? segmentOpacity(fromYear, toYear) * 0.9 : 0;
-        line.classList.toggle("hidden", opacity <= 0);
-        line.setAttribute("opacity", String(opacity));
-      }
-    }
-
-    function setDrawerOpen(open: boolean) {
-      detailPanel.dataset.open = open ? "true" : "false";
-      detailPanel.setAttribute("aria-hidden", open ? "false" : "true");
-    }
-
-    function refreshDetails() {
-      if (!selectedSystemId) {
-        setDrawerOpen(false);
-        return;
-      }
-      const group = root.querySelector<SVGGElement>(
-        `.system-group[data-system="${selectedSystemId}"]`,
-      );
-      if (!group || group.classList.contains("hidden")) {
-        selectedSystemId = null;
-        setDrawerOpen(false);
-        for (const g of root.querySelectorAll<SVGGElement>(".system-group")) {
-          g.dataset.selected = "false";
-        }
-        return;
-      }
-
-      detailName.textContent = group.dataset.name ?? selectedSystemId;
-      const distance = group.dataset.distance;
-      detailDistance.textContent = distance ? `${distance} light-years from Sol` : "Distance unknown";
-      detailDescription.textContent = group.dataset.description ?? "";
-
-      const names: { name: string; color: string }[] = [];
-      for (const marker of group.querySelectorAll<SVGGElement>(
-        "[data-bob-marker][data-status='present']",
-      )) {
-        if (marker.classList.contains("hidden")) continue;
-        const circle = marker.querySelector("[data-bob-dot]");
-        names.push({
-          name: marker.dataset.bobName ?? marker.dataset.bob ?? "",
-          color: circle?.getAttribute("fill") ?? "#6ea8ff",
-        });
-      }
-      // Collapsed chip case: present markers beyond the first live in the depot.
-      if (names.length <= 1) {
-        for (const marker of presentDepot.querySelectorAll<SVGGElement>(
-          `[data-bob-marker][data-status='present'][data-system="${selectedSystemId}"]`,
-        )) {
-          if (!markerActive(marker)) continue;
-          if (names.some((n) => n.name === marker.dataset.bobName)) continue;
-          const circle = marker.querySelector("[data-bob-dot]");
-          names.push({
-            name: marker.dataset.bobName ?? "",
-            color: circle?.getAttribute("fill") ?? "#6ea8ff",
-          });
-        }
-      }
-      for (const marker of root.querySelectorAll<SVGGElement>(
-        "[data-bob-marker][data-status='transit']",
-      )) {
-        if (marker.classList.contains("hidden")) continue;
-        if (
-          marker.dataset.fromSystem === selectedSystemId ||
-          marker.dataset.toSystem === selectedSystemId
-        ) {
-          const circle = marker.querySelector("[data-bob-dot]");
-          names.push({
-            name: `${marker.dataset.bobName ?? ""} (in transit)`,
-            color: circle?.getAttribute("fill") ?? "#6ea8ff",
-          });
-        }
-      }
-
-      detailBobs.replaceChildren();
-      if (names.length === 0) {
-        const empty = document.createElement("li");
-        empty.className = "text-ink-faint text-xs";
-        empty.textContent = "No Bobs here in this year";
-        detailBobs.appendChild(empty);
-      } else {
-        for (const entry of names) {
-          const node = listTemplate.content.cloneNode(true) as DocumentFragment;
-          const swatch = node.querySelector<HTMLElement>("[data-swatch]")!;
-          const label = node.querySelector<HTMLElement>("[data-label]")!;
-          swatch.style.background = entry.color;
-          label.textContent = entry.name;
-          detailBobs.appendChild(node);
-        }
-      }
-      setDrawerOpen(true);
-    }
-
-    function formatYear(value: number): string {
-      // Show tenths while scrubbing/playing; whole years stay tidy.
-      if (Math.abs(value - Math.round(value)) < 0.001) return String(Math.round(value));
-      return value.toFixed(1);
-    }
-
-    function render() {
-      book = currentBook();
-      syncBookScoped();
-      placePresentMarkers();
-      placeTransitMarkers();
-      yearLabel.textContent = formatYear(year);
-      // Avoid fighting the slider while the user is dragging it.
-      if (document.activeElement !== slider) {
-        slider.value = String(year);
-      } else {
-        slider.value = String(year);
-      }
-      refreshDetails();
-    }
-
-    function selectSystem(systemId: string) {
-      selectedSystemId = systemId;
-      for (const group of root.querySelectorAll<SVGGElement>(".system-group")) {
-        group.dataset.selected = group.dataset.system === systemId ? "true" : "false";
-      }
-      refreshDetails();
-    }
-
-    drawerClose.addEventListener("click", () => {
-      selectedSystemId = null;
-      for (const group of root.querySelectorAll<SVGGElement>(".system-group")) {
-        group.dataset.selected = "false";
-      }
-      setDrawerOpen(false);
-    });
-
-    aboutBtn.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const open = aboutPanel.classList.toggle("hidden") === false;
-      aboutBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    document.addEventListener("click", (event) => {
-      const t = event.target as Node | null;
-      if (!aboutPanel.classList.contains("hidden") && t && !aboutPanel.contains(t) && t !== aboutBtn) {
+    document.addEventListener("click", (e) => {
+      const t = e.target as Node;
+      if (!aboutPanel.classList.contains("hidden") && !aboutPanel.contains(t) && t !== aboutBtn) {
         aboutPanel.classList.add("hidden");
         aboutBtn.setAttribute("aria-expanded", "false");
       }
     });
 
-    slider.addEventListener("input", () => {
-      year = Number(slider.value);
-      stopPlay();
-      render();
-    });
-
-    function stopPlay() {
-      playing = false;
-      playBtn.textContent = "Play";
-      if (playRaf != null) {
-        cancelAnimationFrame(playRaf);
-        playRaf = null;
-      }
+    for (const btn of root.querySelectorAll<HTMLButtonElement>("[data-sheet-tab]")) {
+      btn.addEventListener("click", () => {
+        activateSheetTab(btn.dataset.sheetTab as "events" | "system");
+        sheetBody.dataset.collapsed = "false";
+        sheetToggle.textContent = "Hide";
+        sheetToggle.setAttribute("aria-expanded", "true");
+      });
     }
-
-    function playFrame(ts: number) {
-      if (!playing) return;
-      if (!playLastTs) playLastTs = ts;
-      const dt = Math.min(0.05, (ts - playLastTs) / 1000);
-      playLastTs = ts;
-      year += PLAY_YEARS_PER_SEC * dt;
-      if (year >= yearMax) {
-        year = yearMax;
-        render();
-        stopPlay();
-        return;
-      }
-      render();
-      playRaf = requestAnimationFrame(playFrame);
-    }
-
-    function startPlay() {
-      playing = true;
-      playBtn.textContent = "Pause";
-      playLastTs = 0;
-      playRaf = requestAnimationFrame(playFrame);
-    }
-
-    playBtn.addEventListener("click", () => {
-      if (playing) stopPlay();
-      else startPlay();
+    sheetToggle.addEventListener("click", () => {
+      const collapsed = sheetBody.dataset.collapsed !== "true";
+      sheetBody.dataset.collapsed = collapsed ? "true" : "false";
+      sheetToggle.textContent = collapsed ? "Show" : "Hide";
+      sheetToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      // Remeasure canvas after sheet height change
+      requestAnimationFrame(() => engine.resize());
     });
 
-    window.addEventListener("bobiverse:book-change", () => {
-      render();
-      fitViewToVisibleStars();
-      placePresentMarkers();
-    });
+    window.addEventListener("bobiverse:book-change", ((e: CustomEvent) => {
+      const book = e.detail?.book === 2 ? 2 : 1;
+      engine.setBook(book);
+    }) as EventListener);
 
-    window.addEventListener("keydown", (event) => {
-      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)
-        return;
-      if (event.code === "Space") {
-        event.preventDefault();
-        playBtn.click();
-      } else if (event.code === "ArrowRight") {
-        year = Math.min(yearMax, year + (event.shiftKey ? 1 : 0.25));
-        stopPlay();
-        render();
-      } else if (event.code === "ArrowLeft") {
-        year = Math.max(yearMin, year - (event.shiftKey ? 1 : 0.25));
-        stopPlay();
-        render();
-      } else if (event.code === "Escape") {
-        drawerClose.click();
-      }
-    });
-
-    book = currentBook();
-    render();
-    fitViewToVisibleStars();
-    placePresentMarkers();
+    engine.setBook(readBook());
+    (window as unknown as { __starMapEngine?: StarMapEngine }).__starMapEngine = engine;
   }
+
+  init();
+  document.addEventListener("astro:page-load", init);
 </script>

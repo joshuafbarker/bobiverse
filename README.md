@@ -6,9 +6,7 @@ This repo currently covers **books 1–2** only:
 1. *We Are Legion (We Are Bob)* (2016)
 2. *For We Are Many* (2017)
 
-Later work will add a Bob family tree, interactive star map, timeline, character
-& species guide, and a spoiler picker. This first pass is just the Astro app,
-a basic landing page, and the shared data files.
+Includes a landing page, shared books 1–2 datasets, and an interactive star map.
 
 **Not affiliated** with Dennis E. Taylor or his publishers.
 
@@ -52,3 +50,10 @@ Structured JSON for books 1–2 lives in [`src/data/`](src/data/):
 
 Import from `src/data` (or `src/data/index.ts`) in Astro pages and components.
 Use `firstBook` / `isVisibleForBook` so book-2 reveals stay hidden from book-1 readers.
+
+## Star map license
+
+The star map UI/engine and map-oriented travel/presence/event data are adapted from
+[thunfischtoast/bobiverse-map](https://github.com/thunfischtoast/bobiverse-map)
+(CC BY-SA 4.0). See [`LICENSE-star-map.md`](LICENSE-star-map.md). That ShareAlike
+scope does **not** automatically relicense the rest of this repository.
