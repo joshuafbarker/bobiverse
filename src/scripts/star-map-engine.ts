@@ -477,10 +477,19 @@ export class StarMapEngine {
       ctx.arc(p.x, p.y, isSelected ? 4.5 : 3.5, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.fillStyle = "#3a5070";
-      ctx.font = "9px Consolas, Monaco, monospace";
+      // System labels: brighter + slightly larger than the reference's dim
+      // 9px/#3a5070, with a dark halo so they stay readable over rings/lines.
+      // Font size is in CSS pixels (DPR transform), so zoom does not balloon text.
+      ctx.font = "11px Consolas, Monaco, monospace";
       ctx.textAlign = "center";
-      ctx.fillText(this.filteredStars[id].name, p.x, p.y + 16);
+      const label = this.filteredStars[id].name;
+      const labelY = p.y + 17;
+      ctx.lineWidth = 3;
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "rgba(10, 14, 26, 0.85)";
+      ctx.strokeText(label, p.x, labelY);
+      ctx.fillStyle = "#b4c4dc";
+      ctx.fillText(label, p.x, labelY);
     }
 
     const active: ActiveBob[] = [];

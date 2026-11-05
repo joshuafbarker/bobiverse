@@ -95,19 +95,19 @@ const bobNameById = Object.fromEntries(bobList.map((b) => [b.id, b.name]));
         >
         </div>
         <div
-          class="pointer-events-none absolute bottom-2 left-2 z-10 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#4a5a7a]"
+          class="pointer-events-none absolute bottom-2 left-2 z-10 flex max-w-[calc(100%-1rem)] flex-wrap gap-x-3 gap-y-1.5 rounded-md bg-[#0a0e1a]/75 px-2.5 py-1.5 text-[12px] leading-none text-[#d0dae8] shadow-sm backdrop-blur-sm sm:text-[13px]"
           data-sm-legend
         >
           {
             payload.legendBranches.map((branch) => (
               <div
-                class="inline-flex items-center gap-1"
+                class="inline-flex items-center gap-1.5"
                 data-legend-item
                 data-bob={branch.id}
                 data-first-book={branch.firstBook}
               >
                 <span
-                  class="inline-block h-2 w-2 rounded-full"
+                  class="inline-block h-2.5 w-2.5 shrink-0 rounded-full sm:h-3 sm:w-3"
                   style={`background:${branch.color}`}
                 />
                 <span>{branch.name}</span>
