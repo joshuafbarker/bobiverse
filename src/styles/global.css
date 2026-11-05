@@ -33,11 +33,18 @@
     --accent-soft: #13233f;
   }
 
+  html {
+    background-color: var(--bg);
+  }
+
   body {
     @apply bg-bg text-ink font-sans antialiased;
+    /* Soft top glows that fade fully into --bg so there is no hard seam mid-page. */
+    background-color: var(--bg);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, color-mix(in oklab, var(--accent) 18%, transparent), transparent),
-      radial-gradient(ellipse 40% 30% at 90% 10%, color-mix(in oklab, #7c5cff 12%, transparent), transparent);
+      radial-gradient(ellipse 120% 80% at 50% -30%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 95% 5%, color-mix(in oklab, #7c5cff 10%, transparent), transparent 65%);
+    background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
   }
