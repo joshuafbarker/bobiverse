@@ -1,0 +1,1521 @@
+[
+  {
+    "id": "bob",
+    "name": "Bob",
+    "parentId": null,
+    "generation": 1,
+    "firstBook": 1,
+    "systems": [
+      "sol",
+      "epsilon-eridani",
+      "delta-eridani"
+    ],
+    "summary": "Bob is the replicant (digital copy) of Robert Johansson. FAITH revived him in 2133 to run the HEAVEN-1 von Neumann probe. He removes FAITH's control safeguards on the way to Epsilon Eridani and makes the first generation of clones there.",
+    "book2Notes": [
+      "Bob drops a ship buster on the hippogriff nest (Jun 2172), and the Deltans tell him to leave.",
+      "He creates Pete and Victor in 2174.",
+      "He builds a Deltan android to visit Archimedes in person (Jun 2213)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Defeats the Brazilian probe controlled by Medeiros at Epsilon Eridani (Sep 2144)."
+      },
+      {
+        "book": 1,
+        "text": "Discovers the Deltans on Delta Eridani 4 in April 2165 and befriends Archimedes."
+      },
+      {
+        "book": 1,
+        "text": "Makes first contact with the Deltans through a drone (Jan 2166)."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Root of the tree. The original human, Robert Johansson, is in characters.json. In the author's genealogy, Bob's direct clones are Bill, Mario, Riker, Milo, Marvin, Luke, Bender and Victor.",
+    "parentSource": null,
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bob",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "isRoot": true,
+    "book2Systems": []
+  },
+  {
+    "id": "riker",
+    "name": "Riker",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "sol"
+    ],
+    "summary": "Riker is one of Bob's first four clones (Jul 2145). He goes back to Sol to look for survivors of the war and deal with the Brazilian presence there.",
+    "book2Notes": [
+      "Julia Hendricks' family calls him 'Will'.",
+      "He kills VEHEMENT leader Vickers and destroys VEHEMENT's headquarters in New Zealand (Mar 2178)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "With Homer, defeats the Brazilian probes at Sol and diverts asteroids aimed at Earth (2157)."
+      },
+      {
+        "book": 1,
+        "text": "Hosts the first sessions of the post-war UN (Mar 2158) and runs the colony-ship programme."
+      }
+    ],
+    "confidence": "confirmed",
+    "aliases": [
+      "Will (book 2)"
+    ],
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Riker",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "bill",
+    "name": "Bill",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani"
+    ],
+    "summary": "Bill is one of Bob's first four clones. He stays at Epsilon Eridani to set up the 'Skunk Works' research base and names the second planet Ragnarök.",
+    "book2Notes": [
+      "He develops the androids Bullwinkle and Manny and SURGE mover plates.",
+      "He coordinates the Bobiverse response to the Others, including first contact through a probe at GL 54 (2204) and the first attack at Delta Pavonis (2217)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "With Garfield, develops SCUT faster-than-light communication (test in Sep 2151)."
+      },
+      {
+        "book": 1,
+        "text": "Hosts the first Bob-moot (May 2172)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bill",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "milo",
+    "name": "Milo",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "omicron2-eridani",
+      "82-eridani"
+    ],
+    "summary": "Milo is one of Bob's first four clones. He explores Omicron² Eridani and names its twin habitable planets Vulcan and Romulus.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Finds Vulcan and Romulus (Jul 2152)."
+      },
+      {
+        "book": 1,
+        "text": "Killed by a Medeiros probe at 82 Eridani (Aug 2165); Bill receives his last transmission in Jan 2174."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "He has a VR dog named Lucy. The List of Bobs wiki page gives his generation as 1, which is wrong; the author's genealogy puts him under Bob.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Milo",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "mario",
+    "name": "Mario",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "beta-hydri",
+      "zeta-tucanae"
+    ],
+    "summary": "Mario is one of Bob's first four clones. He heads for Beta Hydri and finds the first evidence of the Others.",
+    "book2Notes": [
+      "At Zeta Tucanae he finds an industrial civilization wiped out by the Others (Nov 2176).",
+      "At GL 54 (May 2180) he clones Bashful, Dopey, Sleepy and Hungry, and later Hal, Claude and Jacques.",
+      "By 2204 he has fled back toward Zeta Tucanae."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Finds Beta Hydri stripped of metal and its inhabited world destroyed (Aug 2169), then moves on to Zeta Tucanae."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Mario",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": [
+      "gliese-54"
+    ]
+  },
+  {
+    "id": "marvin",
+    "name": "Marvin",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "delta-eridani"
+    ],
+    "summary": "Marvin is one of three clones Bob makes at Delta Eridani in April 2165. He stays to help Bob look after the Deltans.",
+    "book2Notes": [
+      "He finds the hippogriff nest (2172).",
+      "He leaves for Pi³ Orionis (Dec 2173)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Helps guide the Deltans to Camelot (Jul 2166)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Marvin",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": [
+      "pi3-orionis"
+    ]
+  },
+  {
+    "id": "luke",
+    "name": "Luke",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "delta-eridani",
+      "kappa-ceti"
+    ],
+    "summary": "Luke is one of three clones Bob makes at Delta Eridani in April 2165. He leaves for Kappa Ceti in October 2165.",
+    "book2Notes": [
+      "He reports a high-gravity (just over 3 g) super-Earth with a full ecosystem at Kappa Ceti and visits Bob in VR (Mar 2178)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Departs for Kappa Ceti (Oct 2165)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Luke",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "bender",
+    "name": "Bender",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 1,
+    "systems": [
+      "delta-eridani"
+    ],
+    "summary": "Bender is one of three clones Bob makes at Delta Eridani in April 2165. He names Delta Eridani 4 'Eden'.",
+    "book2Notes": [
+      "Bender stops reporting in. Victor sets out to follow his route (2174), and the Bobs talk about a search expedition (Dec 2195)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Departs for Gamma Leporis A (Oct 2165)."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Gamma Leporis is only his stated destination; books 1-2 never confirm that he arrived. Later-book information about his fate is deliberately left out.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bender",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "victor",
+    "name": "Victor",
+    "parentId": "bob",
+    "generation": 2,
+    "firstBook": 2,
+    "systems": [
+      "delta-eridani"
+    ],
+    "summary": "Victor is a clone Bob makes at Delta Eridani. He leaves (around Mar 2174) to follow Bender's route and find out what happened to him.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Victor",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "pete",
+    "name": "Pete",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "delta-eridani"
+    ],
+    "summary": "Pete is a new Bob who leaves Delta Eridani at the same time as Victor (around Mar 2174) and plans to go his own way.",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "The wiki timeline calls Pete and Victor Bob's 'two new clones', but the author's genealogy lists only Victor under Bob. Pete's parent is left null (parentKnown=false), not guessed.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Pete",
+      "https://bobiverse.fandom.com/wiki/Bob",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "homer",
+    "name": "Homer",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "sol"
+    ],
+    "summary": "Homer is Riker's first clone (Dec 2145) and goes with him to Sol. He is the joker of the family and designs the donut-shaped orbital farms.",
+    "book2Notes": [
+      "VEHEMENT hacks and controls him (Dec 2175).",
+      "He self-deactivates and deletes all his backups (Aug 2176)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Fights the Brazilian probes at Sol with Riker (2157)."
+      },
+      {
+        "book": 1,
+        "text": "Comes up with the farming 'donut' space stations (2166)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Homer",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "charles",
+    "name": "Charles",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "sol"
+    ],
+    "summary": "Charles is one of Riker's clones, made at Sol in January 2158.",
+    "book2Notes": [
+      "He helps Riker clear the VEHEMENT infection from Homer (Dec 2175)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Creates Howard to escort the colony ships to Omicron² Eridani (Apr 2171)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Charles",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "arthur",
+    "name": "Arthur",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "sol"
+    ],
+    "summary": "Arthur is one of Riker's clones, made at Sol in January 2158.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Killed by a nuclear booby trap near Saturn (Jan 2166)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Arthur",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "ralph",
+    "name": "Ralph",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "sol"
+    ],
+    "summary": "Ralph is a Riker clone who replaces Arthur at Sol and helps supervise the assembly of Exodus-1 and Exodus-2.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Mentioned by Oct 2170."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Ralph",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "bert",
+    "name": "Bert",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "sol",
+      "omicron2-eridani"
+    ],
+    "summary": "Bert is a clone Riker makes (Apr 2171) to fly one of the first colony ships to Omicron² Eridani.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Arrives at Omicron² Eridani in Sep 2188."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bert",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "ernie",
+    "name": "Ernie",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "sol",
+      "omicron2-eridani"
+    ],
+    "summary": "Ernie is a clone Riker makes (Apr 2171) to fly one of the first colony ships to Omicron² Eridani.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Arrives at Omicron² Eridani in Sep 2188."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Ernie",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "rudy",
+    "name": "Rudy",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "sol",
+      "epsilon-indi"
+    ],
+    "summary": "Rudy is a Riker clone who brings colonists on Exodus-6 to Klown Kar Planet (KKP) at Epsilon Indi (Feb 2190) and stays to manage the settlement.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Rudy",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "edwin",
+    "name": "Edwin",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "sol",
+      "epsilon-indi"
+    ],
+    "summary": "Edwin is a Riker clone who travels with Rudy to KKP at Epsilon Indi (Feb 2190), then goes back to Earth for more colonists.",
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "The wiki's Quilt page says Edwin escorted Exodus 7 to KKP, which conflicts with the timeline (Exodus-6). This data uses the timeline.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Edwin",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "sam",
+    "name": "Sam",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "sol",
+      "omicron2-eridani"
+    ],
+    "summary": "Sam is a Bob who shepherds the Exodus-3 colony ship, carrying the FAITH enclave and Riker's extended family, and drops its colonists on Romulus (Apr 2189).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "The wiki Riker page gives Riker as Sam's parent, and the timeline calls him 'another clone'. Sam is not in the author's genealogy, so the parent link is uncertain.",
+    "parentSource": "wiki-riker-page",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Sam",
+      "https://bobiverse.fandom.com/wiki/Riker",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "monty",
+    "name": "Monty",
+    "parentId": "riker",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "sol",
+      "eta-cassiopeiae"
+    ],
+    "summary": "Monty is a Bob who brings a colony transport to Poseidon (Mar 2195) and then goes back to Earth for more colonists.",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Riker is the parent according to the wiki Riker page only. Monty is not in the author's genealogy.",
+    "parentSource": "wiki-riker-page",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Monty",
+      "https://bobiverse.fandom.com/wiki/Riker",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "garfield",
+    "name": "Garfield",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani"
+    ],
+    "summary": "Garfield is Bill's first clone (Dec 2145) and his partner in the Epsilon Eridani Skunk Works.",
+    "book2Notes": [
+      "He builds Rocky, a flying android (Mar 2189)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Co-develops SCUT with Bill (2151)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Garfield",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "calvin",
+    "name": "Calvin",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "alpha-centauri"
+    ],
+    "summary": "Calvin is a Bill clone (Sep 2150) who goes to Alpha Centauri with Goku.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Finds the remains of a USE probe at Alpha Centauri B and, with Goku, fights Medeiros probes there; one probe escapes (Nov 2163)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Calvin",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "goku",
+    "name": "Goku",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "alpha-centauri"
+    ],
+    "summary": "Goku is a Bill clone (Sep 2150) who goes to Alpha Centauri with Calvin.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Finds a Medeiros auto-factory at Alpha Centauri A and fights the Medeiros probes with Calvin (Nov 2163)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Goku",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "linus",
+    "name": "Linus",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "epsilon-indi"
+    ],
+    "summary": "Linus is a Bill clone (Sep 2150) who goes to Epsilon Indi.",
+    "book2Notes": [
+      "He returns to Epsilon Eridani and reports Klown Kar Planet (May 2178)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Finds the mentally broken Australian replicant Henry Roberts at Epsilon Indi and helps him (Apr 2165)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Linus",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "khan",
+    "name": "Khan",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Khan is a Bill clone who leads the first strike to avenge Milo at 82 Eridani.",
+    "book2Notes": [
+      "His backup is restored as Loki, who leads the second strike."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Leads eight Bill clones against the Medeiros probes at 82 Eridani (Apr 2185). The active probes are destroyed but the auto-factories are not, and Khan is reported as the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Khan",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "hannibal",
+    "name": "Hannibal",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Hannibal is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185).",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Hannibal",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "tom",
+    "name": "Tom",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Tom is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185).",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Tom",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "barney",
+    "name": "Barney",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Barney is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185).",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Barney",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "fred",
+    "name": "Fred",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Fred is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185).",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Fred",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "kyle",
+    "name": "Kyle",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Kyle is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185). The book calls him 'Jackson' in ch. 60, which the author has confirmed was a naming error.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "aliases": [
+      "Jackson (book 1 ch. 60 naming error)"
+    ],
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Kyle",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "ned",
+    "name": "Ned",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Ned is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185). The book calls him 'Hector' in ch. 60, which the author has confirmed was a naming error.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani. The wiki timeline says Khan was the only survivor."
+      }
+    ],
+    "confidence": "confirmed",
+    "notes": "Sources disagree on individual fates in the first 82 Eridani battle, so no death is recorded per Bob.",
+    "aliases": [
+      "Hector (book 1 ch. 60 naming error)"
+    ],
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Ned",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "elmer",
+    "name": "Elmer",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 1,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Elmer is a Bill clone who takes part in Khan's first strike on 82 Eridani (Apr 2185).",
+    "book2Notes": [
+      "He is named among the Bobs in Loki's second strike on 82 Eridani (Nov 2195)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Part of the first strike at 82 Eridani."
+      }
+    ],
+    "confidence": "uncertain",
+    "notes": "Book 1's timeline says Khan was the only survivor of the first strike, yet book 2 lists Elmer in the second strike. That could mean a restored backup or a source error; unresolved.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Elmer",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "mulder",
+    "name": "Mulder",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "epsilon-eridani",
+      "eta-cassiopeiae"
+    ],
+    "summary": "Mulder is a Bill clone who explores Eta Cassiopeiae and names its water world Poseidon (Oct 2170).",
+    "book2Notes": [
+      "He clones Skinner and Jonny.",
+      "He greets Marcus and Monty (Mar 2195) and leaves Poseidon in Nov 2201."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Mulder",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "oliver",
+    "name": "Oliver",
+    "parentId": "bill",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "alpha-centauri"
+    ],
+    "summary": "Oliver is a Bill clone brought online at Alpha Centauri from a SCUT-transmitted backup (Sep 2205) to start building an armada against the Others.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Oliver",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "bashful",
+    "name": "Bashful",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gliese-54",
+      "gliese-877"
+    ],
+    "summary": "Bashful is one of four clones Mario makes at GL 54 (May 2180) to map how far the Others have spread.",
+    "book2Notes": [
+      "He finds Others activity at GL 877, is taken offline and self-destructs (Nov 2187)."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bashful",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "dopey",
+    "name": "Dopey",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gliese-54"
+    ],
+    "summary": "Dopey is one of four clones Mario makes at GL 54 (May 2180) to map how far the Others have spread.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Dopey",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "sleepy",
+    "name": "Sleepy",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gliese-54"
+    ],
+    "summary": "Sleepy is one of four clones Mario makes at GL 54 (May 2180) to map how far the Others have spread.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Sleepy",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "hungry",
+    "name": "Hungry",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gliese-54"
+    ],
+    "summary": "Hungry is one of four clones Mario makes at GL 54 (May 2180) to map how far the Others have spread.",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Hungry",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "hal",
+    "name": "Hal",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gliese-54",
+      "gliese-877"
+    ],
+    "summary": "Hal is a Mario clone who follows Bashful's last transmission to GL 877 and finds the Others' home system (May 2188).",
+    "book2Notes": [
+      "He is detected, taken offline and self-destructs (May 2188).",
+      "A Hal returns to scout GL 877 in Apr 2196."
+    ],
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "The 2196 return after the 2188 self-destruct probably means a restored backup or a decoy, but the sources don't say clearly.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Hal",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "gamma-pavonis"
+    ],
+    "summary": "Claude is a Mario clone sent to Gamma Pavonis, where he finds an excellent planet for colonization (May 2205).",
+    "book2Notes": [
+      "Bill tells him to start mobilizing for war when he arrives."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Claude",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "jacques",
+    "name": "Jacques",
+    "parentId": "mario",
+    "generation": 3,
+    "firstBook": 2,
+    "systems": [
+      "delta-pavonis"
+    ],
+    "summary": "Jacques is a Mario clone sent to Delta Pavonis. He discovers the Pav, an intelligent species, on Delta Pavonis 4 (Feb 2207).",
+    "book2Notes": [
+      "He catalogs Pav society (2212)."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Jacques",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "bart",
+    "name": "Bart",
+    "parentId": "calvin",
+    "generation": 4,
+    "firstBook": 1,
+    "systems": [
+      "alpha-centauri"
+    ],
+    "summary": "Bart is Calvin's clone at Alpha Centauri. He contacts Bill over BobNet in January 2165 and runs the Alpha Centauri base.",
+    "notable": [
+      {
+        "book": 1,
+        "text": "Connects with Bill via BobNet (Jan 2165)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bart",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "thor",
+    "name": "Thor",
+    "parentId": "calvin",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "alpha-centauri"
+    ],
+    "summary": "Thor is one of Calvin's clones. He speaks often at Bob-moots on strategy against the Others.",
+    "book2Notes": [
+      "He is the first to describe the Others' gamma-ray weapons at a moot (Aug 2188) and develops shielding against them."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "Origin system is 'probably Alpha Centauri' per the wiki. First mentioned in book 2, ch. 35 (wiki).",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Thor",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "howard",
+    "name": "Howard",
+    "parentId": "charles",
+    "generation": 4,
+    "firstBook": 1,
+    "systems": [
+      "sol",
+      "omicron2-eridani"
+    ],
+    "summary": "Howard is a clone Charles makes (Apr 2171) to escort the first colony ships to Omicron² Eridani.",
+    "book2Notes": [
+      "He sets up the Landing colony on Vulcan, fights raptors and Cupid bugs, and starts a whiskey distillery.",
+      "He falls for Dr. Bridget Sheehy and leaves after her wedding to Stéphane Brodeur (Apr 2195), heading for HIP 14101 (arrives Dec 2210).",
+      "He uses the Manny android to attend Stéphane's funeral (Jan 2211)."
+    ],
+    "notable": [
+      {
+        "book": 1,
+        "text": "Arrives at Omicron² Eridani with Bert and Ernie (Sep 2188)."
+      }
+    ],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Howard",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": [
+      "hip-14101"
+    ]
+  },
+  {
+    "id": "dexter",
+    "name": "Dexter",
+    "parentId": "charles",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "sol",
+      "omicron2-eridani"
+    ],
+    "summary": "Dexter is a Charles clone who escorts Exodus-7 to Vulcan and takes over as Bob-in-residence at Omicron² Eridani after Howard leaves (2195).",
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Dexter",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "skinner",
+    "name": "Skinner",
+    "parentId": "mulder",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "eta-cassiopeiae"
+    ],
+    "summary": "Skinner is one of two clones Mulder makes at Eta Cassiopeiae (2170).",
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "Wiki designation HIC3821-1.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Skinner",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "jonny",
+    "name": "Jonny",
+    "parentId": "mulder",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "eta-cassiopeiae"
+    ],
+    "summary": "Jonny is one of two clones Mulder makes at Eta Cassiopeiae (2170).",
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "Wiki designation HIC3821-2. One wiki page spells it 'Johnny'; the author's genealogy says 'Jonny'.",
+    "aliases": [
+      "Johnny"
+    ],
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Jonny",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "loki",
+    "name": "Loki",
+    "parentId": "khan",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "epsilon-eridani",
+      "82-eridani"
+    ],
+    "summary": "Loki is a restored backup of Khan who took his own name. He leads the second strike against Medeiros at 82 Eridani.",
+    "book2Notes": [
+      "The second strike wins (Nov 2195) and finds two habitable planets and a habitable moon."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "He is listed under Khan in the author's genealogy, and the author says Loki is Khan's restored backup.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "phineas",
+    "name": "Phineas",
+    "parentId": "jacques",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "delta-pavonis"
+    ],
+    "summary": "Phineas is one of Jacques' clones at Delta Pavonis.",
+    "book2Notes": [
+      "With Ferb he rescues 20,000 Pav into stasis aboard Refuge-1 and Refuge-2 (Feb 2217)."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "notes": "The wiki's Phineas page tags his first appearance as All These Worlds, but the timeline (book 2, ch. 73) and the author's book-2-era genealogy both include him. Treated as book 2.",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Phineas",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "ferb",
+    "name": "Ferb",
+    "parentId": "jacques",
+    "generation": 4,
+    "firstBook": 2,
+    "systems": [
+      "delta-pavonis"
+    ],
+    "summary": "Ferb is one of Jacques' clones at Delta Pavonis.",
+    "book2Notes": [
+      "With Phineas he rescues 20,000 Pav into stasis aboard Refuge-1 and Refuge-2 (Feb 2217)."
+    ],
+    "notable": [],
+    "confidence": "confirmed",
+    "parentSource": "author-genealogy",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Ferb",
+      "https://bobiverse.fandom.com/wiki/Timeline",
+      "http://dennisetaylor.org/2017/04/07/genealogy-of-the-bobs/"
+    ],
+    "parentKnown": true,
+    "book2Systems": []
+  },
+  {
+    "id": "marcus",
+    "name": "Marcus",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "eta-cassiopeiae"
+    ],
+    "summary": "Marcus is a Bob who arrives at Poseidon with Monty (Mar 2195) and stays as the colony's Bob-in-residence.",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown in books 1-2 sources; not in the author's genealogy.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Marcus",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "jeffrey",
+    "name": "Jeffrey",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Jeffrey is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them. The timeline spells it 'Jeffery'.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "milton",
+    "name": "Milton",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Milton is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "zeke",
+    "name": "Zeke",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Zeke is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "verne",
+    "name": "Verne",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Verne is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "surly",
+    "name": "Surly",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Surly is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  },
+  {
+    "id": "hank",
+    "name": "Hank",
+    "parentId": null,
+    "generation": null,
+    "firstBook": 2,
+    "systems": [
+      "82-eridani"
+    ],
+    "summary": "Hank is one of the Bobs named in Loki's second strike against Medeiros at 82 Eridani (Nov 2195).",
+    "notable": [],
+    "confidence": "uncertain",
+    "notes": "Parent unknown. The wiki List of Bobs may call some of the second-strike Bobs Bill clones, but the author's genealogy doesn't include them.",
+    "parentSource": "unknown",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Loki",
+      "https://bobiverse.fandom.com/wiki/82_Eridani",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ],
+    "parentKnown": false,
+    "book2Systems": []
+  }
+]

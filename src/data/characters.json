@@ -1,0 +1,477 @@
+[
+  {
+    "id": "robert-johansson",
+    "name": "Robert Johansson",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Robert 'Bob' Johansson is a software engineer who sold his company, InterGator Software, and signed up with CryoEterna to have his head preserved. He was killed by a car in Las Vegas in 2016 during a science-fiction convention.",
+    "systemId": "sol",
+    "aliases": [
+      "Original Bob",
+      "Bob 1.0"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Robert_Johansson"
+    ]
+  },
+  {
+    "id": "andrea-johansson",
+    "name": "Andrea",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Andrea is one of Robert Johansson's sisters. Julia Hendricks is descended from her.",
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "notes": "Surname not confirmed in sources; listed only as 'Andrea'.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/List_of_Minor_Characters",
+      "https://bobiverse.fandom.com/wiki/Julia_Hendricks"
+    ]
+  },
+  {
+    "id": "dr-landers",
+    "name": "Dr. Landers",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Dr. Landers is program director for Applied Synergetics' Project HEAVEN. He revives Bob as a replicant in 2133 and is frank with him about the FAITH theocracy.",
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "notes": "Bob later learns that Landers died when the Newhaven facility was bombed by Brazilian forces.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Dr._Landers"
+    ]
+  },
+  {
+    "id": "dr-doucette",
+    "name": "Dr. Doucette",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Dr. Doucette is Dr. Landers' assistant on Project HEAVEN, who works with Bob when Landers is unavailable.",
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Dr._Doucette"
+    ]
+  },
+  {
+    "id": "senior-minister-travis",
+    "name": "Senior Minister Travis",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Travis is a FAITH Ministry of Truth official who makes a surprise visit to interview the replicant candidates.",
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Senior_Minister_Travis"
+    ]
+  },
+  {
+    "id": "guppi",
+    "name": "GUPPI",
+    "type": "ai",
+    "firstBook": 1,
+    "summary": "GUPPI (General Unit Primary Peripheral Interface) is the AMI interface between Bob and his ship's systems. Bob gives its VR avatar the look of Admiral Ackbar.",
+    "confidence": "confirmed",
+    "notes": "Every Bob has his own GUPPI.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/GUPPI"
+    ]
+  },
+  {
+    "id": "jeeves",
+    "name": "Jeeves",
+    "type": "vr-construct",
+    "firstBook": 1,
+    "summary": "Jeeves is a silent VR butler, modeled on John Cleese, who serves coffee and snacks in many Bobs' VR. He is not an AMI.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Jeeves"
+    ]
+  },
+  {
+    "id": "lucy",
+    "name": "Lucy",
+    "type": "vr-construct",
+    "firstBook": 1,
+    "summary": "Lucy is Milo's pet VR dog.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/List_of_Minor_Characters"
+    ]
+  },
+  {
+    "id": "major-ernesto-medeiros",
+    "name": "Major Ernesto Medeiros",
+    "type": "replicant",
+    "firstBook": 1,
+    "summary": "Medeiros is the Brazilian Empire's replicant probe commander. A copy follows Bob to Epsilon Eridani and is defeated there in 2144, and other copies hold Alpha Centauri and 82 Eridani.",
+    "book2Notes": [
+      "Loki's second strike defeats the Medeiros presence at 82 Eridani (Nov 2195)."
+    ],
+    "confidence": "confirmed",
+    "notes": "His ship at Epsilon Eridani is the Serra do Mar.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Major_Ernesto_Medeiros"
+    ]
+  },
+  {
+    "id": "matias-araujo",
+    "name": "Capt. Matias Araujo",
+    "type": "replicant",
+    "firstBook": 1,
+    "summary": "Araujo is the Brazilian replicant whose clones Riker and Homer fight at Sol in 2157 while they try to drop asteroids on Earth.",
+    "systemId": "sol",
+    "confidence": "uncertain",
+    "notes": "The fight is confirmed in book 1 (ch. 21 and 24). That he is named in book 1 is not confirmed; the wiki's book-appearance table leaves it blank.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Matias_Araujo"
+    ]
+  },
+  {
+    "id": "henry-roberts",
+    "name": "Henry Roberts",
+    "type": "replicant",
+    "firstBook": 1,
+    "summary": "Henry Roberts is a sailor replicated to control Australia's probe. Decades of isolation drive him half mad, and Linus finds him at Epsilon Indi in 2165 and nurses him back to health.",
+    "book2Notes": [
+      "He is introduced to the Bobs at a moot (Jun 2185)."
+    ],
+    "systemId": "epsilon-indi",
+    "aliases": [
+      "Emperor Mung"
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Henry_Roberts"
+    ]
+  },
+  {
+    "id": "col-george-butterworth",
+    "name": "Col. George Butterworth",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Colonel George Butterworth commands what is left of the United States of Eurasia (USE) after the war. He is the first human to contact Riker and Homer (2157).",
+    "book2Notes": [
+      "He is the USE's ambassador to the new UN and moves to Vulcan with the USE colony.",
+      "He has retired by 2198.",
+      "He agrees to be replicated after he dies (2211)."
+    ],
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Col_Butterworth"
+    ]
+  },
+  {
+    "id": "minister-cranston",
+    "name": "Minister Cranston",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Cranston represents the FAITH enclave at the post-war UN. He sees Riker as FAITH property and tries to manipulate him (2158).",
+    "book2Notes": [
+      "The FAITH colony has removed him from power by 2198."
+    ],
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Minister_Cranston"
+    ]
+  },
+  {
+    "id": "julia-hendricks",
+    "name": "Julia Hendricks",
+    "type": "human",
+    "firstBook": 1,
+    "summary": "Julia is a descendant of Bob's sister Andrea, living in the FAITH enclave. Cranston introduces her to Riker (Nov 2158).",
+    "book2Notes": [
+      "Riker grows close to her family, who call him 'Will'.",
+      "She is revived on Romulus with the extended family (Oct 2189)."
+    ],
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Julia_Hendricks"
+    ]
+  },
+  {
+    "id": "vickers",
+    "name": "Vickers",
+    "type": "human",
+    "firstBook": 2,
+    "summary": "Vickers is the Australian Federation scientist who invented the technology for replicating a mind. He leads the VEHEMENT campaign against the Bobs.",
+    "book2Notes": [
+      "Riker kills him and destroys his New Zealand base (Mar 2178)."
+    ],
+    "systemId": "sol",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Vickers"
+    ]
+  },
+  {
+    "id": "bridget-sheehy",
+    "name": "Dr. Bridget Sheehy",
+    "type": "human",
+    "firstBook": 2,
+    "summary": "Bridget Sheehy is an Irish biologist with the USE colony on Vulcan. She becomes close to Howard (2189 onward).",
+    "book2Notes": [
+      "She marries Stéphane Brodeur (Apr 2195).",
+      "She refuses replication (2211).",
+      "Howard meets her through a refined android (2216)."
+    ],
+    "systemId": "omicron2-eridani",
+    "aliases": [
+      "Bridget Brodeur"
+    ],
+    "confidence": "confirmed",
+    "notes": "The wiki's Major Characters table marks her in book 1, but the timeline introduces her in book 2, ch. 25.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Bridget"
+    ]
+  },
+  {
+    "id": "stephane-brodeur",
+    "name": "Stéphane Brodeur",
+    "type": "human",
+    "firstBook": 2,
+    "summary": "Stéphane Brodeur is the French-Canadian security chief of Landing on Vulcan and works with Howard against the local fauna.",
+    "book2Notes": [
+      "He marries Bridget (Apr 2195), declines replication, and dies; Howard attends the funeral in an android body (Jan 2211)."
+    ],
+    "systemId": "omicron2-eridani",
+    "aliases": [
+      "Stephan Brodeur"
+    ],
+    "confidence": "confirmed",
+    "notes": "Spelled 'Stephan' on the wiki page and 'Stéphane' in the timeline.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Stephan_Brodeur"
+    ]
+  },
+  {
+    "id": "howie-brodeur",
+    "name": "Howie Brodeur",
+    "type": "human",
+    "firstBook": 2,
+    "summary": "Howie (Howard Brodeur) is Bridget and Stéphane's son, named after Howard and born by 2198.",
+    "systemId": "omicron2-eridani",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Howie"
+    ]
+  },
+  {
+    "id": "archimedes",
+    "name": "Archimedes",
+    "type": "deltan",
+    "firstBook": 1,
+    "summary": "Archimedes is an unusually curious and inventive young Deltan whom Bob names after the Greek inventor. He becomes Bob's friend and the first alien to make contact with a (former) human.",
+    "book2Notes": [
+      "He mates with Diana.",
+      "He helps found Caerleon (2182) and becomes a grandfather (2195).",
+      "Bob visits him in a Deltan android (2213)."
+    ],
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "confirmed",
+    "notes": "His death happens after book 2 and is left out.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Archimedes"
+    ]
+  },
+  {
+    "id": "moses",
+    "name": "Moses",
+    "type": "deltan",
+    "firstBook": 1,
+    "summary": "Moses is an elder of Archimedes' tribe and the only one who remembers how to work flint.",
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Moses",
+      "https://bobiverse.fandom.com/wiki/Eden"
+    ]
+  },
+  {
+    "id": "arnold",
+    "name": "Arnold",
+    "type": "deltan",
+    "firstBook": 1,
+    "summary": "Arnold is a big, tactically sharp Deltan, the first to kill a gorilloid with Archimedes' hand axe. Bob's translator gives him an Austrian accent.",
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Arnold"
+    ]
+  },
+  {
+    "id": "diana",
+    "name": "Diana",
+    "type": "deltan",
+    "firstBook": 1,
+    "summary": "Diana is a Deltan female introduced as a potential mate for Archimedes (Jun 2166). She is wary of 'the Bob'.",
+    "book2Notes": [
+      "She becomes Archimedes' mate.",
+      "Her funeral is in Nov 2220."
+    ],
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Diana"
+    ]
+  },
+  {
+    "id": "cruella",
+    "name": "Cruella",
+    "type": "deltan",
+    "firstBook": 1,
+    "summary": "Cruella is a Deltan medicine woman who often clashes with Bob.",
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "uncertain",
+    "notes": "The wiki marks her in books 1 and 2; the chapter isn't confirmed.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Cruella"
+    ]
+  },
+  {
+    "id": "buster",
+    "name": "Buster",
+    "type": "deltan",
+    "firstBook": 2,
+    "summary": "Buster is Archimedes' son and a skilled warrior.",
+    "book2Notes": [
+      "He takes a mate (Jan 2180)."
+    ],
+    "speciesId": "deltans",
+    "systemId": "delta-eridani",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Buster"
+    ]
+  },
+  {
+    "id": "hazjiar",
+    "name": "Hazjiar",
+    "type": "pav",
+    "firstBook": 2,
+    "summary": "Hazjiar is a Pav town council member, one of eight Pav woken after the evacuation to choose their future.",
+    "book2Notes": [
+      "She and the others choose to resettle at HIP 84051 (Apr 2221)."
+    ],
+    "speciesId": "pav",
+    "systemId": "delta-pavonis",
+    "confidence": "uncertain",
+    "notes": "The timeline places this in book 2, ch. 77 and says Bill wakes her; her character page says Jacques. The wiki's Major Characters table marks her in book 3 only.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Hazjiar",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "bullwinkle",
+    "name": "Bullwinkle",
+    "type": "android",
+    "firstBook": 2,
+    "summary": "Bullwinkle is the Bobs' first android prototype, a moose-like quadruped that Bill tests (Jun 2185).",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Manny"
+    ]
+  },
+  {
+    "id": "rocky",
+    "name": "Rocky",
+    "type": "android",
+    "firstBook": 2,
+    "summary": "Rocky is Garfield's flying-squirrel-like flying android (Mar 2189).",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Manny"
+    ]
+  },
+  {
+    "id": "manny",
+    "name": "Manny",
+    "type": "android",
+    "firstBook": 2,
+    "summary": "Manny is the first humanoid, mannequin-like android. Howard uses it to attend Stéphane's funeral (Jan 2211).",
+    "confidence": "confirmed",
+    "notes": "'Manny' later becomes the word for any humanoid android.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Manny",
+      "https://bobiverse.fandom.com/wiki/Timeline"
+    ]
+  },
+  {
+    "id": "faith",
+    "name": "FAITH",
+    "type": "organization",
+    "firstBook": 1,
+    "summary": "FAITH (Free American Independent Theocratic Hegemony) is the theocracy that has ruled most of North America since a 2041 coup. It owns Bob as property and runs Project HEAVEN.",
+    "book2Notes": [
+      "Its enclave colonizes Romulus."
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/FAITH"
+    ]
+  },
+  {
+    "id": "project-heaven",
+    "name": "Project HEAVEN",
+    "type": "organization",
+    "firstBook": 1,
+    "summary": "Project HEAVEN (Habitable Earths Abiogenic Vessel Exploration Network) is FAITH's von Neumann probe programme. Applied Synergetics' replicant approach wins it, and Bob is chosen from five candidates.",
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Project_HEAVEN"
+    ]
+  },
+  {
+    "id": "use",
+    "name": "United States of Eurasia",
+    "type": "organization",
+    "firstBook": 1,
+    "summary": "The USE governs Europe and western Russia and runs a rival probe programme. After the war its remnant, led by Butterworth, works with Riker and gets the first colony ships.",
+    "book2Notes": [
+      "Its colonists settle Vulcan, founding Landing."
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/United_States_of_Eurasia"
+    ]
+  },
+  {
+    "id": "brazilian-empire",
+    "name": "Brazilian Empire",
+    "type": "organization",
+    "firstBook": 1,
+    "summary": "The Brazilian Empire is an Earth power that sends combat-ready replicant probes (Medeiros, Araujo) to hunt down other nations' probes.",
+    "confidence": "confirmed",
+    "notes": "The wiki has no separate page for it.",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/Major_Ernesto_Medeiros"
+    ]
+  },
+  {
+    "id": "vehement",
+    "name": "VEHEMENT",
+    "type": "organization",
+    "firstBook": 1,
+    "summary": "VEHEMENT (Voluntary Extinction of Human Existence Means Earth's Natural Transformation) is a terrorist group working for human extinction. Riker first hears of it in Nov 2158.",
+    "book2Notes": [
+      "It attacks the farm donuts.",
+      "It hacks Homer (2175).",
+      "Riker destroys it (2178)."
+    ],
+    "confidence": "confirmed",
+    "sources": [
+      "https://bobiverse.fandom.com/wiki/VEHEMENT"
+    ]
+  }
+]

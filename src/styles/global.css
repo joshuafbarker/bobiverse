@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+  Bobiverse design tokens. Always dark — a quiet space feel with a cool accent.
+*/
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg: #05070d;
+    --surface: #0d121c;
+    --surface-2: #141b29;
+    --ink: #e8eef9;
+    --ink-muted: #9aa8c2;
+    --ink-faint: #66748f;
+    --line: #1e2a3d;
+    --accent: #6ea8ff;
+    --accent-ink: #05070d;
+    --accent-soft: #13233f;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, color-mix(in oklab, var(--accent) 18%, transparent), transparent),
+      radial-gradient(ellipse 40% 30% at 90% 10%, color-mix(in oklab, #7c5cff 12%, transparent), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 30%, transparent);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
