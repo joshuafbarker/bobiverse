@@ -10,12 +10,18 @@ interface Props {
   description?: string;
   /** Wider main column for interactive tools like the star map. */
   wide?: boolean;
+  /**
+   * Full-bleed interactive page: main fills the viewport under the header,
+   * no padded column, no site footer (page supplies its own chrome).
+   */
+  fullscreen?: boolean;
 }
 
 const {
   title = "Bobiverse Companion",
   description = "An unofficial fan-made companion for Dennis E. Taylor's Bobiverse books, covering books 1–2 so far.",
   wide = false,
+  fullscreen = false,
 } = Astro.props;
 
 const homeHref = import.meta.env.BASE_URL;
@@ -40,12 +46,17 @@ const starMapHref = `${import.meta.env.BASE_URL}/star-map`;
       rel="stylesheet"
     />
   </head>
-  <body class="flex min-h-screen flex-col">
-    <header class="border-b border-line/80">
+  <body
+    class:list={[
+      "flex flex-col",
+      fullscreen ? "h-dvh overflow-hidden" : "min-h-screen",
+    ]}
+  >
+    <header class="shrink-0 border-b border-line/80" data-site-header>
       <div
         class:list={[
-          "mx-auto flex items-center justify-between gap-4 px-5 py-4 sm:px-6",
-          wide ? "max-w-6xl" : "max-w-3xl",
+          "mx-auto flex items-center justify-between gap-4 px-5 py-3 sm:px-6",
+          fullscreen ? "max-w-none" : wide ? "max-w-6xl" : "max-w-3xl",
         ]}
       >
         <a href={homeHref} class="font-display text-lg font-semibold tracking-tight text-ink hover:text-accent">
@@ -62,25 +73,34 @@ const starMapHref = `${import.meta.env.BASE_URL}/star-map`;
 
     <main
       class:list={[
-        "mx-auto w-full flex-1 px-5 py-10 sm:px-6 sm:py-14",
-        wide ? "max-w-6xl" : "max-w-3xl",
+        "w-full",
+        fullscreen
+          ? "min-h-0 flex-1 overflow-hidden p-0"
+          : [
+              "mx-auto flex-1 px-5 py-10 sm:px-6 sm:py-14",
+              wide ? "max-w-6xl" : "max-w-3xl",
+            ],
       ]}
     >
       <slot />
     </main>
 
-    <footer class="border-t border-line/80">
-      <div
-        class:list={[
-          "mx-auto px-5 py-6 text-sm text-ink-faint sm:px-6",
-          wide ? "max-w-6xl" : "max-w-3xl",
-        ]}
-      >
-        <p>
-          Unofficial fan project. Not affiliated with Dennis E. Taylor or his publishers.
-          Bobiverse is © its respective rights holders.
-        </p>
-      </div>
-    </footer>
+    {
+      !fullscreen && (
+        <footer class="border-t border-line/80">
+          <div
+            class:list={[
+              "mx-auto px-5 py-6 text-sm text-ink-faint sm:px-6",
+              wide ? "max-w-6xl" : "max-w-3xl",
+            ]}
+          >
+            <p>
+              Unofficial fan project. Not affiliated with Dennis E. Taylor or his publishers.
+              Bobiverse is © its respective rights holders.
+            </p>
+          </div>
+        </footer>
+      )
+    }
   </body>
 </html>
